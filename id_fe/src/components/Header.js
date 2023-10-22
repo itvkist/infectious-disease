@@ -4,7 +4,9 @@ import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import "./style.css";
 
-import logo from "../images/logo.svg";
+import logo from "../images/vkist.svg";
+import logo1 from "../images/datastreams.svg";
+
 import Context from "services/context.js";
 import axiosInstance, { handleLogout } from "services/axios.js";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -103,32 +105,21 @@ export default () => {
         <nav className="hidden md:flex flex-1 justify-between items-center">
           <LogoLink to="/">
             <img src={logo} alt="logo" />
-            Koica
+            <img src={logo1} alt="logo1"/>
+            
           </LogoLink>
           <div className="inline-block space-x-8">
-            <NavLink to="/">Trang chủ</NavLink>
+            <NavLink to="/">HOMEPAGE</NavLink>
             <span className="dropdownTrigger">
-              <NavLink to="/">Tài nguyên</NavLink>
+              <NavLink to="/">RESOURCE</NavLink>
               <div className="dropdownContent">
-                <NavLink to="/cassavas">Các giống sắn</NavLink>
-                <NavLink to="/diseases">Các bệnh về sắn</NavLink>
-                <NavLink to="/diagnostics">Chẩn đoán bệnh</NavLink>
-                <NavLink to="/market">Thương mại sắn</NavLink>
-                <NavLink to="/suppliers">Danh sách nguồn cung</NavLink>
-                <NavLink to="/maps">
-                  Bản đồ theo dõi
-                  <br />
-                  nguồn giống
-                </NavLink>
+                <NavLink to="/cassavas">Patient</NavLink>
+                <NavLink to="/diseases">Doctor</NavLink>
+                <NavLink to="/diagnostics">Infectious Disease Information</NavLink>
+                <NavLink to="/market">Diease Prediction</NavLink>
+                <NavLink to="/suppliers">Medical data warehouse</NavLink>                
               </div>
-            </span>
-            <span className="dropdownTrigger">
-              <NavLink to="/">Diễn đàn</NavLink>
-              <div className="dropdownContent">
-                <NavLink to="/blogs">Tổng hợp</NavLink>
-                <NavLink to="/blog_create">Tạo blog</NavLink>
-              </div>
-            </span>
+            </span>          
             {user ? (
               <span className="dropdownTrigger">
                 <NavLink to="/">Tài khoản</NavLink>
@@ -140,7 +131,7 @@ export default () => {
               </span>
             ) : (
               <>
-                <PrimaryLink to={"/signin"}>Đăng nhập</PrimaryLink>
+                <PrimaryLink to={"/signin"}>LOGIN</PrimaryLink>
               </>
             )}
           </div>

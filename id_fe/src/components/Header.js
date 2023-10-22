@@ -104,8 +104,8 @@ export default () => {
       >
         <nav className="hidden md:flex flex-1 justify-between items-center">
           <LogoLink to="/">
-            <img src={logo} alt="logo" />
-            <img src={logo1} alt="logo1"/>
+                      <img src={logo} alt="logo" style={{ width: '50px', height: 'auto', marginRight: '25px' }}/>
+            <img src={logo1} alt="logo1" style={{ width: '100px', height: 'auto' }}/>
             
           </LogoLink>
           <div className="inline-block space-x-8">
@@ -131,7 +131,7 @@ export default () => {
               </span>
             ) : (
               <>
-                <PrimaryLink to={"/signin"}>LOGIN</PrimaryLink>
+                <PrimaryLink to={"/signin"}>LOGOUT</PrimaryLink>
               </>
             )}
           </div>

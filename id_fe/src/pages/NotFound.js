@@ -1,50 +1,125 @@
 import React from "react";
-import { css } from "styled-components/macro"; //eslint-disable-line
 import "./bubble.css";
-import { Typography } from "antd";
-import { QuestionCircleOutlined } from "@ant-design/icons";
-import { PrimaryLink } from "components/Header";
-import { randBetween } from "services/helper";
+
+const PatientCard = ({ id, name, age, gender }) => {
+    return (
+        <div className="patient-card"
+            style={{
+                backgroundColor: "lightgray",
+                border: "1px solid #ccc",
+                borderRadius: "8px",
+                padding: "10px",
+                margin: "10px",
+                cursor: "pointer",
+                width: '200px',
+                height: 'auto',
+                marginTop: '20px'
+            }}
+        >
+            <p>ID: {id}</p>
+            <p>Name: {name}</p>
+            <p>Age: {age}</p>
+            <p>Gender: {gender}</p>
+        </div>
+    );
+};
 
 export default () => {
-  return (
-    <div className="bubbles">
-      {new Array(20).fill(0).map((_, i) => {
-        const value = {
-          opacity: randBetween(4, 9) / 10.0,
-          size: randBetween(40, 140) * 0.05 + "rem",
-          left: randBetween(10, 110) - 10,
-          animationDuration: randBetween(4, 12),
-          animationDelay: randBetween(1, 8) - 1,
-        };
-        return (
-          <div
-            className="bubble"
-            key={i}
-            style={{
-              opacity: value.opacity,
-              width: value.size,
-              height: value.size,
-              left: value.left + "%",
-              animationDuration: value.animationDuration + "s",
-              animationDelay: value.animationDelay + "s",
-            }}
-          ></div>
-        );
-      })}
-      <div className="center-me" style={{ zIndex: 10 }}>
-        <div className="flex justify-center items-center mt-10 sm:mt-0 text-9xl sm:text-[10rem]">
-          4<QuestionCircleOutlined className="px-4 spin-icon" />4
+    const patients = [
+        {
+            id: 253,
+            name: "Dao Viet Anh",
+            age: 25,
+            gender: "Female",
+        },
+        {
+            id: 279,
+            name: "Nguyen Dang Ha",
+            age: 24,
+            gender: "Male",
+        },
+        {
+            id: 354,
+            name: "Nguyen Do Duong",
+            age: 35,
+            gender: "Male",
+        },
+        {
+            id: 377,
+            name: "Nguyen Viet Bac",
+            age: 40,
+            gender: "Male",
+        },
+    ];
+
+    return (
+        <div style={{ marginTop: "20px", marginLeft: "40px" }}>
+            <div style={{ position: "relative" }}>
+                <div
+                    style={{
+                        position: "relative",
+                        background: "#0D99FF",
+                        padding: "10px",
+                        borderRadius: "10px",
+                        width: "fit-content",
+                    }}
+                >
+                    <p style={{ color: "white", fontWeight: "bold", display: "inline" }}>
+                        Personal information
+                    </p>
+                </div>
+                <div style={{ marginTop: "10px", display: "flex" }}>
+                    <div style={{ marginTop: "0px", marginLeft: "20px" }}>
+                        <p>Name:</p>
+                        <p>Gender:</p>
+                        <p>Date of birth:</p>
+                        <p>Province/city:</p>
+                        <p>Doctor id:</p>
+                        <p>ID number:</p>
+                        <p>Phone number:</p>
+                        <p>Email:</p>
+                    </div>
+                    <div style={{ marginTop: "0px", marginLeft: "60px" }}>
+                        <p>Doctor Lo Anh Duc</p>
+                        <p>Male</p>
+                        <p>01/02/1995</p>
+                        <p>Hanoi</p>
+                        <p>19021243</p>
+                        <p>034101007845</p>
+                        <p>0328919074</p>
+                        <p>ducla@hanoihospital.com</p>
+                    </div>
+                </div>
+
+                <div
+                    style={{
+                        marginTop: "20px",
+                        position: "relative",
+                        background: "#0D99FF",
+                        padding: "10px",
+                        borderRadius: "10px",
+                        width: "fit-content",
+                    }}
+                >
+                    <p
+                        style={{ color: "white", fontWeight: "bold", display: "inline" }}
+                    >
+                        Patient management
+                    </p>
+                </div>
+            </div>
+
+            <div style={{ display: "flex", flexWrap: "wrap" }}>
+                {patients.map((patient) => (
+                    <PatientCard
+                        key={patient.id}
+                        id={patient.id}
+                        name={patient.name}
+                        age={patient.age}
+                        gender={patient.gender}
+                    />
+                ))}
+            </div>
         </div>
-        <div className="flex flex-col justify-center items-center my-16 space-y-8">
-          <Typography.Title className="blinking text-center sm:!text-5xl !text-3xl">
-            Trang không tồn tại
-          </Typography.Title>
-          <PrimaryLink to="/" className="!text-xl sm:!text-2xl">
-            Về trang chủ
-          </PrimaryLink>
-        </div>
-      </div>
-    </div>
-  );
+    );
 };

@@ -13,6 +13,7 @@ import MarketUser from "./MarketUser";
 import Suppliers from "./Suppliers";
 import Profile from "./Profile";
 import NotFound from "./NotFound";
+import Doctor from "./Doctor";
 
 export {
   ForgotPassword,
@@ -32,4 +33,5 @@ export {
   Profile,
   Signin,
   Suppliers,
+  Doctor,
 };

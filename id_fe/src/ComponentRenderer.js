@@ -7,15 +7,18 @@ import {
   Diagnostics,
   DiseaseDetail,
   Diseases,
-  Hompage,
+  Doctor,
+  Homepage,
   Market,
   MarketUser,
   Maps,
   NotFound,
+  Patient,
   Profile,
   Signin,
   Suppliers,
   ForgotPassword,
+  Datawarehouse,
 } from "pages";
 import React from "react";
 import { useParams } from "react-router-dom";
@@ -26,7 +29,7 @@ export default () => {
   const components = {
     pages: {
       homepage: {
-        component: <Hompage />,
+        component: <Homepage />,
         url: "/",
       },
       signin: {
@@ -88,6 +91,18 @@ export default () => {
       forgot_password: {
         component: <ForgotPassword />,
         url: `/forgot_password`,
+      },
+      doctor: {
+        component: <Doctor />,
+        url: `/doctor`,
+      },
+      patient: {
+        component: <Patient />,
+        url: `/patient`,
+      },
+      datawarehouse: {
+        component: <Datawarehouse />,
+        url: `/datawarehouse`,
       },
     },
   };

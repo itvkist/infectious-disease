@@ -10,7 +10,7 @@ const Doctor = () => {
             <div className="header-buttons">
                 <button className="header-button">HOMEPAGE</button>
                 <button className="header-button">RESOURCE</button>
-                <button className="header-button">LOGOUT</button>
+                <button className="header-button">LOGIN</button>
             </div>
         </div>
     );

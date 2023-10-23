@@ -11,7 +11,7 @@ import { postFeedback } from "services/axios/feedback";
 
 const FAQS = [
   {
-    question: "Cách KOICA hoạt động ?",
+    question: "General information about the software",
     answer: () => (
       <>
         Phần mềm được thiết kế, phát triển, hoạt động và duy trì nhờ các tài
@@ -21,7 +21,7 @@ const FAQS = [
     ),
   },
   {
-    question: "Tổng quan về KOICA ?",
+    question: "General information about the project",
     answer: () => (
       <>
         Tổng hợp các thông tin cần thiết liên quan đến sắn cũng như việc thương
@@ -30,7 +30,25 @@ const FAQS = [
     ),
   },
   {
-    question: "Đăng ký tài khoản ?",
+    question: "What is VKIST?",
+    answer: () => (
+      <>
+        Tổng hợp các thông tin cần thiết liên quan đến sắn cũng như việc thương
+        mại sắn.
+      </>
+    ),
+  },
+  {
+    question: "What is DataStreams?",
+    answer: () => (
+      <>
+        Tổng hợp các thông tin cần thiết liên quan đến sắn cũng như việc thương
+        mại sắn.
+      </>
+    ),
+  },
+  {
+    question: "How to login?",
     answer: () => (
       <>
         Để tạo tài khoản, khách truy cập trang{" "}
@@ -67,7 +85,7 @@ export default () => {
       >
         <div style={{ flex: 1 }}>
           <Typography.Title className="pt-4 ">
-            Các câu hỏi thường gặp
+            Frequently Asked Questions
           </Typography.Title>
           <Collapse
             style={{
@@ -106,42 +124,42 @@ export default () => {
         />
         <div style={{ flex: 1 }}>
           <Typography.Title className="md:pt-4">
-            Để lại lời nhắn
+            Leave a message
           </Typography.Title>
           <Form onFinish={onFinish} form={form} layout="vertical">
             <Form.Item
               name="name"
-              label={<span className="font-semibold text-base">Họ và tên</span>}
-              rules={[{ required: true, message: "Vui lòng nhập Tên!" }]}
+              label={<span className="font-semibold text-base">Full Name</span>}
+              rules={[{ required: true, message: "Please insert your full name!" }]}
             >
-              <Input placeholder="Minh Huong" />
+              <Input placeholder="Ha Nguyen" />
             </Form.Item>
             <Form.Item
               name="email"
               label={<span className="font-semibold text-base">Email</span>}
               rules={[
-                { required: true, message: "Vui lòng nhập Email!" },
+                { required: true, message: "Please insert your email!" },
                 {
                   validator: () => {
                     return !form.getFieldValue("email") ||
                       validateEmail(form.getFieldValue("email"))
                       ? Promise.resolve()
-                      : Promise.reject("Email không hợp lệ!");
+                      : Promise.reject("Your email is incorrect!");
                   },
                 },
               ]}
             >
-              <Input placeholder="lmhuong711@gmail.com" />
+              <Input placeholder="ndha.uet.vnu@gmail.com" />
             </Form.Item>
             <Form.Item
               name="content"
-              label={<span className="font-semibold text-base">Lời nhắn</span>}
-              rules={[{ required: true, message: "Vui lòng nhập Lời nhắn!" }]}
+              label={<span className="font-semibold text-base">Message</span>}
+              rules={[{ required: true, message: "Please insert your message" }]}
             >
-              <Input.TextArea placeholder="Góp ý phát triển phần mềm..." />
+              <Input.TextArea placeholder="Some comments or messages" />
             </Form.Item>
             <Form.Item>
-              <PrimaryButton htmlType="submit">Gửi</PrimaryButton>
+              <PrimaryButton htmlType="submit">Send</PrimaryButton>
             </Form.Item>
           </Form>
         </div>

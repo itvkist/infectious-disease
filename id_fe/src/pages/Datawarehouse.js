@@ -236,12 +236,12 @@ export default () => {
   return (
     <AnimationRevealPage>
       <div className="flex flex-col justify-center items-center">
-        <Typography.Title>Danh sách nguồn cung</Typography.Title>
+        <Typography.Title>Medical data warehouse</Typography.Title>
       </div>
       <div className="flex justify-center items-center sm:space-x-4 pb-4 w-full flex-col sm:flex-row space-y-4 sm:space-y-0">
         <div className="sm:w-1/5 w-[80vw]">
           <Input.Search
-            placeholder="Tìm kiếm theo tên, số điện thoại"
+            placeholder="Search by disease"
             value={filter.search}
             onChange={(v) => {
               setFilter({ ...filter, search: v.target.value });
@@ -251,7 +251,7 @@ export default () => {
         <div className="sm:w-1/5 w-[80vw]">
           <Select
             className="w-full"
-            placeholder="Lọc theo trạng thái"
+            placeholder="Filter by type"
             allowClear
             options={STATUS_OPTIONS}
             value={filter.status}
@@ -264,7 +264,7 @@ export default () => {
           <Select
             mode="tags"
             className="w-full"
-            placeholder="Lọc theo loại sắn"
+            placeholder="Filter by danger"
             options={CASSAVA_OPTIONS()}
             value={filter.cassava}
             onChange={(selected_cassava_label) => {

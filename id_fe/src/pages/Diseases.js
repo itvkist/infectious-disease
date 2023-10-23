@@ -14,12 +14,12 @@ const cropString = (text) => {
 
 const mainDetailColumns = [
   {
-    title: "STT",
+    title: "No.",
     dataIndex: "key",
     width: "5%",
   },
   {
-    title: "Đặc điểm",
+    title: "Symptoms",
     dataIndex: "feature",
     width: "10%",
   },
@@ -31,17 +31,17 @@ const mainDetailColumns = [
 ];
 
 const detailColumns = [
-  { name: "Nhãn", api_name: "label" },
-  { name: "Tên", api_name: "name" },
-  { name: "Tên tiếng Việt", api_name: "vn_name" },
-  { name: "Đặc điểm", api_name: "feature" },
-  { name: "Ảnh hưởng", api_name: "effect" },
-  { name: "Cách chữa", api_name: "cure" },
+  { name: "Label", api_name: "label" },
+  { name: "Name", api_name: "name" },
+  // { name: "Tên tiếng Việt", api_name: "vn_name" },
+  { name: "Symptoms", api_name: "feature" },
+  { name: "Effects", api_name: "effect" },
+  { name: "Prevention", api_name: "cure" },
 ];
 
 const mainColumns = [
   {
-    title: "STT",
+    title: "No.",
     dataIndex: "key",
     sorter: (a, b) => a.key > b.key,
     render: (_v, _r, index) => {
@@ -70,7 +70,7 @@ const mainColumns = [
     width: "22%",
   })),
   {
-    title: "Chi tiết",
+    title: "Details",
     dataIndex: "info",
     render: (_, record) => {
       return (
@@ -210,12 +210,12 @@ export default () => {
   return (
     <AnimationRevealPage>
       <div className="flex flex-col justify-center items-center sm:px-0 px-4 text-center">
-        <Typography.Title>Danh sách bệnh trên cây sắn</Typography.Title>
+        <Typography.Title>Infectious diseases information</Typography.Title>
       </div>
       <div className="flex flex-col justify-center items-center">
         <div className="w-96 flex space-x-4 justify-center pb-4 px-4 sm:px-0">
           <Input.Search
-            placeholder="Tìm kiếm theo tên"
+            placeholder="Search by name"
             value={search}
             onChange={(v) => setSearch(v.target.value)}
             onSearch={onSearch}

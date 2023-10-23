@@ -4,7 +4,7 @@ import BlogCreate from "./BlogCreate";
 import Blog, { BlogDetail } from "./Blog";
 import Cassavas, { CassavaDetail } from "./Cassavas";
 import Diseases, { DiseaseDetail } from "./Diseases";
-import Hompage from "./Hompage";
+import Homepage from "./Homepage";
 import Maps from "./Maps";
 import Signin from "./Signin";
 import Diagnostics from "./Diagnostics";
@@ -14,6 +14,8 @@ import Suppliers from "./Suppliers";
 import Profile from "./Profile";
 import NotFound from "./NotFound";
 import Doctor from "./Doctor";
+import Patient from "./Patient";
+import Datawarehouse from "./Datawarehouse";
 
 export {
   ForgotPassword,
@@ -22,16 +24,18 @@ export {
   BlogDetail,
   Cassavas,
   CassavaDetail,
+  Datawarehouse,
   Diagnostics,
   Diseases,
   DiseaseDetail,
-  Hompage,
+  Doctor,
+  Homepage,
   Market,
   MarketUser,
   Maps,
   NotFound,
+  Patient,
   Profile,
   Signin,
   Suppliers,
-  Doctor,
 };

@@ -18,10 +18,10 @@ export default () => {
         <ThreeColRow>
           <LogoContainer>
             <LogoImg src={LogoImage} />
-            <LogoText>KOICA</LogoText>
+            <LogoText>VKIST</LogoText>
           </LogoContainer>
           <CopywrightNotice>
-            &copy; 2023 KOICA. All Rights Reserved.
+            &copy; 2023 VKIST. All Rights Reserved.
           </CopywrightNotice>
         </ThreeColRow>
       </Content>

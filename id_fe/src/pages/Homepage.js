@@ -76,7 +76,7 @@ export default () => {
         <HeaderRow>
           <Header>
             <Link to={"/maps"}>
-              <HighlightedText>Bản đồ theo dõi nguồn giống</HighlightedText>
+              <HighlightedText>Diseases Situation</HighlightedText>
             </Link>
           </Header>
         </HeaderRow>

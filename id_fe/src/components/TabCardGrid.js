@@ -58,52 +58,52 @@ export default ({
     Starters: [
       {
         imageSrc: "/assets/home_1.jpg",
-        title: "Các giống sắn",
+        title: "Disease Information",
         content:
-          "Thông tin về nhiều giống sắn có sẵn để trồng được cập nhật liên tục trên Cassava Seed Tracker ™.",
-        url: "/cassavas",
-        icon: <SlidersIcon />,
+          "Look up information about infectious diseases: symptoms, harmful effects, prevention and treatment",
+        url: "/diseases",
+        // icon: <SlidersIcon />,
       },
       {
         imageSrc: "/assets/home_2.jpg",
-        title: "Các bệnh về sắn",
+        title: "Disease Prediction",
         content:
-          "KOICA cung cấp cơ sở dữ liệu trung tâm với nhiều dạng và công cụ kỹ thuật số cho người dùng đã đăng ký để hỗ trợ hoạt động của họ. Nó cung cấp truy cập dữ liệu thời gian thực và phân tích tất cả người dùng đã đăng ký miễn phí.",
-        url: "/diseases",
-        icon: <SettingIcon />,
+          "Predict the disease using images",
+        url: "/diagnostics",
+        // icon: <SettingIcon />,
       },
       {
         imageSrc: "/assets/home_3.jpg",
-        title: "Chẩn đoán bệnh",
+        title: "Medical Data Warehouse",
         content:
-          "Các công cụ hỗ trợ quyết định có sẵn trên Cassava Seed Tracker ™ để hỗ trợ các nhà sản xuất hạt giống về các chỉ số trồng hạt giống tối ưu.",
-        url: "/diagnostics",
-        icon: <GitBranchIcon />,
+          "Including: medical records, clinical images, statistical models,...",
+        url: "/datawarehouse",
+        // icon: <GitBranchIcon />,
       },
-      {
-        imageSrc: "/assets/home_4.jpg",
-        title: "Thương mại sắn",
-        content:
-          "Thông tin thị trường, sự sẵn có của hạt giống, trữ lượng hạt giống, biến động giá cả và các thông tin liên quan đến giao dịch hạt giống sắn khác được tổng hợp.",
-        url: "/market",
-        icon: <BarChart2Icon />,
-      },
-      {
-        imageSrc: "/assets/home_5.jpg",
-        title: "Danh sách nguồn cung",
-        content:
-          "Hạt giống có thể được theo dõi trong suốt quá trình gieo trồng, quản lý cây trồng, dữ liệu thu hoạch, phân phối, quản lý hàng tồn kho và hơn thế nữa với Cassava SeedTracker ™",
-        url: "/suppliers",
-        icon: <RssIcon />,
-      },
-      {
-        imageSrc: "/assets/home_6.jpg",
-        title: "Bản đồ theo dõi nguồn giống",
-        content:
-          "Cassava Seed Tracker ™ cung cấp nền tảng kết nối giữa tất cả các bên liên quan đến sắn để trao đổi thông tin, chia sẻ kinh nghiệm, kiến thức, liên hệ vì lợi ích chung.",
-        url: "/maps",
-        icon: <UsersIcon />,
-      },
+      // {
+      //   imageSrc: "/assets/home_4.jpg",
+      //   title: "Thương mại sắn",
+      //   content:
+      //     "Thông tin thị trường, sự sẵn có của hạt giống, trữ lượng hạt giống, biến động giá cả và các thông tin liên quan đến giao dịch hạt giống sắn khác được tổng hợp.",
+      //   url: "/market",
+      //   icon: <BarChart2Icon />,
+      // },
+      // {
+      //   imageSrc: "/assets/home_5.jpg",
+      //   title: "Danh sách nguồn cung",
+      //   content:
+      //     "Hạt giống có thể được theo dõi trong suốt quá trình gieo trồng, quản lý cây trồng, dữ liệu thu hoạch, phân phối, quản lý hàng tồn kho và hơn thế nữa với Cassava SeedTracker ™",
+      //   url: "/suppliers",
+      //   icon: <RssIcon />,
+      // },
+      // {
+      //   imageSrc: "/assets/home_6.jpg",
+      //   title: "Bản đồ theo dõi nguồn giống",
+      //   content:
+      //     "Cassava Seed Tracker ™ cung cấp nền tảng kết nối giữa tất cả các bên liên quan đến sắn để trao đổi thông tin, chia sẻ kinh nghiệm, kiến thức, liên hệ vì lợi ích chung.",
+      //   url: "/maps",
+      //   icon: <UsersIcon />,
+      // },
     ],
   },
 }) => {
@@ -114,7 +114,7 @@ export default ({
       <ContentWithPaddingXl>
         <HeaderRow>
           <Header>
-            <HighlightedText>Các tính năng</HighlightedText>
+            <HighlightedText>Software Functions</HighlightedText>
           </Header>
         </HeaderRow>
 
@@ -139,7 +139,7 @@ export default ({
           >
             {tabs[tabKey].map((card, index) => (
               <div
-                className="mt-10 w-full sm:w-1/2 xl:w-1/3 p-10"
+                className="mt-10 w-full sm:w xl:w p-10"
                 key={index}
               >
                 <Card

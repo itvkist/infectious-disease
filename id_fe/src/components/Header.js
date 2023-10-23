@@ -113,11 +113,11 @@ export default () => {
             <span className="dropdownTrigger">
               <NavLink to="/">RESOURCE</NavLink>
               <div className="dropdownContent">
-                <NavLink to="/cassavas">Patient</NavLink>
-                <NavLink to="/diseases">Doctor</NavLink>
-                <NavLink to="/diagnostics">Infectious Disease Information</NavLink>
-                <NavLink to="/market">Diease Prediction</NavLink>
-                <NavLink to="/suppliers">Medical data warehouse</NavLink>                
+                <NavLink to="/diseases">Infectious Disease Information</NavLink>
+                <NavLink to="/diagnostics">Diease Prediction</NavLink>
+                <NavLink to="/patient">Patient</NavLink>
+                <NavLink to="/abc">Doctor</NavLink>
+                <NavLink to="/datawarehouse">Medical data warehouse</NavLink>                
               </div>
             </span>          
             {user ? (
@@ -131,7 +131,7 @@ export default () => {
               </span>
             ) : (
               <>
-                <PrimaryLink to={"/signin"}>LOGOUT</PrimaryLink>
+                <PrimaryLink to={"/signin"}>LOGIN</PrimaryLink>
               </>
             )}
           </div>

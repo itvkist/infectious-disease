@@ -67,24 +67,23 @@ export default () => {
         <TwoColumn>
           <LeftColumn>
             <Heading>
-              <HighlightedText>KOICA</HighlightedText>
+              <HighlightedText>Infectious Disease Software</HighlightedText>
             </Heading>
             <Paragraph>
-              Phần mềm sắn KOICA sẽ mô phỏng một số chức năng cơ bản giống
-              seedtracker nhưng cũng sẽ có một số bổ sung theo đặc thù Việt Nam,
-              dựa trên các thông tin nhóm nghiên cứu đã thu hoạch được trong
-              chuyến công tác Tây Ninh đầu tháng 10/20 và đặc biệt sử dụng AI để
-              cung cấp cho người sử dụng một số tính năng thông minh.
+              The website provides information about dangerous infectious
+              diseases, their symptoms, and prevention methods.
+              Additionally, the website can also predict the mentioned infectious
+              diseases based on X-ray images.
             </Paragraph>
             <Actions>
               <PrimaryButton as="a" href="#" className=" hover:text-white">
-                Bắt đầu
+                Start
               </PrimaryButton>
               <WatchVideoButton onClick={toggleModal}>
                 <span className="playIconContainer">
                   <PlayIcon className="playIcon" />
                 </span>
-                <span className="playText">Xem video</span>
+                <span className="playText">Play video</span>
               </WatchVideoButton>
             </Actions>
           </LeftColumn>
@@ -108,7 +107,7 @@ export default () => {
           </CloseModalButton>
           <div className="content">
             <ResponsiveVideoEmbed
-              url="https://www.youtube.com/embed/9bOFvwgDV18"
+              url="https://www.youtube.com/embed/9axOFtPqS0c"
               tw="w-full"
             />
           </div>

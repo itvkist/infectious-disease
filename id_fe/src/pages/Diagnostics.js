@@ -239,7 +239,7 @@ const Diagnostics = () => {
     <AnimationRevealPage>
       <div className="content-inside overflow-overlay">
         <div className="flex flex-col justify-center items-center">
-          <Typography.Title>Chẩn đoán bệnh</Typography.Title>
+          <Typography.Title>Disease prediction</Typography.Title>
         </div>
         {!diagnostics && (
           <div className="flex justify-center p-8">
@@ -260,16 +260,16 @@ const Diagnostics = () => {
                     <InboxOutlined />
                   </p>
                   <p className="ant-upload-text sm:px-36">
-                    Bấm hoặc kéo thả để tải ảnh
+                    Insert an image
                   </p>
                   <p className="ant-upload-hint sm:px-36">
-                    Chỉ chấp nhận các file .png, .jpg.
+                    Only accept png and jpg files
                   </p>
                 </Dragger>
               </div>
               <Form.Item className="flex justify-center mt-4">
                 <Button shape="round" htmlType="submit" className="mt-4">
-                  {addingList ? "Đang đăng ảnh" : "Đăng ảnh"}
+                  {addingList ? "Predicting" : "Predict"}
                 </Button>
               </Form.Item>
             </Form>

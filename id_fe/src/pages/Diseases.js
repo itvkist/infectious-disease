@@ -35,8 +35,8 @@ const detailColumns = [
   { name: "Name", api_name: "name" },
   // { name: "Tên tiếng Việt", api_name: "vn_name" },
   { name: "Symptoms", api_name: "feature" },
-  { name: "Effects", api_name: "effect" },
   { name: "Prevention", api_name: "cure" },
+  { name: "Effects", api_name: "effect" },
 ];
 
 const mainColumns = [
@@ -70,7 +70,7 @@ const mainColumns = [
     width: "22%",
   })),
   {
-    title: "Details",
+    title: "Information",
     dataIndex: "info",
     render: (_, record) => {
       return (

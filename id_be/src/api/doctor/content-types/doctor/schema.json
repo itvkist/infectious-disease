@@ -20,6 +20,22 @@
       "relation": "oneToMany",
       "target": "api::patient.patient",
       "mappedBy": "doctor"
+    },
+    "medical_histories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::medical-history.medical-history",
+      "mappedBy": "doctor"
+    },
+    "avatar": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

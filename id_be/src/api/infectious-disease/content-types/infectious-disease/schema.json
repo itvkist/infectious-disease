@@ -29,6 +29,12 @@
     },
     "information": {
       "type": "text"
+    },
+    "medical_histories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::medical-history.medical-history",
+      "inversedBy": "infectious_diseases"
     }
   }
 }

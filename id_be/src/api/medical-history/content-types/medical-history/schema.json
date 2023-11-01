@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "medical_histories",
+  "info": {
+    "singularName": "medical-history",
+    "pluralName": "medical-histories",
+    "displayName": "MedicalHistory",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "doctor": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::doctor.doctor",
+      "inversedBy": "medical_histories"
+    },
+    "patient": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::patient.patient",
+      "inversedBy": "medical_histories"
+    },
+    "symptoms": {
+      "type": "text"
+    },
+    "advice": {
+      "type": "text"
+    },
+    "date": {
+      "type": "datetime"
+    },
+    "infectious_diseases": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::infectious-disease.infectious-disease",
+      "mappedBy": "medical_histories"
+    },
+    "drugs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::drug.drug",
+      "inversedBy": "medical_histories"
+    }
+  }
+}

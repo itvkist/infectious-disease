@@ -695,6 +695,12 @@ export interface ApiDoctorDoctor extends Schema.CollectionType {
       'oneToMany',
       'api::patient.patient'
     >;
+    medical_histories: Attribute.Relation<
+      'api::doctor.doctor',
+      'oneToMany',
+      'api::medical-history.medical-history'
+    >;
+    avatar: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -709,6 +715,37 @@ export interface ApiDoctorDoctor extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiDrugDrug extends Schema.CollectionType {
+  collectionName: 'drugs';
+  info: {
+    singularName: 'drug';
+    pluralName: 'drugs';
+    displayName: 'Drug';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    vendor: Attribute.String;
+    product_id: Attribute.String;
+    drug_image: Attribute.Media;
+    ingredients: Attribute.Text;
+    medical_histories: Attribute.Relation<
+      'api::drug.drug',
+      'manyToMany',
+      'api::medical-history.medical-history'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::drug.drug', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::drug.drug', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -732,6 +769,11 @@ export interface ApiInfectiousDiseaseInfectiousDisease
     effect: Attribute.Text;
     prevention: Attribute.Text;
     information: Attribute.Text;
+    medical_histories: Attribute.Relation<
+      'api::infectious-disease.infectious-disease',
+      'manyToMany',
+      'api::medical-history.medical-history'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -743,6 +785,59 @@ export interface ApiInfectiousDiseaseInfectiousDisease
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::infectious-disease.infectious-disease',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMedicalHistoryMedicalHistory extends Schema.CollectionType {
+  collectionName: 'medical_histories';
+  info: {
+    singularName: 'medical-history';
+    pluralName: 'medical-histories';
+    displayName: 'MedicalHistory';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    doctor: Attribute.Relation<
+      'api::medical-history.medical-history',
+      'manyToOne',
+      'api::doctor.doctor'
+    >;
+    patient: Attribute.Relation<
+      'api::medical-history.medical-history',
+      'manyToOne',
+      'api::patient.patient'
+    >;
+    symptoms: Attribute.Text;
+    advice: Attribute.Text;
+    date: Attribute.DateTime;
+    infectious_diseases: Attribute.Relation<
+      'api::medical-history.medical-history',
+      'manyToMany',
+      'api::infectious-disease.infectious-disease'
+    >;
+    drugs: Attribute.Relation<
+      'api::medical-history.medical-history',
+      'manyToMany',
+      'api::drug.drug'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::medical-history.medical-history',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::medical-history.medical-history',
       'oneToOne',
       'admin::user'
     > &
@@ -766,6 +861,11 @@ export interface ApiPatientPatient extends Schema.CollectionType {
       'api::patient.patient',
       'manyToOne',
       'api::doctor.doctor'
+    >;
+    medical_histories: Attribute.Relation<
+      'api::patient.patient',
+      'oneToMany',
+      'api::medical-history.medical-history'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -802,7 +902,9 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::doctor.doctor': ApiDoctorDoctor;
+      'api::drug.drug': ApiDrugDrug;
       'api::infectious-disease.infectious-disease': ApiInfectiousDiseaseInfectiousDisease;
+      'api::medical-history.medical-history': ApiMedicalHistoryMedicalHistory;
       'api::patient.patient': ApiPatientPatient;
     }
   }

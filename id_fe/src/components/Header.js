@@ -116,8 +116,10 @@ export default () => {
                 <NavLink to="/diseases">Infectious Disease Information</NavLink>
                 <NavLink to="/diagnostics">Diease Prediction</NavLink>
                 <NavLink to="/patient">Patient</NavLink>
-                <NavLink to="/abc">Doctor</NavLink>
-                <NavLink to="/datawarehouse">Medical data warehouse</NavLink>                
+                <NavLink to="/doctor">Doctor</NavLink>
+                {/* <NavLink to="/datawarehouse">Medical data warehouse</NavLink> */}
+                <NavLink to="/situation">Disease Situation</NavLink>
+                <NavLink to="/enhancer">X-Ray Image Enhancer</NavLink>
               </div>
             </span>          
             {user ? (

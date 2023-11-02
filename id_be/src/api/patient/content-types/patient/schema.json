@@ -19,6 +19,12 @@
       "relation": "manyToOne",
       "target": "api::doctor.doctor",
       "inversedBy": "patients"
+    },
+    "medical_histories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::medical-history.medical-history",
+      "mappedBy": "patient"
     }
   }
 }

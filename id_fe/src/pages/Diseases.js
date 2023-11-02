@@ -34,8 +34,8 @@ const detailColumns = [
   { name: "Label", api_name: "label" },
   { name: "Name", api_name: "name" },
   // { name: "Tên tiếng Việt", api_name: "vn_name" },
-  { name: "Symptoms", api_name: "feature" },
-  { name: "Prevention", api_name: "cure" },
+  { name: "Symptoms", api_name: "symptom" },
+  { name: "Prevention", api_name: "prevention" },
   { name: "Effects", api_name: "effect" },
 ];
 
@@ -94,7 +94,8 @@ export const DiseaseDetail = (props) => {
 
   useEffect(() => {
     getDiseaseDetail(props.id).then((res) => {
-      const res_data = res?.data?.data[0];
+      let res_data = res?.data?.data;
+      res_data = {...res_data.attributes, id: res_data.id}
       setApiData(res_data);
       const applyData = detailColumns
         .filter((e) => res_data[e.api_name])
@@ -186,7 +187,7 @@ export default () => {
 
   useEffect(() => {
     getDiseases().then((res) => {
-      const id_res = res.data.data.map((i) => ({ ...i, key: i.id.toString() }));
+      const id_res = res.data.data.map((i) => ({ ...i.attributes, key: i.id.toString(), id: i.id }));
       setDiseaseData(id_res);
       setData(id_res);
     });

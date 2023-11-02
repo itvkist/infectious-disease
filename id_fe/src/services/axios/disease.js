@@ -1,7 +1,7 @@
 import axiosInstance, { newAbortSignal } from "services/axios";
 
 export const getDiseases = async () => {
-  const res = await axiosInstance.get("/items/disease?fields=*,images.*", {
+  const res = await axiosInstance.get("/api/infectious-diseases", {
     signal: newAbortSignal(),
   });
   if (res.status === 200)
@@ -11,8 +11,7 @@ export const getDiseases = async () => {
 
 export const getDiseaseDetail = async (props) =>
   await axiosInstance.get(
-    "/items/disease?fields=*,images.*" +
-      (props ? "&filter[id][_eq]=" + props : ""),
+    "/api/infectious-diseases/" + props,
     {
       signal: newAbortSignal(),
     }

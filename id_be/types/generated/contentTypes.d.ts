@@ -660,6 +660,16 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    doctor: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::doctor.doctor'
+    >;
+    patient: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::patient.patient'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -701,6 +711,11 @@ export interface ApiDoctorDoctor extends Schema.CollectionType {
       'api::medical-history.medical-history'
     >;
     avatar: Attribute.Media;
+    users_permissions_user: Attribute.Relation<
+      'api::doctor.doctor',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -892,6 +907,7 @@ export interface ApiPatientPatient extends Schema.CollectionType {
     singularName: 'patient';
     pluralName: 'patients';
     displayName: 'Patient';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -907,6 +923,11 @@ export interface ApiPatientPatient extends Schema.CollectionType {
       'api::patient.patient',
       'oneToMany',
       'api::medical-history.medical-history'
+    >;
+    users_permissions_user: Attribute.Relation<
+      'api::patient.patient',
+      'oneToOne',
+      'plugin::users-permissions.user'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

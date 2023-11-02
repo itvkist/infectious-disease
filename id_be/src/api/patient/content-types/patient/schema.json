@@ -4,7 +4,8 @@
   "info": {
     "singularName": "patient",
     "pluralName": "patients",
-    "displayName": "Patient"
+    "displayName": "Patient",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -25,6 +26,12 @@
       "relation": "oneToMany",
       "target": "api::medical-history.medical-history",
       "mappedBy": "patient"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "patient"
     }
   }
 }

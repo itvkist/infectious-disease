@@ -774,6 +774,11 @@ export interface ApiInfectiousDiseaseInfectiousDisease
       'manyToMany',
       'api::medical-history.medical-history'
     >;
+    number_of_case: Attribute.Relation<
+      'api::infectious-disease.infectious-disease',
+      'oneToOne',
+      'api::number-of-case.number-of-case'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -845,6 +850,42 @@ export interface ApiMedicalHistoryMedicalHistory extends Schema.CollectionType {
   };
 }
 
+export interface ApiNumberOfCaseNumberOfCase extends Schema.CollectionType {
+  collectionName: 'number_of_cases';
+  info: {
+    singularName: 'number-of-case';
+    pluralName: 'number-of-cases';
+    displayName: 'numberOfCase';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    infectious_disease: Attribute.Relation<
+      'api::number-of-case.number-of-case',
+      'oneToOne',
+      'api::infectious-disease.infectious-disease'
+    >;
+    month: Attribute.BigInteger;
+    number_of_cases: Attribute.BigInteger;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::number-of-case.number-of-case',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::number-of-case.number-of-case',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPatientPatient extends Schema.CollectionType {
   collectionName: 'patients';
   info: {
@@ -905,6 +946,7 @@ declare module '@strapi/types' {
       'api::drug.drug': ApiDrugDrug;
       'api::infectious-disease.infectious-disease': ApiInfectiousDiseaseInfectiousDisease;
       'api::medical-history.medical-history': ApiMedicalHistoryMedicalHistory;
+      'api::number-of-case.number-of-case': ApiNumberOfCaseNumberOfCase;
       'api::patient.patient': ApiPatientPatient;
     }
   }

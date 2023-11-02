@@ -35,6 +35,12 @@
       "relation": "manyToMany",
       "target": "api::medical-history.medical-history",
       "inversedBy": "infectious_diseases"
+    },
+    "number_of_case": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::number-of-case.number-of-case",
+      "mappedBy": "infectious_disease"
     }
   }
 }

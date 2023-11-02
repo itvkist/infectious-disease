@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "number_of_cases",
+  "info": {
+    "singularName": "number-of-case",
+    "pluralName": "number-of-cases",
+    "displayName": "numberOfCase"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "infectious_disease": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::infectious-disease.infectious-disease",
+      "inversedBy": "number_of_case"
+    },
+    "month": {
+      "type": "biginteger"
+    },
+    "number_of_cases": {
+      "type": "biginteger"
+    }
+  }
+}

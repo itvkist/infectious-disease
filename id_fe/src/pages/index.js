@@ -16,6 +16,8 @@ import NotFound from "./NotFound";
 import Doctor from "./Doctor";
 import Patient from "./Patient";
 import Datawarehouse from "./Datawarehouse";
+import Situation from "./Situation";
+import Enhancer from "./Enhancer";
 
 export {
   ForgotPassword,
@@ -38,4 +40,6 @@ export {
   Profile,
   Signin,
   Suppliers,
+  Situation,
+  Enhancer,
 };

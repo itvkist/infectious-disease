@@ -19,6 +19,8 @@ import {
   Suppliers,
   ForgotPassword,
   Datawarehouse,
+  Situation,
+  Enhancer,
 } from "pages";
 import React from "react";
 import { useParams } from "react-router-dom";
@@ -103,6 +105,14 @@ export default () => {
       datawarehouse: {
         component: <Datawarehouse />,
         url: `/datawarehouse`,
+      },
+      situation: {
+        component: <Situation />,
+        url: `/situation`,
+      },
+      enhancer: {
+        component: <Enhancer />,
+        url: `/enhancer`,
       },
     },
   };

@@ -1,0 +1,23 @@
+{
+    "header": {
+        "homepage": "Trang chủ",
+        "resource": "Tài nguyên",
+        "login": "Đăng nhập",
+        "patient": "Bệnh nhân",
+        "doctor": "Bác sĩ"
+    },
+    "body": {
+        "title": "Nền tảng bệnh truyền nhiễm",
+        "intro": "Nền tảng này cung cấp thông tin về các dịch bệnh truyền nhiễm, triệu chứng và các cách phòng chống. Ngoài ra, người dùng còn có thể dự đoán bệnh sử dụng ảnh X-quang",
+        "start": "Bắt đầu",
+        "play": "Chạy Video",
+        "function": "Chức năng",
+        "information": "Thông tin bệnh",
+        "ai": "Các mô hình AI",
+        "statistics": "Thống kê",
+        "map": "Tình hình dịch bệnh"
+    },
+    "bottom": {
+        "faq": "Các câu hỏi thường gặp"
+    }
+}

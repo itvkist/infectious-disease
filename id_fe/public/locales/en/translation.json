@@ -1,0 +1,42 @@
+{   
+    "header": {
+        "homepage": "HOMEPAGE",
+        "resource": "RESOURCE",
+        "login": "LOGIN",
+        "patient": "Patient",
+        "doctor": "Doctor",
+        "disease": "Infectious Disease Information",
+        "ai-model": "AI Models",
+        "statistics": "Statistics"
+    },
+    "faqs": {
+        "faq": "Frequently Asked Questions",
+        "software": "General information about the software",
+        "project": "General information about the project",
+        "vkist": "What is VKIST?",
+        "datastreams": "What is DataStreams?",
+        "login": "How to login?",
+        "leave-messsage": "Leave a message",
+        "name": "Full Name",
+        "message": "Message",
+        "send": "send"
+    },
+    "homepage": {
+        "title": "Infectious Disease Platform",
+        "intro": "The website provides information about dangerous infectious diseases, their symptoms, and prevention methods. Additionally, the website can also predict the mentioned infectious diseases based on X-ray images.",
+        "start": "Start",
+        "play": "Play Video",
+        "function": "Software Functions",
+        "disease": "Infectious Disease Information",
+        "ai-model": "AI Models",
+        "statistics": "Statistics",
+        "situation": "Disease Situation"
+    },
+    "signin": {
+        "title": "Login to the platform",
+        "login": "Login",
+        "forgot": "Forgot the password?",
+        "password": "Password",
+        "signup": "Signup"
+    }
+}

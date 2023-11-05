@@ -13,6 +13,7 @@ import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-1
 import { ReactComponent as SvgDecoratorBlob2 } from "images/dot-pattern.svg";
 import { PrimaryButton } from "components/misc/Buttons";
 import { HighlightedText } from "components/misc/Headings";
+import { useTranslation } from "react-i18next";
 
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col lg:flex-row md:items-center max-w-screen-xl mx-auto py-20 md:py-24`;
@@ -24,7 +25,7 @@ const Paragraph = tw.p`my-5 lg:my-8 text-sm lg:text-base font-medium text-gray-6
 
 const Actions = tw.div`flex flex-col items-center sm:flex-row justify-center lg:justify-start mt-8`;
 const WatchVideoButton = styled.button`
-  ${tw`mt-4 sm:mt-0 sm:ml-8 flex items-center text-secondary-300 transition duration-300 hocus:text-primary-400 focus:outline-none`}
+  ${tw`mt-4 sm:mt-0 sm:ml-8 flex items-center text-secondary-300 transition duration-300 hocus:text-blue-400 focus:outline-none`}
   .playIcon {
     ${tw`stroke-1 w-12 h-12`}
   }
@@ -40,7 +41,7 @@ const DecoratorBlob1 = styled(SvgDecoratorBlob1)`
   ${tw`pointer-events-none opacity-5 absolute left-0 bottom-0 h-64 w-64 transform -translate-x-2/3  -z-10`}
 `;
 const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
-  ${tw`pointer-events-none fill-current text-primary-500 opacity-25 absolute w-32 h-32 right-0 bottom-0 transform translate-x-10 translate-y-10 -z-10`}
+  ${tw`pointer-events-none fill-current text-blue-400 opacity-25 absolute w-32 h-32 right-0 bottom-0 transform translate-x-10 translate-y-10 -z-10`}
 `;
 
 const StyledModal = styled(ReactModalAdapter)`
@@ -54,12 +55,14 @@ const StyledModal = styled(ReactModalAdapter)`
     ${tw`w-full lg:p-16`}
   }
 `;
-const CloseModalButton = tw.button`absolute top-0 right-0 mt-8 mr-8 hocus:text-primary-500`;
+const CloseModalButton = tw.button`absolute top-0 right-0 mt-8 mr-8 hocus:text-blue-400`;
 
 export default () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const toggleModal = () => setModalIsOpen(!modalIsOpen);
+
+  const {t} = useTranslation();
 
   return (
     <>
@@ -67,23 +70,20 @@ export default () => {
         <TwoColumn>
           <LeftColumn>
             <Heading>
-              <HighlightedText>Infectious Disease Software</HighlightedText>
+              <HighlightedText>{t('homepage.title')}</HighlightedText>
             </Heading>
             <Paragraph>
-              The website provides information about dangerous infectious
-              diseases, their symptoms, and prevention methods.
-              Additionally, the website can also predict the mentioned infectious
-              diseases based on X-ray images.
+            {t('homepage.intro')}
             </Paragraph>
             <Actions>
-              <PrimaryButton as="a" href="#" className=" hover:text-white">
+              {/* <PrimaryButton as="a" href="#" className=" hover:text-white">
                 Start
-              </PrimaryButton>
+              </PrimaryButton> */}
               <WatchVideoButton onClick={toggleModal}>
                 <span className="playIconContainer">
                   <PlayIcon className="playIcon" />
                 </span>
-                <span className="playText">Play video</span>
+                <span className="playText">{t('homepage.play')}</span>
               </WatchVideoButton>
             </Actions>
           </LeftColumn>

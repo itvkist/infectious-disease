@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import logo from "images/logo.svg";
+import logo from "images/logo512.png";
 import { ReactComponent as LoginIcon } from "feather-icons/dist/icons/log-in.svg";
 import { login } from "services/axios";
 import { useNavigate } from "react-router-dom";
@@ -15,6 +15,7 @@ import {
   validatePassword,
   validatePhone,
 } from "services/helper";
+import { useTranslation } from "react-i18next";
 
 const layout = {
   labelCol: {
@@ -35,6 +36,8 @@ export default () => {
   const [requestModal, setRequestModal] = useState(false);
   const [forgotModal, setForgotModal] = useState(false);
   const [disableForgot, setDisableForgot] = useState(false);
+
+  const {t} = useTranslation();
 
   useEffect(() => {
     if (context?.cassava && context?.user?.id) navigate("/");
@@ -142,7 +145,7 @@ export default () => {
             <img src={logo} alt="logo" />
           </LogoLink>
           <Typography.Title level={2} className="pb-14">
-            Đăng nhập vào Koica
+            {t('signin.title')}
           </Typography.Title>
 
           <Form
@@ -167,7 +170,7 @@ export default () => {
 
             <Form.Item
               name="password"
-              label="Mật khẩu"
+              label={t('signin.password')}
               rules={[
                 {
                   required: true,
@@ -184,11 +187,11 @@ export default () => {
                 htmlType="submit"
               >
                 <LoginIcon className="icon" />
-                <span className="text">Đăng nhập</span>
+                <span className="text">{t('signin.login')}</span>
               </PrimaryButton>
               <div className="flex justify-center">
                 <Button type="link" onClick={handleRequestModal}>
-                  <span className="underline">Yêu cầu tạo tài khoản</span>
+                  <span className="underline">{t('signin.signup')}</span>
                 </Button>
                 •
                 <Button
@@ -197,7 +200,7 @@ export default () => {
                     handleForgetModal();
                   }}
                 >
-                  <span className="underline">Quên mật khẩu</span>
+                  <span className="underline">{t('signin.forgot')}</span>
                 </Button>
               </div>
             </Form.Item>
@@ -222,7 +225,7 @@ export default () => {
           <img src={logo} alt="logo" />
         </LogoLink>
         <Typography.Title level={2} className="pb-4">
-          Đăng nhập
+          {t('signin.login')}
         </Typography.Title>
 
         <Form
@@ -261,11 +264,11 @@ export default () => {
           <Form.Item className="flex justify-center">
             <PrimaryButton className="flex space-x-4 w-full" htmlType="submit">
               <LoginIcon className="icon" />
-              <span className="text">Đăng nhập</span>
+              <span className="text">{t('signin.login')}</span>
             </PrimaryButton>
             <div className="flex justify-center">
               <Button type="link" onClick={handleRequestModal}>
-                Yêu cầu tạo tài khoản
+                {t('signin.signup')}
               </Button>
             </div>
           </Form.Item>
@@ -275,7 +278,7 @@ export default () => {
       {requestModal && (
         <Modal
           open={requestModal}
-          title="Yêu cầu tạo tài khoản"
+          title={t('signin.signup')}
           onCancel={handleRequestModal}
           footer={false}
         >
@@ -308,7 +311,7 @@ export default () => {
               </Form.Item>
               <Form.Item
                 name="password"
-                label="Mật khẩu"
+                label={t('signin.password')}
                 rules={[
                   {
                     required: true,

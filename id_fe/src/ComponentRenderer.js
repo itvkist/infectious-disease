@@ -1,7 +1,4 @@
 import {
-  Blog,
-  BlogCreate,
-  BlogDetail,
   CassavaDetail,
   Cassavas,
   Diagnostics,
@@ -9,18 +6,15 @@ import {
   Diseases,
   Doctor,
   Homepage,
-  Market,
-  MarketUser,
   Maps,
   NotFound,
   Patient,
   Profile,
   Signin,
-  Suppliers,
   ForgotPassword,
   Datawarehouse,
-  Situation,
   Enhancer,
+  Statistics,
 } from "pages";
 import React from "react";
 import { useParams } from "react-router-dom";
@@ -58,37 +52,13 @@ export default () => {
         component: <Maps />,
         url: `/diseases`,
       },
-      diagnostics: {
+      ai_models: {
         component: <Diagnostics />,
-        url: `/diagnostics`,
-      },
-      market: {
-        component: <Market />,
-        url: `/market`,
-      },
-      market_user: {
-        component: <MarketUser />,
-        url: `/market_user`,
-      },
-      suppliers: {
-        component: <Suppliers />,
-        url: `/suppliers`,
+        url: `/ai_models`,
       },
       profile: {
         component: <Profile />,
         url: `/profile`,
-      },
-      blogs: {
-        component: <Blog />,
-        url: `/blogs`,
-      },
-      blog_create: {
-        component: <BlogCreate />,
-        url: `/blog_create`,
-      },
-      blogs_detail: {
-        component: <BlogDetail title={id} />,
-        url: `/blogs/${id}`,
       },
       forgot_password: {
         component: <ForgotPassword />,
@@ -106,13 +76,13 @@ export default () => {
         component: <Datawarehouse />,
         url: `/datawarehouse`,
       },
-      situation: {
-        component: <Situation />,
-        url: `/situation`,
+      statistics: {
+        component: <Statistics />,
+        url: `/statistics`,
       },
-      enhancer: {
+      ai_enhancer: {
         component: <Enhancer />,
-        url: `/enhancer`,
+        url: `/ai_enhancer`,
       },
     },
   };

@@ -19,12 +19,12 @@ const mainDetailColumns = [
     width: "5%",
   },
   {
-    title: "Symptoms",
+    title: "Feature",
     dataIndex: "feature",
     width: "10%",
   },
   {
-    title: "Thông tin",
+    title: "Information",
     dataIndex: "info",
     width: "85%",
   },
@@ -49,7 +49,7 @@ const mainColumns = [
     },
     width: "5%",
   },
-  ...detailColumns.slice(0, 3).map((i) => ({
+  ...detailColumns.slice(0, 2).map((i) => ({
     title: i.name,
     dataIndex: i.api_name,
     sorter: (a, b) =>
@@ -61,7 +61,7 @@ const mainColumns = [
     },
     width: "8%",
   })),
-  ...detailColumns.slice(3).map((i) => ({
+  ...detailColumns.slice(2).map((i) => ({
     title: i.name,
     dataIndex: i.api_name,
     render: (v) => {
@@ -76,14 +76,14 @@ const mainColumns = [
       return (
         <Link
           to={"/diseases/" + record.id}
-          className="text-indigo-500 underline hover:text-indigo-700 hover:underline"
+          className="text-blue-400 underline hover:text-blue-600 hover:underline"
           rel="noopener noreferrer"
         >
           Xem thêm
         </Link>
       );
     },
-    width: "10%",
+    width: "8%",
   },
 ];
 

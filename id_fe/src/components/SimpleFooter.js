@@ -2,7 +2,7 @@ import React from "react";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
-import LogoImage from "images/logo.svg";
+import LogoImage from "images/logo512.png";
 const Container = tw.div`relative bg-gray-200 text-gray-700 px-8 py-4 sm:py-12 sm:mt-8 mt-[43px] bottom-0`;
 const Content = tw.div`max-w-screen-xl mx-auto relative z-10`;
 const ThreeColRow = tw.div`flex flex-col md:flex-row items-center justify-between`;

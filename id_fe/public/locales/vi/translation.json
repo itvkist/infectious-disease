@@ -1,0 +1,42 @@
+{
+    "header": {
+        "homepage": "TRANG CHỦ",
+        "resource": "TÀI NGUYÊN",
+        "login": "ĐĂNG NHẬP",
+        "patient": "Bệnh nhân",
+        "doctor": "Bác sĩ",
+        "disease": "Thông tin bệnh truyền nhiễm",
+        "ai-model": "Các mô hình AI",
+        "statistics": "Thống kê"
+    },
+    "faqs": {
+        "faq": "Các câu hỏi thường gặp",
+        "software": "Thông tin về phần mềm",
+        "project": "Thông tin về dự án",
+        "vkist": "VKIST là gì?",
+        "datastreams": "DataStreams là gì?",
+        "login": "Làm thế nào để đăng nhập?",
+        "leave-messsage": "Để lại lời nhắn",
+        "name": "Họ và Tên",
+        "message": "Lời nhắn",
+        "send": "Gửi"
+    },
+    "homepage": {
+        "title": "Nền tảng bệnh truyền nhiễm",
+        "intro": "Nền tảng này cung cấp thông tin về các dịch bệnh truyền nhiễm, triệu chứng và các cách phòng chống. Ngoài ra, người dùng còn có thể dự đoán bệnh sử dụng ảnh X-quang",
+        "start": "Bắt đầu",
+        "play": "Chạy Video",
+        "function": "Chức năng",
+        "disease": "Thông tin bệnh truyền nhiễm",
+        "ai-model": "Các mô hình AI",
+        "statistics": "Thống kê",
+        "situation": "Tình hình dịch bệnh"
+    },
+    "signin": {
+        "title": "Đăng nhập vào nền tảng",
+        "login": "Đăng nhập",
+        "forgot": "Quên mật khẩu?",
+        "password": "Mật khẩu",
+        "signup": "Đăng ký"
+    }
+}

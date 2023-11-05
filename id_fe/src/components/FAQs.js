@@ -8,15 +8,14 @@ import { PrimaryButton } from "./misc/Buttons";
 import { Link } from "react-router-dom";
 import { validateEmail } from "services/helper";
 import { postFeedback } from "services/axios/feedback";
+import { useTranslation } from "react-i18next";
 
 const FAQS = [
   {
     question: "General information about the software",
     answer: () => (
       <>
-        Phần mềm được thiết kế, phát triển, hoạt động và duy trì nhờ các tài
-        nguyên và tài liệu mà ngành nông nghiệp sắn ở tỉnh Tây Ninh kết hợp với
-        Viện công nghệ VKIST cung cấp.
+        Phần mềm được thiết kế, phát triển, hoạt động và duy trì nhờ VKIST và DataStreams.
       </>
     ),
   },
@@ -24,8 +23,7 @@ const FAQS = [
     question: "General information about the project",
     answer: () => (
       <>
-        Tổng hợp các thông tin cần thiết liên quan đến sắn cũng như việc thương
-        mại sắn.
+        Tổng hợp các thông tin cần thiết liên quan đến bệnh truyền nhiễm.
       </>
     ),
   },
@@ -33,8 +31,7 @@ const FAQS = [
     question: "What is VKIST?",
     answer: () => (
       <>
-        Tổng hợp các thông tin cần thiết liên quan đến sắn cũng như việc thương
-        mại sắn.
+        VKIST là
       </>
     ),
   },
@@ -42,8 +39,7 @@ const FAQS = [
     question: "What is DataStreams?",
     answer: () => (
       <>
-        Tổng hợp các thông tin cần thiết liên quan đến sắn cũng như việc thương
-        mại sắn.
+        DataStreams là
       </>
     ),
   },
@@ -53,7 +49,7 @@ const FAQS = [
       <>
         Để tạo tài khoản, khách truy cập trang{" "}
         <Link
-          tw="text-primary-500 underline hocus:text-primary-700 hocus:underline"
+          tw="text-blue-500 underline hocus:text-blue-600 hocus:underline"
           to={"/signin"}
         >
           đăng nhập
@@ -76,16 +72,17 @@ export default () => {
       } else message.error("Gửi lời nhắn thất bại!");
     });
   };
+  const {t} = useTranslation();
 
   return (
     <div className="relative flex justify-center" id="faqs">
       <ContentWithPaddingXl
-        tw="border-y-2 border-solid border-primary-500"
+        tw="border-y-2 border-solid border-blue-400"
         className="mt-16 flex flex-col md:flex-row rounded-xl w-full md:w-4/5 max-md:space-y-4 md:space-x-8 px-4 md:px-8"
       >
         <div style={{ flex: 1 }}>
           <Typography.Title className="pt-4 ">
-            Frequently Asked Questions
+            {t('faqs.faq')}
           </Typography.Title>
           <Collapse
             style={{
@@ -119,17 +116,17 @@ export default () => {
         </div>
         <Divider
           type="vertical"
-          tw="bg-primary-500"
+          tw="bg-blue-400"
           className="!h-full w-0.5"
         />
         <div style={{ flex: 1 }}>
           <Typography.Title className="md:pt-4">
-            Leave a message
+            {t('faqs.message')}
           </Typography.Title>
           <Form onFinish={onFinish} form={form} layout="vertical">
             <Form.Item
               name="name"
-              label={<span className="font-semibold text-base">Full Name</span>}
+              label={<span className="font-semibold text-base">{t('faqs.name')}</span>}
               rules={[{ required: true, message: "Please insert your full name!" }]}
             >
               <Input placeholder="Ha Nguyen" />
@@ -153,13 +150,13 @@ export default () => {
             </Form.Item>
             <Form.Item
               name="content"
-              label={<span className="font-semibold text-base">Message</span>}
+              label={<span className="font-semibold text-base">{t('faqs.message')}</span>}
               rules={[{ required: true, message: "Please insert your message" }]}
             >
               <Input.TextArea placeholder="Some comments or messages" />
             </Form.Item>
             <Form.Item>
-              <PrimaryButton htmlType="submit">Send</PrimaryButton>
+              <PrimaryButton htmlType="submit">{t('faqs.send')}</PrimaryButton>
             </Form.Item>
           </Form>
         </div>

@@ -12,6 +12,7 @@ import { getDiseases } from "services/axios/disease";
 import { getCassavas } from "services/axios/cassava";
 import { getAllMapData } from "services/axios/map";
 import { getBlogTag } from "services/axios/blog";
+import i18n from "./i18n";
 
 export default function App() {
   const [user, setUser] = useState(null);

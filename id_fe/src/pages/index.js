@@ -5,7 +5,7 @@ import Diseases, { DiseaseDetail } from "./Diseases";
 import Homepage from "./Homepage";
 import Maps from "./Maps";
 import Signin from "./Signin";
-import Diagnostics from "./Diagnostics";
+import Pneumonia from "./Pneumonia";
 import Profile from "./Profile";
 import NotFound from "./NotFound";
 import Doctor from "./Doctor";
@@ -13,13 +13,15 @@ import Patient from "./Patient";
 import Datawarehouse from "./Datawarehouse";
 import Statistics from "./Statistics";
 import Enhancer from "./Enhancer";
+import Covid from "./Covid";
+import Flu from "./Flu";
 
 export {
   ForgotPassword,
   Cassavas,
   CassavaDetail,
   Datawarehouse,
-  Diagnostics,
+  Pneumonia,
   Diseases,
   DiseaseDetail,
   Doctor,
@@ -31,4 +33,6 @@ export {
   Signin,
   Statistics,
   Enhancer,
+  Covid,
+  Flu,
 };

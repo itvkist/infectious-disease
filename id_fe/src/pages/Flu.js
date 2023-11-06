@@ -258,7 +258,7 @@ const Diagnostics = () => {
     <AnimationRevealPage>
       <div className="content-inside overflow-overlay">
         <div className="flex flex-col justify-center items-center">
-          <Typography.Title>{t('ai.enhancer')}</Typography.Title>
+          <Typography.Title>{t('ai.flu')}</Typography.Title>
           <div className="inline-block space-x-8">
             <span className="dropdownTrigger">
               <NavLink to="/">{t('ai.models')}</NavLink>

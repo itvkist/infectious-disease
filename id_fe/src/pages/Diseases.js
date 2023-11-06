@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useTransition } from "react";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { Table, Typography, Image, Input, Button, Empty } from "antd";
@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { getDiseaseDetail, getDiseases } from "services/axios/disease";
 import { BASE_URL } from "services/url";
 import { compareStringPro } from "services/helper";
+import { Translation, useTranslation } from "react-i18next";
 
 const cropString = (text) => {
   return text.length > 253 ? text.substring(0, 250) + "..." : text;
@@ -92,6 +93,8 @@ export const DiseaseDetail = (props) => {
   const [apiData, setApiData] = useState(null);
   const [data, setData] = useState(null);
 
+  const {t} = useTranslation();
+
   useEffect(() => {
     getDiseaseDetail(props.id).then((res) => {
       let res_data = res?.data?.data;
@@ -123,7 +126,7 @@ export const DiseaseDetail = (props) => {
               className="object-contain"
               src={i}
               preview={false}
-              fallback="https://pqm.vn/wp-content/uploads/2021/02/phuong-phap-trong-va-cham-soc-cay-san-cay-san-cay-khoai-mi-neo-nam-viet-1-768x432.jpg"
+              fallback=" "
             />
           ))}
         </div>
@@ -147,7 +150,7 @@ export const DiseaseDetail = (props) => {
                 onClick={() => navigate(-1)}
               />
               <Typography.Title style={{ margin: 4 }}>
-                Loại bệnh {apiData?.name}
+                {t('disease.type')} {apiData?.name}
               </Typography.Title>
             </div>
           </div>
@@ -157,7 +160,7 @@ export const DiseaseDetail = (props) => {
                 <div className="flex h-[300px] w-full overflow-overlay justify-center">
                   {renderImage()}
                   {!apiData?.images && (
-                    <Empty description="Không có hình ảnh" />
+                    <Empty description={t('disease.image')} />
                   )}
                 </div>
                 <Table
@@ -185,6 +188,8 @@ export default () => {
   const [data, setData] = useState(null);
   const [search, setSearch] = useState("");
 
+  const {t} = useTranslation()
+
   useEffect(() => {
     getDiseases().then((res) => {
       const id_res = res.data.data.map((i) => ({ ...i.attributes, key: i.id.toString(), id: i.id }));
@@ -211,12 +216,12 @@ export default () => {
   return (
     <AnimationRevealPage>
       <div className="flex flex-col justify-center items-center sm:px-0 px-4 text-center">
-        <Typography.Title>Infectious diseases information</Typography.Title>
+        <Typography.Title>{t('homepage.disease')}</Typography.Title>
       </div>
       <div className="flex flex-col justify-center items-center">
         <div className="w-96 flex space-x-4 justify-center pb-4 px-4 sm:px-0">
           <Input.Search
-            placeholder="Search by name"
+            placeholder={t('disease.search')}
             value={search}
             onChange={(v) => setSearch(v.target.value)}
             onSearch={onSearch}

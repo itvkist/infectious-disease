@@ -38,5 +38,21 @@
         "forgot": "Forgot the password?",
         "password": "Password",
         "signup": "Signup"
+    },
+    "disease": {
+        "search": "Search by name",
+        "type": "",
+        "image": "No image to show"
+    },
+    "ai": {
+        "models": "Choose type of AI model",
+        "covid": "COVID-19 Prediction",
+        "flu": "Flu Prediction",
+        "pneumonia": "Pneumonia Prediction",
+        "enhancer": "X-Ray Image Enhancer",
+        "upload": "Upload an image",
+        "requirements": "Only accept jpg, jpeg and png files",
+        "predict": "Predict",
+        "new": "Predict a new image"
     }
 }

@@ -6,9 +6,9 @@ export const Subheading = tw.h5`font-bold text-primary-500`
 export const HighlightedText = tw.span`
   bg-blue-400 
   text-gray-100 
-  px-2 
+  px-3 
   transform -skew-x-0 
-  inline-block
-  rounded-xl
-  text-3xl
+  inline-block 
+  rounded-xl 
+  text-3xl 
 `;

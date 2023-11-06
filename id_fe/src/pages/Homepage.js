@@ -12,6 +12,7 @@ import { DEFAULT_AREA_DATA, MapDiv } from "./Maps";
 import { getMergedAreaDiseaseData } from "services/axios/map";
 import { Link } from "react-router-dom";
 import FAQs from "components/FAQs";
+import { useTranslation } from "react-i18next";
 
 const Container = styled.div`
   ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center`}
@@ -20,9 +21,9 @@ const HeaderRow = tw.div`flex justify-center items-center flex-col xl:flex-row w
 const Header = tw(SectionHeading)`flex`;
 
 const Card = styled.div`
-  ${tw`flex flex-col mx-auto items-center sm:p-4 sm:border-2 border-dashed border-primary-500 rounded-lg mt-8`}
+  ${tw`flex flex-col mx-auto items-center sm:p-4 sm:border-2 border-dashed border-blue-400 rounded-lg mt-8`}
   .title {
-    ${tw`mt-2 font-bold sm:text-xl text-lg leading-none text-primary-500`}
+    ${tw`mt-2 font-bold sm:text-xl text-lg leading-none text-blue-400`}
   }
 
   .imageContainer {
@@ -68,6 +69,8 @@ export default () => {
 
   const filteredDiseases = () => areaDiseaseData;
 
+  const {t} = useTranslation()
+
   return (
     <AnimationRevealPage>
       <Hero />
@@ -76,7 +79,7 @@ export default () => {
         <HeaderRow>
           <Header>
             <Link to={"/maps"}>
-              <HighlightedText>Diseases Situation</HighlightedText>
+              <HighlightedText>{t('homepage.situation')}</HighlightedText>
             </Link>
           </Header>
         </HeaderRow>

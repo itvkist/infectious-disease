@@ -4,6 +4,9 @@ import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import "./style.css";
 
+import LanguageSwitcher from './LanguageSwitcher';
+import { useTranslation } from 'react-i18next';
+
 import logo from "../images/vkist.svg";
 import logo1 from "../images/datastreams.svg";
 
@@ -21,13 +24,13 @@ import {
 export const NavLink = tw(Link)`
   text-sm mx-6 my-0
   font-semibold tracking-wide transition duration-300
-  py-2 border-b border-transparent hocus:border-primary-500 hocus:text-primary-500
+  py-2 border-b border-transparent hocus:border-blue-400 hocus:text-blue-400
 `;
 
 export const PrimaryLink = tw(NavLink)`
   lg:mx-0
-  px-8 py-3 rounded bg-primary-500 text-gray-100
-  hocus:bg-primary-700 hocus:text-gray-200 focus:shadow-outline
+  px-8 py-3 rounded bg-blue-400 text-gray-100
+  hocus:bg-blue-600 hocus:text-gray-200 focus:shadow-outline
   border-b-0
 `;
 
@@ -46,6 +49,8 @@ export default () => {
   const user = context.user;
   const [drawer, setDrawer] = useState(false);
   const [opening, setOpening] = useState(-1);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     setDrawer(false);
@@ -109,17 +114,17 @@ export default () => {
             
           </LogoLink>
           <div className="inline-block space-x-8">
-            <NavLink to="/">HOMEPAGE</NavLink>
+            <LanguageSwitcher />
+            <NavLink to="/">{t('header.homepage')}</NavLink>
             <span className="dropdownTrigger">
-              <NavLink to="/">RESOURCE</NavLink>
+              <NavLink to="/">{t('header.resource')}</NavLink>
               <div className="dropdownContent">
-                <NavLink to="/diseases">Infectious Disease Information</NavLink>
-                <NavLink to="/diagnostics">Diease Prediction</NavLink>
-                <NavLink to="/patient">Patient</NavLink>
-                <NavLink to="/doctor">Doctor</NavLink>
+                <NavLink to="/diseases">{t('header.disease')}</NavLink>
+                <NavLink to="/ai_models">{t('header.ai-model')}</NavLink>
+                <NavLink to="/patient">{t('header.patient')}</NavLink>
+                <NavLink to="/doctor">{t('header.doctor')}</NavLink>
                 {/* <NavLink to="/datawarehouse">Medical data warehouse</NavLink> */}
-                <NavLink to="/situation">Disease Situation</NavLink>
-                <NavLink to="/enhancer">X-Ray Image Enhancer</NavLink>
+                <NavLink to="/statistics">{t('header.statistics')}</NavLink>
               </div>
             </span>          
             {user ? (
@@ -133,7 +138,7 @@ export default () => {
               </span>
             ) : (
               <>
-                <PrimaryLink to={"/signin"}>LOGIN</PrimaryLink>
+                <PrimaryLink to={"/signin"}>{t('header.login')}</PrimaryLink>
               </>
             )}
           </div>

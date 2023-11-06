@@ -1,17 +1,17 @@
 import tw from "twin.macro";
 import styled from "styled-components";
 
-export const PrimaryButton = tw.button`px-8 py-3 font-bold rounded bg-primary-500 text-gray-100 
-hocus:bg-primary-700 hocus:text-gray-200 focus:shadow-outline focus:outline-none
+export const PrimaryButton = tw.button`px-8 py-3 font-bold rounded bg-blue-400 text-gray-100 
+hocus:bg-blue-600 hocus:text-gray-200 focus:shadow-outline focus:outline-none
 transition duration-300`;
 
-export const SecondaryButton = tw.button`px-8 py-3 rounded border-solid border border-primary-500 text-primary-400
-hocus:border-primary-700 focus:shadow-outline focus:outline-none
+export const SecondaryButton = tw.button`px-8 py-3 rounded border-solid border border-blue-400 text-primary-400
+hocus:border-blue-600 focus:shadow-outline focus:outline-none
 transition duration-300`;
 
 export const PrimarySmallButton = styled.button`
-  ${tw`px-4 py-2 rounded border-solid border border-primary-500 bg-primary-500 text-gray-100 
-  hocus:bg-primary-700 hocus:text-gray-200 focus:shadow-outline focus:outline-none 
+  ${tw`px-4 py-2 rounded border-solid border border-blue-400 bg-blue-400 text-gray-100 
+  hocus:bg-blue-600 hocus:text-gray-200 focus:shadow-outline focus:outline-none 
   transition duration-300`};
 
   :disabled {
@@ -20,5 +20,5 @@ export const PrimarySmallButton = styled.button`
 `;
 
 export const SecondarySmallButton = tw.button`px-4 py-2 rounded border-solid border border-primary-400 text-primary-400
-hover:border-primary-700 hover:text-primary-700 focus:shadow-outline focus:outline-none
+hover:border-blue-600 hover:text-blue-600 focus:shadow-outline focus:outline-none
 transition duration-300`;

@@ -14,6 +14,7 @@ import { ReactComponent as Sliders } from "feather-icons/dist/icons/sliders.svg"
 import { ReactComponent as BarChart2 } from "feather-icons/dist/icons/bar-chart-2.svg";
 import { ReactComponent as GitBranch } from "feather-icons/dist/icons/git-branch.svg";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const HeaderRow = tw.div`flex justify-between items-center flex-col xl:flex-row`;
 const Header = tw(SectionHeading)``;
@@ -33,17 +34,17 @@ const CardImageContainer = styled.div`
 `;
 
 const CardHoverOverlay = styled(motion.div)`
-  ${tw`absolute inset-0 flex justify-center items-center bg-primary-500 rounded-t`}
+  ${tw`absolute inset-0 flex justify-center items-center bg-blue-400 rounded-t`}
 `;
 const CardText = tw.div`p-4 text-gray-900`;
-const CardTitle = tw.h5`text-lg font-semibold group-hover:text-primary-500 flex justify-between items-center`;
+const CardTitle = tw.h5`text-lg font-semibold group-hover:text-blue-400 flex justify-between items-center`;
 const CardContentOverlay = tw.p`mt-1 mx-16 text-sm font-medium text-white`;
 
 const DecoratorBlob1 = styled(SvgDecoratorBlob1)`
   ${tw`pointer-events-none -z-20 absolute right-0 top-0 h-64 w-64 opacity-15 transform translate-x-2/3 -translate-y-12 text-pink-400`}
 `;
 const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
-  ${tw`pointer-events-none -z-20 absolute left-0 bottom-0 h-80 w-80 opacity-15 transform -translate-x-2/3 text-primary-500`}
+  ${tw`pointer-events-none -z-20 absolute left-0 bottom-0 h-80 w-80 opacity-15 transform -translate-x-2/3 text-blue-400`}
 `;
 
 const SettingIcon = tw(Settings)`w-5 h-5`;
@@ -66,18 +67,18 @@ export default ({
       },
       {
         imageSrc: "/assets/home_2.jpg",
-        title: "Disease Prediction",
+        title: "Artificial Intelligence Models",
         content:
-          "Predict the disease using images",
-        url: "/diagnostics",
+          "AI models for predicting diseases and enhancing images",
+        url: "/ai_models",
         // icon: <SettingIcon />,
       },
       {
         imageSrc: "/assets/home_3.jpg",
-        title: "Medical Data Warehouse",
+        title: "Statistics",
         content:
-          "Including: medical records, clinical images, statistical models,...",
-        url: "/datawarehouse",
+          "Including statistics of case numbers",
+        url: "/statistics",
         // icon: <GitBranchIcon />,
       },
       // {
@@ -109,12 +110,14 @@ export default ({
 }) => {
   const tabsKeys = Object.keys(tabs);
 
+  const {t} = useTranslation();
+  
   return (
     <Container>
       <ContentWithPaddingXl>
         <HeaderRow>
           <Header>
-            <HighlightedText>Software Functions</HighlightedText>
+            <HighlightedText>{t('homepage.function')}</HighlightedText>
           </Header>
         </HeaderRow>
 

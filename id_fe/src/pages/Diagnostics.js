@@ -129,7 +129,7 @@ const Diagnostics = () => {
   };
 
   const beforeUpload = (file) => {
-    if (!["image/jpeg", "image/png"].includes(file.type)) {
+    if (!["image/jpeg", "image/png", "image/jpg"].includes(file.type)) {
       message.error(`${file.name} không phải ảnh.`, 2);
       return null;
     }

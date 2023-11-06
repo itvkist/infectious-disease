@@ -871,6 +871,7 @@ export interface ApiNumberOfCaseNumberOfCase extends Schema.CollectionType {
     singularName: 'number-of-case';
     pluralName: 'number-of-cases';
     displayName: 'numberOfCase';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -883,6 +884,7 @@ export interface ApiNumberOfCaseNumberOfCase extends Schema.CollectionType {
     >;
     month: Attribute.BigInteger;
     number_of_cases: Attribute.BigInteger;
+    year: Attribute.BigInteger;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

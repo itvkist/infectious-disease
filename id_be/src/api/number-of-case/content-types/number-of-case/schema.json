@@ -4,7 +4,8 @@
   "info": {
     "singularName": "number-of-case",
     "pluralName": "number-of-cases",
-    "displayName": "numberOfCase"
+    "displayName": "numberOfCase",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -21,6 +22,9 @@
       "type": "biginteger"
     },
     "number_of_cases": {
+      "type": "biginteger"
+    },
+    "year": {
       "type": "biginteger"
     }
   }

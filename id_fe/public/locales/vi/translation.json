@@ -38,5 +38,21 @@
         "forgot": "Quên mật khẩu?",
         "password": "Mật khẩu",
         "signup": "Đăng ký"
+    },
+    "disease": {
+        "search": "Tìm theo tên",
+        "type": "Loại bệnh",
+        "image": "Không có hình ảnh"
+    },
+    "ai": {
+        "models": "Chọn mô hình AI",
+        "covid": "Dự đoán bệnh COVID-19",
+        "flu": "Dự đoán bệnh cúm",
+        "pneumonia": "Dự đoán bệnh viêm phổi",
+        "enhancer": "Tăng cường chất lượng ảnh X-quang",
+        "upload": "Tải lên một ảnh",
+        "requirements": "Chỉ chấp nhận đuôi jpg, jpeg và png",
+        "predict": "Dự đoán",
+        "new": "Tạo chẩn đoán mới"
     }
 }

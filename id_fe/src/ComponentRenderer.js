@@ -1,7 +1,7 @@
 import {
   CassavaDetail,
   Cassavas,
-  Diagnostics,
+  Pneumonia,
   DiseaseDetail,
   Diseases,
   Doctor,
@@ -15,6 +15,8 @@ import {
   Datawarehouse,
   Enhancer,
   Statistics,
+  Covid,
+  Flu,
 } from "pages";
 import React from "react";
 import { useParams } from "react-router-dom";
@@ -52,10 +54,6 @@ export default () => {
         component: <Maps />,
         url: `/diseases`,
       },
-      ai_models: {
-        component: <Diagnostics />,
-        url: `/ai_models`,
-      },
       profile: {
         component: <Profile />,
         url: `/profile`,
@@ -84,6 +82,18 @@ export default () => {
         component: <Enhancer />,
         url: `/ai_enhancer`,
       },
+      ai_pneumonia: {
+        component: <Pneumonia />,
+        url: `/ai_pneumonia`,
+      },
+      ai_covid: {
+        component: <Covid />,
+        url: `/ai_covid`,
+      },
+      ai_flu: {
+        component: <Flu />,
+        url: `/ai_flu`,
+      }
     },
   };
   try {

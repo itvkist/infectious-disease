@@ -12,6 +12,23 @@ import {
 import { postFile } from "services/axios/file";
 import Context from "services/context";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import tw from "twin.macro";
+
+
+export const NavLink = tw(Link)`
+  text-lg mx-6 my-0
+  font-semibold tracking-wide transition duration-300
+  py-2 border-b border-transparent hocus:border-blue-400 hocus:text-blue-400
+`;
+
+export const PrimaryLink = tw(NavLink)`
+  lg:mx-0
+  px-8 py-3 rounded bg-blue-400 text-gray-100
+  hocus:bg-blue-600 hocus:text-gray-200 focus:shadow-outline
+  border-b-0
+`;
+
 const { Dragger } = Upload;
 
 const columns = [
@@ -234,12 +251,25 @@ const Diagnostics = () => {
     // eslint-disable-next-line
   }, [submitList, addingList]);
 
+  const {t} = useTranslation();
+
   // token : 1972g9KX-DYPlUROjFD8yZuY9FdWFy83
   return (
     <AnimationRevealPage>
       <div className="content-inside overflow-overlay">
         <div className="flex flex-col justify-center items-center">
-          <Typography.Title>Disease prediction</Typography.Title>
+          <Typography.Title>{t('ai.pneumonia')}</Typography.Title>
+          <div className="inline-block space-x-8">
+            <span className="dropdownTrigger">
+              <NavLink to="/">{t('ai.models')}</NavLink>
+              <div className="dropdownContent">
+                <NavLink to="/ai_pneumonia">{t('ai.pneumonia')}</NavLink>
+                <NavLink to="/ai_covid">{t('ai.covid')}</NavLink>
+                <NavLink to="/ai_flu">{t('ai.flu')}</NavLink>
+                <NavLink to="/ai_enhancer">{t('ai.enhancer')}</NavLink>
+              </div>
+            </span> 
+          </div>
         </div>
         {!diagnostics && (
           <div className="flex justify-center p-8">
@@ -260,10 +290,10 @@ const Diagnostics = () => {
                     <InboxOutlined />
                   </p>
                   <p className="ant-upload-text sm:px-36">
-                    Insert an image
+                    {t('ai.upload')}
                   </p>
                   <p className="ant-upload-hint sm:px-36">
-                    Only accept png and jpg files
+                    {t('ai.requirements')}
                   </p>
                 </Dragger>
               </div>
@@ -282,7 +312,7 @@ const Diagnostics = () => {
               className="mb-4 bg-indigo-500 hover:bg-indigo-700"
               onClick={resetData}
             >
-              Tạo chẩn đoán mới
+              {t('ai.new')}
             </Button>
             <DiagnosticsDetail data={{ ...diagnostics }} />
           </div>

@@ -21,6 +21,12 @@ import {
   MenuOutlined,
 } from "@ant-design/icons";
 
+export const LanguageSwitcherStyle = tw(LanguageSwitcher)`
+  text-sm mx-6 my-0
+  font-semibold tracking-wide transition duration-300
+  py-2 border-b border-transparent hocus:border-blue-400 hocus:text-blue-400
+`;
+
 export const NavLink = tw(Link)`
   text-sm mx-6 my-0
   font-semibold tracking-wide transition duration-300
@@ -109,18 +115,19 @@ export default () => {
       >
         <nav className="hidden md:flex flex-1 justify-between items-center">
           <LogoLink to="/">
-                      <img src={logo} alt="logo" style={{ width: '50px', height: 'auto', marginRight: '25px' }}/>
+            <img src={logo} alt="logo" style={{ width: '50px', height: 'auto', marginRight: '25px' }}/>
             <img src={logo1} alt="logo1" style={{ width: '100px', height: 'auto' }}/>
-            
           </LogoLink>
           <div className="inline-block space-x-8">
             <LanguageSwitcher />
+          </div>
+          <div className="inline-block space-x-8">
             <NavLink to="/">{t('header.homepage')}</NavLink>
             <span className="dropdownTrigger">
               <NavLink to="/">{t('header.resource')}</NavLink>
               <div className="dropdownContent">
                 <NavLink to="/diseases">{t('header.disease')}</NavLink>
-                <NavLink to="/ai_models">{t('header.ai-model')}</NavLink>
+                <NavLink to="/ai_pneumonia">{t('header.ai-model')}</NavLink>
                 <NavLink to="/patient">{t('header.patient')}</NavLink>
                 <NavLink to="/doctor">{t('header.doctor')}</NavLink>
                 {/* <NavLink to="/datawarehouse">Medical data warehouse</NavLink> */}

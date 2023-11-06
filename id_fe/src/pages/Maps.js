@@ -506,7 +506,7 @@ export function MapDiv({ areaData, filteredDiseases }) {
   return (
     <MapContainer
       className="lg:h-[700px] lg:w-[1000px] w-[80vw] h-[70vw]"
-      center={[11.375, 106.1313]}
+      center={[20.051818, 105.621356]}
       zoom={12}
     >
       <TileLayer

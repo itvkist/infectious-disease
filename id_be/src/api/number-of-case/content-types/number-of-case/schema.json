@@ -14,9 +14,9 @@
   "attributes": {
     "infectious_disease": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::infectious-disease.infectious-disease",
-      "inversedBy": "number_of_case"
+      "inversedBy": "number_of_cases"
     },
     "month": {
       "type": "biginteger"

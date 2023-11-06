@@ -789,9 +789,9 @@ export interface ApiInfectiousDiseaseInfectiousDisease
       'manyToMany',
       'api::medical-history.medical-history'
     >;
-    number_of_case: Attribute.Relation<
+    number_of_cases: Attribute.Relation<
       'api::infectious-disease.infectious-disease',
-      'oneToOne',
+      'oneToMany',
       'api::number-of-case.number-of-case'
     >;
     createdAt: Attribute.DateTime;
@@ -879,7 +879,7 @@ export interface ApiNumberOfCaseNumberOfCase extends Schema.CollectionType {
   attributes: {
     infectious_disease: Attribute.Relation<
       'api::number-of-case.number-of-case',
-      'oneToOne',
+      'manyToOne',
       'api::infectious-disease.infectious-disease'
     >;
     month: Attribute.BigInteger;

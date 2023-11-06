@@ -357,30 +357,6 @@ export default () => {
                     <Select
                       className="w-full"
                       showSearch
-                      placeholder="Chọn một loại sắn"
-                      optionFilterProp="children"
-                      value={
-                        areaData.selectedData.cassava?.original_name ||
-                        areaData.selectedData.cassava?.label
-                      }
-                      onChange={(value) => {
-                        setAreaDataState("cassava", value);
-                      }}
-                      filterOption={(input, option) =>
-                        compareStringPro(option?.label, input)
-                      }
-                      options={
-                        cassavaData && cassavaData.length > 0
-                          ? cassavaData.map((i) => ({
-                              value: i.label,
-                              label: i.original_name || i.label,
-                            }))
-                          : []
-                      }
-                    />
-                    <Select
-                      className="w-full"
-                      showSearch
                       placeholder="Chọn một loại bệnh"
                       optionFilterProp="children"
                       value={

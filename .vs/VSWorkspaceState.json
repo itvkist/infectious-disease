@@ -2,13 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\id_fe",
-    "\\id_fe\\public",
     "\\id_fe\\src",
     "\\id_fe\\src\\components",
-    "\\id_fe\\src\\components\\hero",
-    "\\id_fe\\src\\components\\misc",
     "\\id_fe\\src\\pages"
   ],
-  "SelectedNode": "\\id_fe\\src\\pages\\Doctor.js",
   "PreviewInSolutionExplorer": false
 }

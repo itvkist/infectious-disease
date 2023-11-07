@@ -15,7 +15,6 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import tw from "twin.macro";
 
-
 export const NavLink = tw(Link)`
   text-lg mx-6 my-0
   font-semibold tracking-wide transition duration-300
@@ -172,14 +171,16 @@ const Diagnostics = () => {
       var diag = [];
 
       try {
-        setAddingList(true);
-
+        setImageFiles(fileList)
         await Promise.all(
           fileList.map(async (file) => {
             const formData = new FormData();
             try {
-              formData.append("title", file.name);
-              formData.append("file", file.originFileObj);
+              formData.append("filename", file.name);
+              formData.append("img", file.originFileObj);
+
+              console.log('Calling Covid detection API ...')
+              covidDetectionAPI(formData);
               await postFile(formData).then((res) => {
                 if (res && res.status === 200) {
                   const resData = res.data.data;
@@ -212,6 +213,7 @@ const Diagnostics = () => {
           diag: diag,
         });
         message.success(`Thêm ảnh thành công.`, 2);
+
       } catch (err) {
         message.error(`Thêm ảnh không thành công.`, 2);
       } finally {
@@ -252,6 +254,38 @@ const Diagnostics = () => {
   }, [submitList, addingList]);
 
   const {t} = useTranslation();
+
+
+  // ====================================================================================================
+  // Declare function call to server
+  // ====================================================================================================
+
+  const baseURL = 'https://dohubapps.com/user/vietbacnguyen96/7002/getData';
+  const [covidResult, updateResult] = useState([]);
+  const [imageFiles, setImageFiles] = useState('');
+  
+  const covidDetectionAPI = (formData) => {
+    const requestOptions = {
+      method: 'POST', 
+      body: formData, 
+    };
+      return fetch(baseURL, requestOptions)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json(); // Parse the response JSON if necessary
+      })
+      .then(data => {
+        // console.log('Data sent successfully:', data);
+        updateResult(data)
+        // Handle the response data as needed
+      })
+      .catch(error => {
+        console.error('Error sending data:', error);
+        // Handle any error that occurred during the fetch request
+      });
+  }
 
   // token : 1972g9KX-DYPlUROjFD8yZuY9FdWFy83
   return (
@@ -314,7 +348,36 @@ const Diagnostics = () => {
             >
               {t('ai.new')}
             </Button>
-            <DiagnosticsDetail data={{ ...diagnostics }} />
+            {/* <DiagnosticsDetail data={{ ...diagnostics }} /> */}
+            <center>
+              <div>
+                {imageFiles.map((file, index) => (
+                  <img
+                    key={index}
+                    src={URL.createObjectURL(file.originFileObj)}
+                    alt={`Input Xray - ${index}`}
+                    style={{ width: '30vw', height: '30vw', objectFit: 'cover' }}
+                  />
+                ))}
+            </div>
+            {covidResult.map((dataObj, index) => {
+              return (
+                <div
+                  key={index}
+                  style={{
+                    width: "15em",
+                    backgroundColor: "#35D841",
+                    padding: 2,
+                    borderRadius: 10,
+                    marginBlock: 10,
+                  }}
+                >
+                  <p style={{ fontSize: 20, color: 'white' }}>{dataObj.prediction}</p>
+                </div>
+                
+              );
+            })}
+          </center>
           </div>
         )}
       </div>

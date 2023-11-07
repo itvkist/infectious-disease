@@ -11,7 +11,7 @@ export const getMapData = async (type = "district", parent_code = null) =>
   );
 
 export const getAreaDisease = async () =>
-  await axiosInstance.get("/api/area-diseases", {
+  await axiosInstance.get("/api/area-diseases?populate=*", {
     signal: newAbortSignal(),
   });
 
@@ -50,10 +50,10 @@ export const getMergedAreaDiseaseData = async (
       console.log(areaDisease, diseaseData)
       areaDisease = areaDisease.map((i) => {
         const findingDisease = diseaseData.find(
-          (e) => e.id === i.id
+          (e) => e.id === i.attributes.infectious_disease.data.id
         );
         const findingCassava = cassavaData.find(
-          (e) => e.id === i.id
+          (e) => e.id === i.attributes.infectious_disease.data.id
         );
 
         return {

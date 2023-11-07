@@ -295,11 +295,10 @@ const Diagnostics = () => {
           <Typography.Title>{t('ai.covid')}</Typography.Title>
           <div className="inline-block space-x-8">
             <span className="dropdownTrigger">
-              <NavLink to="/">{t('ai.models')}</NavLink>
+              <NavLink to="/ai_covid">{t('ai.models')}</NavLink>
               <div className="dropdownContent">
                 <NavLink to="/ai_pneumonia">{t('ai.pneumonia')}</NavLink>
                 <NavLink to="/ai_covid">{t('ai.covid')}</NavLink>
-                <NavLink to="/ai_flu">{t('ai.flu')}</NavLink>
                 <NavLink to="/ai_enhancer">{t('ai.enhancer')}</NavLink>
               </div>
             </span>

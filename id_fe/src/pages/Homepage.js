@@ -39,11 +39,10 @@ export default () => {
 
   const [areaData, setAreaData] = useState(DEFAULT_AREA_DATA);
   const [diseaseData, setDiseaseData] = useState(null);
-  const [cassavaData, setCassavaData] = useState(null);
   const [areaDiseaseData, setAreaDiseaseData] = useState([]);
 
   const getAreaDiseaseData = async () => {
-    await getMergedAreaDiseaseData(diseaseData, cassavaData).then(
+    await getMergedAreaDiseaseData(diseaseData).then(
       (areaDisease) => {
         console.log(areaDisease)
         setAreaDiseaseData([...areaDisease]);
@@ -52,21 +51,20 @@ export default () => {
   };
 
   useEffect(() => {
-    diseaseData && cassavaData && getAreaDiseaseData();
+    diseaseData && getAreaDiseaseData();
     // eslint-disable-next-line
-  }, [diseaseData, cassavaData]);
+  }, [diseaseData]);
 
   // set map for diseases
   useEffect(() => {
-    if (context.disease && context.cassava) {
-      if (!cassavaData) setCassavaData(context.cassava);
+    if (context.disease) {
       if (!diseaseData) setDiseaseData(context.disease);
     }
     if (context.mapData) {
       setAreaData({ ...areaData, districts: context.mapData });
     }
     // eslint-disable-next-line
-  }, [context?.disease, context?.cassava]);
+  }, [context?.disease]);
 
   const filteredDiseases = () => areaDiseaseData;
 

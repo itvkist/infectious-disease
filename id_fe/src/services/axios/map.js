@@ -40,9 +40,9 @@ export const getAllMapData = async () => {
 };
 
 export const getMergedAreaDiseaseData = async (
-  diseaseData = [],
-  cassavaData = []
+  diseaseData = []
 ) => {
+  console.log("ok1")
   var areaDisease = [];
   await getAreaDisease().then(async (response) => {
     if (response.status === 200) {
@@ -50,9 +50,6 @@ export const getMergedAreaDiseaseData = async (
       console.log(areaDisease, diseaseData)
       areaDisease = areaDisease.map((i) => {
         const findingDisease = diseaseData.find(
-          (e) => e.id === i.attributes.infectious_disease.data.id
-        );
-        const findingCassava = cassavaData.find(
           (e) => e.id === i.attributes.infectious_disease.data.id
         );
 

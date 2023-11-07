@@ -1,14 +1,17 @@
 ﻿import { React, useState, } from "react";
 import LineChart from "components/LineChart";
 import { DiseaseData } from "Data";
+import { useTranslation } from "react-i18next";
 
 export default () => {
+
+    const {t} = useTranslation()
 
     const [fluData, setFluData] = useState(
         {
             labels: DiseaseData.map((data) => data.month),
             datasets: [{
-                label: "Number of Flu Cases",
+                label: "Number of Cases",
                 data: DiseaseData.map((data) => data.flu),
             },
             {
@@ -20,7 +23,7 @@ export default () => {
         {
             labels: DiseaseData.map((data) => data.month),
             datasets: [{
-                label: "Number of Covid19 Cases",
+                label: "Number of Cases",
                 data: DiseaseData.map((data) => data.covid19),
             },
             {
@@ -32,7 +35,7 @@ export default () => {
         {
             labels: DiseaseData.map((data) => data.month),
             datasets: [{
-                label: "Number of Pneumonia Cases",
+                label: "Number of Cases",
                 data: DiseaseData.map((data) => data.pneumonia),
             },
             {
@@ -44,7 +47,7 @@ export default () => {
         {
             labels: DiseaseData.map((data) => data.month),
             datasets: [{
-                label: "Number of Hepatitis Cases",
+                label: "Number of Cases",
                 data: DiseaseData.map((data) => data.hepatitis),
             },
             {
@@ -56,7 +59,7 @@ export default () => {
         {
             labels: DiseaseData.map((data) => data.month),
             datasets: [{
-                label: "Number of Chickenpox Cases",
+                label: "Number of Cases",
                 data: DiseaseData.map((data) => data.chickenpox),
             },
             {
@@ -68,7 +71,7 @@ export default () => {
         {
             labels: DiseaseData.map((data) => data.month),
             datasets: [{
-                label: "Number of Dengue Cases",
+                label: "Number of Cases",
                 data: DiseaseData.map((data) => data.dengue),
             },
             {
@@ -80,7 +83,7 @@ export default () => {
         {
             labels: DiseaseData.map((data) => data.month),
             datasets: [{
-                label: "Number of Tuberculosis Cases",
+                label: "Number of Cases",
                 data: DiseaseData.map((data) => data.tuberculosis),
             },
             {
@@ -95,24 +98,24 @@ export default () => {
         <div style={{ marginTop: "20px", display: "flex" }}>
             <div style={{ marginTop: "0px", marginLeft: "120px" }}>
                 <LineChart chartData={fluData} />
-                <h1 style={{ marginTop: "8px", marginBottom: "22px", marginLeft: "80px", fontWeight: "bold" }}>Biểu đồ số ca bệnh cúm</h1>
+                <h1 style={{ marginTop: "8px", marginBottom: "22px", marginLeft: "80px", fontWeight: "bold" }}>{t('statistic.flu')}</h1>
                 <LineChart chartData={covid19Data} />
-                <h1 style={{ marginTop: "8px", marginBottom: "22px", marginLeft: "75px", fontWeight: "bold" }}>Biểu đồ sô ca bệnh covid</h1>
+                <h1 style={{ marginTop: "8px", marginBottom: "22px", marginLeft: "75px", fontWeight: "bold" }}>{t('statistic.covid')}</h1>
 
             </div>
             <div style={{ marginTop: "0px", marginLeft: "160px" }}>
                 <LineChart chartData={hepatitisData} />
-                <h1 style={{ marginTop: "8px", marginBottom: "22px", marginLeft: "78px", fontWeight: "bold" }}>Biểu đồ số ca bệnh viêm gan</h1>
+                <h1 style={{ marginTop: "8px", marginBottom: "22px", marginLeft: "78px", fontWeight: "bold" }}>{t('statistic.hepatitis')}</h1>
                 <LineChart chartData={chickenpoxData} />
-                <h1 style={{ marginTop: "8px", marginBottom: "22px", marginLeft: "76px", fontWeight: "bold" }}>Biểu đồ số ca bệnh thủy đậu</h1>
+                <h1 style={{ marginTop: "8px", marginBottom: "22px", marginLeft: "76px", fontWeight: "bold" }}>{t('statistic.chickenpox')}</h1>
                 <LineChart chartData={pneumoniaData} />
-                <h1 style={{ marginTop: "8px", marginBottom: "22px", marginLeft: "72px", fontWeight: "bold" }}>Biểu đồ số ca bệnh viêm phổi</h1>
+                <h1 style={{ marginTop: "8px", marginBottom: "22px", marginLeft: "72px", fontWeight: "bold" }}>{t('statistic.pneumonia')}</h1>
             </div>
             <div style={{ marginTop: "0px", marginLeft: "160px" }}>
                 <LineChart chartData={dengueData} />
-                <h1 style={{ marginTop: "8px", marginBottom: "22px", marginLeft: "55px", fontWeight: "bold" }}>Biểu đồ số ca bệnh sốt xuất huyết</h1>
+                <h1 style={{ marginTop: "8px", marginBottom: "22px", marginLeft: "55px", fontWeight: "bold" }}>{t('statistic.dengue')}</h1>
                 <LineChart chartData={tuberculosisData} />
-                <h1 style={{ marginTop: "8px", marginBottom: "22px", marginLeft: "92px", fontWeight: "bold" }}>Biểu đồ số ca bệnh lao</h1>
+                <h1 style={{ marginTop: "8px", marginBottom: "22px", marginLeft: "92px", fontWeight: "bold" }}>{t('statistic.tuberculosis')}</h1>
             </div>
         </div>
     );

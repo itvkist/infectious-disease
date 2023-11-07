@@ -58,7 +58,7 @@ const mainColumns = [
         ? a[i.api_name].localeCompare(b[i.api_name])
         : 0,
     render: (v) => {
-      return v ? v : "Chưa có dữ liệu";
+      return v ? v : "No available data";
     },
     width: "8%",
   })),
@@ -66,7 +66,7 @@ const mainColumns = [
     title: i.name,
     dataIndex: i.api_name,
     render: (v) => {
-      return v ? cropString(v) : "Chưa có dữ liệu";
+      return v ? cropString(v) : "No available data";
     },
     width: "22%",
   })),

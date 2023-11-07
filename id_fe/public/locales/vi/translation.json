@@ -54,5 +54,17 @@
         "requirements": "Chỉ chấp nhận đuôi jpg, jpeg và png",
         "predict": "Dự đoán",
         "new": "Tạo chẩn đoán mới"
+    },
+    "map": {
+        "title": "Bản đồ theo dõi tình hình dịch bệnh"
+    },
+    "statistic": {
+        "covid": "Biểu đồ số ca bệnh COVID-19",
+        "flu": "Biểu đồ số ca bệnh cúm",
+        "pneumonia": "Biểu đồ số ca bệnh viêm phổi",
+        "tuberculosis": "Biểu đồ số ca bệnh lao",
+        "chickenpox": "Biểu đồ số ca bệnh thủy đậu",
+        "dengue": "Biểu đồ số ca bệnh sốt xuất huyết",
+        "hepatitis": "Biểu đồ số ca bệnh viêm gan"
     }
 }

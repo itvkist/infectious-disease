@@ -70,7 +70,7 @@ export default ({
         title: "Artificial Intelligence Models",
         content:
           "AI models for predicting diseases and enhancing images",
-        url: "/ai_models",
+        url: "/ai_pneumonia",
         // icon: <SettingIcon />,
       },
       {

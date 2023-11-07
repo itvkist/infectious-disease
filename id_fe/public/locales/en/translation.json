@@ -54,5 +54,17 @@
         "requirements": "Only accept jpg, jpeg and png files",
         "predict": "Predict",
         "new": "Predict a new image"
+    },
+    "map": {
+        "title": "Diseases Situation"
+    },
+    "statistic": {
+        "covid": "COVID-19 Cases",
+        "flu": "Flu Cases",
+        "pneumonia": "Pneumonia Cases",
+        "tuberculosis": "Tuberculosis Cases",
+        "chickenpox": "Chickenpox Cases",
+        "dengue": "Dengue Cases",
+        "hepatitis": "Hepatitis Cases"
     }
 }

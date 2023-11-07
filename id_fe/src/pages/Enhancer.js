@@ -9,12 +9,13 @@ import {
   postDiagnostic,
   postDiagnosticClassify,
 } from "services/axios/diagnostics";
-import { postFile } from "services/axios/file";
+// import { postFile } from "services/axios/file";
 import Context from "services/context";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import tw from "twin.macro";
 
+import "./style.css";
 
 export const NavLink = tw(Link)`
   text-lg mx-6 my-0
@@ -173,25 +174,28 @@ const Diagnostics = () => {
 
       try {
         setAddingList(true);
-
+        setImageFiles(fileList)
+        setEnhancedImageFiles([])
         await Promise.all(
           fileList.map(async (file) => {
             const formData = new FormData();
             try {
-              formData.append("title", file.name);
-              formData.append("file", file.originFileObj);
-              await postFile(formData).then((res) => {
-                if (res && res.status === 200) {
-                  const resData = res.data.data;
-                  const submitItem = {
-                    diagnostics_id: "+",
-                    directus_files_id: {
-                      id: resData.id,
-                    },
-                  };
-                  submittingList = [...submittingList, { ...submitItem }];
-                }
-              });
+              formData.append("filename", file.name);
+              formData.append("img", file.originFileObj);
+              console.log('Calling X-Ray Enhancement API ...')
+              xrayEnhancementAPI(formData);
+              // await postFile(formData).then((res) => {
+              //   if (res && res.status === 200) {
+              //     const resData = res.data.data;
+              //     const submitItem = {
+              //       diagnostics_id: "+",
+              //       directus_files_id: {
+              //         id: resData.id,
+              //       },
+              //     };
+              //     submittingList = [...submittingList, { ...submitItem }];
+              //   }
+              // });
             } catch (e) {}
 
             try {
@@ -253,6 +257,37 @@ const Diagnostics = () => {
 
   const {t} = useTranslation();
 
+  // ====================================================================================================
+  // Declare function call to server
+  // ====================================================================================================
+
+  const baseURL = 'https://dohubapps.com/user/thomtt12/8000/enhanced';
+  // const [covidResult, updateResult] = useState([]);
+  const [imageFiles, setImageFiles] = useState([]);
+  const [enhancedIimageFiles, setEnhancedImageFiles] = useState([]);
+
+  const xrayEnhancementAPI = (formData) => {
+    const requestOptions = {
+      method: 'POST',
+      body: formData,
+    };
+    return fetch(baseURL, requestOptions)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json(); // Parse the response JSON if necessary
+      })
+      .then(data => {
+        console.log('Data sent successfully:', data.result);
+        setEnhancedImageFiles(data.result)
+        // Handle the response data as needed
+      })
+      .catch(error => {
+        console.error('Error sending data:', error);
+        // Handle any error that occurred during the fetch request
+      });
+  }
   // token : 1972g9KX-DYPlUROjFD8yZuY9FdWFy83
   return (
     <AnimationRevealPage>
@@ -261,11 +296,10 @@ const Diagnostics = () => {
           <Typography.Title>{t('ai.enhancer')}</Typography.Title>
           <div className="inline-block space-x-8">
             <span className="dropdownTrigger">
-              <NavLink to="/">{t('ai.models')}</NavLink>
+              <NavLink to="/ai_enhancer">{t('ai.models')}</NavLink>
               <div className="dropdownContent">
                 <NavLink to="/ai_pneumonia">{t('ai.pneumonia')}</NavLink>
                 <NavLink to="/ai_covid">{t('ai.covid')}</NavLink>
-                <NavLink to="/ai_flu">{t('ai.flu')}</NavLink>
                 <NavLink to="/ai_enhancer">{t('ai.enhancer')}</NavLink>
               </div>
             </span> 
@@ -314,7 +348,68 @@ const Diagnostics = () => {
             >
               {t('ai.new')}
             </Button>
-            <DiagnosticsDetail data={{ ...diagnostics }} />
+            <div class="container">
+                <div class="left">
+                  <center>
+                    {imageFiles.map((dataObj, index) => {
+                      return (
+                        <div
+                          key={index}
+                          style={{
+                            width: "15em",
+                            backgroundColor: "#35D841",
+                            padding: 2,
+                            borderRadius: 10,
+                            marginBlock: 10,
+                          }}
+                        >
+                        <p style={{ fontSize: 20, color: 'white' }}>{'Original'}</p>
+                        </div>
+                      );
+                    })}
+                    <div>
+                      {imageFiles.map((file, index) => (
+                        <img
+                          key={index}
+                          src={URL.createObjectURL(file.originFileObj)}
+                          alt={`Input Xray - ${index}`}
+                          style={{ width: '30vw', height: '30vw', objectFit: 'cover' }}
+                        />
+                      ))}
+                    </div>
+                  </center>
+                </div>
+                <div class="right">
+                  <center>
+                    {enhancedIimageFiles.map((dataObj, index) => {
+                      return (
+                        <div
+                          key={index}
+                          style={{
+                            width: "15em",
+                            backgroundColor: "#35D841",
+                            padding: 2,
+                            borderRadius: 10,
+                            marginBlock: 10,
+                          }}
+                        >
+                        <p style={{ fontSize: 20, color: 'white' }}>{'Enhanced'}</p>
+                        </div>
+                      );
+                    })}
+                    <div>
+                      {enhancedIimageFiles.map((file, index) => (
+                        <img
+                          key={index}
+                          src={"data:image/jpeg;base64," +  file}
+                          alt={`Input Xray - ${index}`}
+                          style={{ width: '30vw', height: '30vw', objectFit: 'cover' }}
+                        />
+                      ))}
+                    </div>
+                  </center>
+                </div>
+            </div>
           </div>
         )}
       </div>

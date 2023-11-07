@@ -128,10 +128,11 @@ export default () => {
               <div className="dropdownContent">
                 <NavLink to="/diseases">{t('header.disease')}</NavLink>
                 <NavLink to="/ai_pneumonia">{t('header.ai-model')}</NavLink>
+                <NavLink to="/statistics">{t('header.statistics')}</NavLink>
+                <NavLink to="/maps">{t('homepage.situation')}</NavLink>
                 <NavLink to="/patient">{t('header.patient')}</NavLink>
                 <NavLink to="/doctor">{t('header.doctor')}</NavLink>
-                {/* <NavLink to="/datawarehouse">Medical data warehouse</NavLink> */}
-                <NavLink to="/statistics">{t('header.statistics')}</NavLink>
+                
               </div>
             </span>          
             {user ? (
@@ -153,7 +154,7 @@ export default () => {
         <div className="md:hidden flex w-full justify-between items-center">
           <LogoLink to="/">
             <img src={logo} alt="logo" />
-            Koica
+            IDP
           </LogoLink>
           <MenuOutlined onClick={() => setDrawer(true)} />
         </div>

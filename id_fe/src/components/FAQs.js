@@ -15,6 +15,14 @@ const FAQS = [
     question: "General information about the software",
     answer: () => (
       <>
+        The platform is designed, developed by VKIST and DataStreams.
+      </>
+    ),
+  },
+  {
+    question: "Thông tin về phần mềm",
+    answer: () => (
+      <>
         Phần mềm được thiết kế, phát triển, hoạt động và duy trì nhờ VKIST và DataStreams.
       </>
     ),

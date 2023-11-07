@@ -9,6 +9,7 @@ import Context from "services/context";
 import { ReloadOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { getMergedAreaDiseaseData } from "services/axios/map";
+import { useTranslation } from "react-i18next";
 
 var iconLibs = [
   { icon: "marker_blue.png", meaning: "Mức độ bình thường" },
@@ -57,12 +58,12 @@ export default () => {
 
   const [areaData, setAreaData] = useState(DEFAULT_AREA_DATA);
   const [diseaseData, setDiseaseData] = useState(null);
-  const [cassavaData, setCassavaData] = useState(null);
   const [areaDiseaseData, setAreaDiseaseData] = useState([]);
 
   const getAreaDiseaseData = async () => {
-    await getMergedAreaDiseaseData(diseaseData, cassavaData).then(
+    await getMergedAreaDiseaseData(diseaseData).then(
       (areaDisease) => {
+        console.log("ok")
         console.log(areaDisease)
         setAreaDiseaseData([...areaDisease]);
       }
@@ -70,21 +71,20 @@ export default () => {
   };
 
   useEffect(() => {
-    diseaseData && cassavaData && getAreaDiseaseData();
+    diseaseData && getAreaDiseaseData();
     // eslint-disable-next-line
-  }, [diseaseData, cassavaData]);
+  }, [diseaseData]);
 
   // set map for diseases
   useEffect(() => {
-    if (context.disease && context.cassava) {
-      if (!cassavaData) setCassavaData(context.cassava);
+    if (context.disease) {
       if (!diseaseData) setDiseaseData(context.disease);
     }
     if (context.mapData) {
       setAreaData({ ...areaData, districts: context.mapData });
     }
     // eslint-disable-next-line
-  }, [context?.disease, context?.cassava]);
+  }, [context?.disease]);
 
   const reset = () => {
     setAreaData({
@@ -135,15 +135,6 @@ export default () => {
           },
         });
         break;
-      case "cassava":
-        setAreaData({
-          ...areaData,
-          selectedData: {
-            ...areaData.selectedData,
-            cassava: cassavaData.find((i) => i.label === value),
-          },
-        });
-        break;
     }
   };
 
@@ -184,10 +175,12 @@ export default () => {
     );
   };
 
+  const {t} = useTranslation();
+
   return (
     <AnimationRevealPage>
       <div className="flex flex-col justify-center items-center">
-        <Typography.Title>Bản đồ theo dõi nguồn bệnh</Typography.Title>
+        <Typography.Title>{t('map.title')}</Typography.Title>
       </div>
       <div className="flex justify-evenly items-center pb-4 w-full flex-col sm:flex-row">
         <div className="flex justify-center flex-col items-center">

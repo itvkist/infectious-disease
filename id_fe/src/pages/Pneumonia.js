@@ -15,7 +15,6 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import tw from "twin.macro";
 
-
 export const NavLink = tw(Link)`
   text-lg mx-6 my-0
   font-semibold tracking-wide transition duration-300
@@ -78,16 +77,16 @@ export const DiagnosticsDetail = (props) => {
   const dataSrc = () =>
     data && data.diag
       ? data.diag
-          .sort((a, b) => b.probability - a.probability)
-          .map((i, index) => ({
-            name:
-              disease.find((e) => e.label === i.label)?.vn_name ||
-              (i.label === "healthy" ? "Khỏe mạnh" : i.label),
-            id: index + 1,
-            probability: Math.round(i.probability * 10000) / 100 + "%",
-            key: index.toString(),
-            url: disease.find((e) => e.label === i.label)?.id || null,
-          }))
+        .sort((a, b) => b.probability - a.probability)
+        .map((i, index) => ({
+          name:
+            disease.find((e) => e.label === i.label)?.vn_name ||
+            (i.label === "healthy" ? "Khỏe mạnh" : i.label),
+          id: index + 1,
+          probability: Math.round(i.probability * 10000) / 100 + "%",
+          key: index.toString(),
+          url: disease.find((e) => e.label === i.label)?.id || null,
+        }))
       : [];
 
   useEffect(() => {
@@ -172,14 +171,16 @@ const Diagnostics = () => {
       var diag = [];
 
       try {
-        setAddingList(true);
-
+        setImageFiles(fileList)
         await Promise.all(
           fileList.map(async (file) => {
             const formData = new FormData();
             try {
-              formData.append("title", file.name);
-              formData.append("file", file.originFileObj);
+              // formData.append("filename", file.name);
+              formData.append("img", file.originFileObj);
+
+              console.log('Calling Pneumonia detection API ...')
+              pneumoniaDetectionAPI(formData);
               await postFile(formData).then((res) => {
                 if (res && res.status === 200) {
                   const resData = res.data.data;
@@ -192,7 +193,7 @@ const Diagnostics = () => {
                   submittingList = [...submittingList, { ...submitItem }];
                 }
               });
-            } catch (e) {}
+            } catch (e) { }
 
             try {
               formData.append("image", file.originFileObj);
@@ -201,7 +202,7 @@ const Diagnostics = () => {
                   diag = [...response.data] || null;
                 }
               });
-            } catch (err) {}
+            } catch (err) { }
           })
         );
 
@@ -212,6 +213,7 @@ const Diagnostics = () => {
           diag: diag,
         });
         message.success(`Thêm ảnh thành công.`, 2);
+
       } catch (err) {
         message.error(`Thêm ảnh không thành công.`, 2);
       } finally {
@@ -251,7 +253,40 @@ const Diagnostics = () => {
     // eslint-disable-next-line
   }, [submitList, addingList]);
 
-  const {t} = useTranslation();
+  const { t } = useTranslation();
+
+
+  // ====================================================================================================
+  // Declare function call to server
+  // ====================================================================================================
+
+  const baseURL = 'https://dohubapps.com/user/thomtt12/8000/predict';
+  const [pneumoniaResult, updateResult] = useState([]);
+  const [imageFiles, setImageFiles] = useState('');
+
+  const pneumoniaDetectionAPI = (formData) => {
+    const requestOptions = {
+      method: 'POST',
+      body: formData,
+    };
+    return fetch(baseURL, requestOptions)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        
+        return response.json(); // Parse the response JSON if necessary
+      })
+      .then(data => {
+        console.log('Data sent successfully:', data.result);
+        updateResult(data.result)
+        // Handle the response data as needed
+      })
+      .catch(error => {
+        console.error('Error sending data:', error);
+        // Handle any error that occurred during the fetch request
+      });
+  }
 
   // token : 1972g9KX-DYPlUROjFD8yZuY9FdWFy83
   return (
@@ -261,14 +296,13 @@ const Diagnostics = () => {
           <Typography.Title>{t('ai.pneumonia')}</Typography.Title>
           <div className="inline-block space-x-8">
             <span className="dropdownTrigger">
-              <NavLink to="/">{t('ai.models')}</NavLink>
+              <NavLink to="/ai_pneumonia">{t('ai.models')}</NavLink>
               <div className="dropdownContent">
                 <NavLink to="/ai_pneumonia">{t('ai.pneumonia')}</NavLink>
                 <NavLink to="/ai_covid">{t('ai.covid')}</NavLink>
-                <NavLink to="/ai_flu">{t('ai.flu')}</NavLink>
                 <NavLink to="/ai_enhancer">{t('ai.enhancer')}</NavLink>
               </div>
-            </span> 
+            </span>
           </div>
         </div>
         {!diagnostics && (
@@ -314,7 +348,35 @@ const Diagnostics = () => {
             >
               {t('ai.new')}
             </Button>
-            <DiagnosticsDetail data={{ ...diagnostics }} />
+            {/* <DiagnosticsDetail data={{ ...diagnostics }} /> */}
+            <center>
+              {pneumoniaResult.map((dataObj, index) => {
+                return (
+                  <div
+                    key={index}
+                    style={{
+                      width: "15em",
+                      backgroundColor: dataObj.prediction === "Normal" ? "#35D841" : "red",
+                      padding: 2,
+                      borderRadius: 10,
+                      marginBlock: 10,
+                    }}
+                  >
+                  <p style={{ fontSize: 20, color: 'white' }}>{dataObj.prediction}</p>
+                  </div>
+                );
+              })}
+              <div>
+                {imageFiles.map((file, index) => (
+                  <img
+                    key={index}
+                    src={URL.createObjectURL(file.originFileObj)}
+                    alt={`Input Xray - ${index}`}
+                    style={{ width: '30vw', height: '30vw', objectFit: 'cover' }}
+                  />
+                ))}
+              </div>
+            </center>
           </div>
         )}
       </div>

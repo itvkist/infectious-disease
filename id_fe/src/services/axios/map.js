@@ -47,20 +47,20 @@ export const getMergedAreaDiseaseData = async (
   await getAreaDisease().then(async (response) => {
     if (response.status === 200) {
       areaDisease = response.data.data;
+      console.log(areaDisease, diseaseData)
       areaDisease = areaDisease.map((i) => {
         const findingDisease = diseaseData.find(
-          (e) => e.label === i.disease_label
+          (e) => e.id === i.id
         );
         const findingCassava = cassavaData.find(
-          (e) => e.label === i.cassava_label
+          (e) => e.id === i.id
         );
 
         return {
-          ...i,
+          ...i.attributes,
           disease_id: findingDisease?.id || null,
-          disease_name: findingDisease?.vn_name || i.disease_label,
-          cassava_id: findingCassava?.id || null,
-          cassava_name: findingCassava?.original_name || i.cassava_label,
+          disease_label: findingDisease?.attributes.label || i.id,
+          disease_name: findingDisease?.attributes.name || i.id,
         };
       });
     }

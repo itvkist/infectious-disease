@@ -63,6 +63,7 @@ export default () => {
   const getAreaDiseaseData = async () => {
     await getMergedAreaDiseaseData(diseaseData, cassavaData).then(
       (areaDisease) => {
+        console.log(areaDisease)
         setAreaDiseaseData([...areaDisease]);
       }
     );
@@ -511,15 +512,17 @@ export function MapDiv({ areaData, filteredDiseases }) {
       {filteredDiseases().map((i, index) => (
         <Marker
           key={index}
-          position={[i.lat, i.lon]}
+          position={[i.latitude, i.longtitude]}
           icon={CustomIcon("marker_red", parseInt(i.degree))}
         >
           <Popup>
             {"Bệnh: " + i.disease_name}
             <br />
-            {"Giống sắn: " + i.cassava_name}
+            Nhãn: {i.disease_label}
             <br />
             Mức độ: {convertDegree(i.degree)}
+            <br />
+            Số ca bệnh: {i.number_of_cases}
           </Popup>
         </Marker>
       ))}

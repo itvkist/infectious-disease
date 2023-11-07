@@ -77,16 +77,16 @@ export const DiagnosticsDetail = (props) => {
   const dataSrc = () =>
     data && data.diag
       ? data.diag
-          .sort((a, b) => b.probability - a.probability)
-          .map((i, index) => ({
-            name:
-              disease.find((e) => e.label === i.label)?.vn_name ||
-              (i.label === "healthy" ? "Khỏe mạnh" : i.label),
-            id: index + 1,
-            probability: Math.round(i.probability * 10000) / 100 + "%",
-            key: index.toString(),
-            url: disease.find((e) => e.label === i.label)?.id || null,
-          }))
+        .sort((a, b) => b.probability - a.probability)
+        .map((i, index) => ({
+          name:
+            disease.find((e) => e.label === i.label)?.vn_name ||
+            (i.label === "healthy" ? "Khỏe mạnh" : i.label),
+          id: index + 1,
+          probability: Math.round(i.probability * 10000) / 100 + "%",
+          key: index.toString(),
+          url: disease.find((e) => e.label === i.label)?.id || null,
+        }))
       : [];
 
   useEffect(() => {
@@ -193,7 +193,7 @@ const Diagnostics = () => {
                   submittingList = [...submittingList, { ...submitItem }];
                 }
               });
-            } catch (e) {}
+            } catch (e) { }
 
             try {
               formData.append("image", file.originFileObj);
@@ -202,7 +202,7 @@ const Diagnostics = () => {
                   diag = [...response.data] || null;
                 }
               });
-            } catch (err) {}
+            } catch (err) { }
           })
         );
 
@@ -253,7 +253,7 @@ const Diagnostics = () => {
     // eslint-disable-next-line
   }, [submitList, addingList]);
 
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
 
   // ====================================================================================================
@@ -263,13 +263,13 @@ const Diagnostics = () => {
   const baseURL = 'https://dohubapps.com/user/vietbacnguyen96/7002/getData';
   const [covidResult, updateResult] = useState([]);
   const [imageFiles, setImageFiles] = useState('');
-  
+
   const covidDetectionAPI = (formData) => {
     const requestOptions = {
-      method: 'POST', 
-      body: formData, 
+      method: 'POST',
+      body: formData,
     };
-      return fetch(baseURL, requestOptions)
+    return fetch(baseURL, requestOptions)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -302,7 +302,7 @@ const Diagnostics = () => {
                 <NavLink to="/ai_flu">{t('ai.flu')}</NavLink>
                 <NavLink to="/ai_enhancer">{t('ai.enhancer')}</NavLink>
               </div>
-            </span> 
+            </span>
           </div>
         </div>
         {!diagnostics && (
@@ -350,6 +350,22 @@ const Diagnostics = () => {
             </Button>
             {/* <DiagnosticsDetail data={{ ...diagnostics }} /> */}
             <center>
+              {covidResult.map((dataObj, index) => {
+                return (
+                  <div
+                    key={index}
+                    style={{
+                      width: "15em",
+                      backgroundColor: dataObj.prediction === "Normal" ? "#35D841" : "red",
+                      padding: 2,
+                      borderRadius: 10,
+                      marginBlock: 10,
+                    }}
+                  >
+                  <p style={{ fontSize: 20, color: 'white' }}>{dataObj.prediction}</p>
+                  </div>
+                );
+              })}
               <div>
                 {imageFiles.map((file, index) => (
                   <img
@@ -359,25 +375,8 @@ const Diagnostics = () => {
                     style={{ width: '30vw', height: '30vw', objectFit: 'cover' }}
                   />
                 ))}
-            </div>
-            {covidResult.map((dataObj, index) => {
-              return (
-                <div
-                  key={index}
-                  style={{
-                    width: "15em",
-                    backgroundColor: "#35D841",
-                    padding: 2,
-                    borderRadius: 10,
-                    marginBlock: 10,
-                  }}
-                >
-                  <p style={{ fontSize: 20, color: 'white' }}>{dataObj.prediction}</p>
-                </div>
-                
-              );
-            })}
-          </center>
+              </div>
+            </center>
           </div>
         )}
       </div>

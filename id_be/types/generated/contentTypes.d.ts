@@ -743,6 +743,7 @@ export interface ApiAreaDiseaseAreaDisease extends Schema.CollectionType {
     >;
     latitude: Attribute.Float;
     longtitude: Attribute.Float;
+    number_of_cases: Attribute.BigInteger;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

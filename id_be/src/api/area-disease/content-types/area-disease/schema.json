@@ -32,6 +32,9 @@
     },
     "longtitude": {
       "type": "float"
+    },
+    "number_of_cases": {
+      "type": "biginteger"
     }
   }
 }

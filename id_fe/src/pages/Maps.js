@@ -11,9 +11,9 @@ import { Link } from "react-router-dom";
 import { getMergedAreaDiseaseData } from "services/axios/map";
 
 var iconLibs = [
-  { icon: "marker_blue.png", meaning: "Các quận / huyện" },
-  { icon: "marker_yellow.png", meaning: "Các phường / xã" },
-  { icon: "marker_red.png", meaning: "Nơi có dịch bệnh" },
+  { icon: "marker_blue.png", meaning: "Mức độ bình thường" },
+  { icon: "marker_yellow.png", meaning: "Mức độ nghiêm trọng" },
+  { icon: "marker_red.png", meaning: "Mức độ rất nghiêm trọng" },
 ];
 
 var CustomIcon = (iconName = "marker_blue", degree = 0) => {
@@ -513,7 +513,7 @@ export function MapDiv({ areaData, filteredDiseases }) {
         <Marker
           key={index}
           position={[i.latitude, i.longtitude]}
-          icon={CustomIcon("marker_red", parseInt(i.degree))}
+          icon={CustomIcon((parseInt(i.number_of_cases) > 50 ? "marker_red" : (parseInt(i.number_of_cases) > 20 ? "marker_yellow" : "marker_blue")), parseInt(i.degree))}
         >
           <Popup>
             {"Bệnh: " + i.disease_name}

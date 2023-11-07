@@ -45,6 +45,7 @@ export default () => {
   const getAreaDiseaseData = async () => {
     await getMergedAreaDiseaseData(diseaseData, cassavaData).then(
       (areaDisease) => {
+        console.log(areaDisease)
         setAreaDiseaseData([...areaDisease]);
       }
     );

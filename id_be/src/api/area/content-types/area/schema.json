@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "areas",
+  "info": {
+    "singularName": "area",
+    "pluralName": "areas",
+    "displayName": "Area",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "address": {
+      "type": "text"
+    },
+    "area_diseases": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::area-disease.area-disease",
+      "mappedBy": "area"
+    },
+    "code": {
+      "type": "integer"
+    },
+    "type": {
+      "type": "string"
+    },
+    "map": {
+      "type": "text"
+    }
+  }
+}

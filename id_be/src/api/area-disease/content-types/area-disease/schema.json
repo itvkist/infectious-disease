@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "area_diseases",
+  "info": {
+    "singularName": "area-disease",
+    "pluralName": "area-diseases",
+    "displayName": "AreaDisease",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "degree": {
+      "type": "biginteger"
+    },
+    "infectious_disease": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::infectious-disease.infectious-disease",
+      "inversedBy": "area_diseases"
+    },
+    "area": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::area.area",
+      "inversedBy": "area_diseases"
+    },
+    "latitude": {
+      "type": "float"
+    },
+    "longtitude": {
+      "type": "float"
+    }
+  }
+}

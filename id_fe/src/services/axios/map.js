@@ -2,7 +2,7 @@ import axiosInstance, { newAbortSignal } from "services/axios";
 
 export const getMapData = async (type = "district", parent_code = null) =>
   await axiosInstance.get(
-    "/items/area?limit=-1" +
+    "/api/areas?limit=-1" +
       `&filter[type][_eq]=${type}` +
       (parent_code ? `&filter[parent_code][_eq]=${parent_code}` : ""),
     {
@@ -11,7 +11,7 @@ export const getMapData = async (type = "district", parent_code = null) =>
   );
 
 export const getAreaDisease = async () =>
-  await axiosInstance.get("/items/area_disease?limit=-1", {
+  await axiosInstance.get("/api/area-diseases", {
     signal: newAbortSignal(),
   });
 

@@ -687,6 +687,80 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAreaArea extends Schema.CollectionType {
+  collectionName: 'areas';
+  info: {
+    singularName: 'area';
+    pluralName: 'areas';
+    displayName: 'Area';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    address: Attribute.Text;
+    area_diseases: Attribute.Relation<
+      'api::area.area',
+      'oneToMany',
+      'api::area-disease.area-disease'
+    >;
+    code: Attribute.Integer;
+    type: Attribute.String;
+    map: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::area.area', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::area.area', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiAreaDiseaseAreaDisease extends Schema.CollectionType {
+  collectionName: 'area_diseases';
+  info: {
+    singularName: 'area-disease';
+    pluralName: 'area-diseases';
+    displayName: 'AreaDisease';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    degree: Attribute.BigInteger;
+    infectious_disease: Attribute.Relation<
+      'api::area-disease.area-disease',
+      'manyToOne',
+      'api::infectious-disease.infectious-disease'
+    >;
+    area: Attribute.Relation<
+      'api::area-disease.area-disease',
+      'manyToOne',
+      'api::area.area'
+    >;
+    latitude: Attribute.Float;
+    longtitude: Attribute.Float;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::area-disease.area-disease',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::area-disease.area-disease',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiDoctorDoctor extends Schema.CollectionType {
   collectionName: 'doctors';
   info: {
@@ -793,6 +867,11 @@ export interface ApiInfectiousDiseaseInfectiousDisease
       'api::infectious-disease.infectious-disease',
       'oneToMany',
       'api::number-of-case.number-of-case'
+    >;
+    area_diseases: Attribute.Relation<
+      'api::infectious-disease.infectious-disease',
+      'oneToMany',
+      'api::area-disease.area-disease'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -965,6 +1044,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::area.area': ApiAreaArea;
+      'api::area-disease.area-disease': ApiAreaDiseaseAreaDisease;
       'api::doctor.doctor': ApiDoctorDoctor;
       'api::drug.drug': ApiDrugDrug;
       'api::infectious-disease.infectious-disease': ApiInfectiousDiseaseInfectiousDisease;

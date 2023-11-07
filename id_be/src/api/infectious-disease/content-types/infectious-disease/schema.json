@@ -41,6 +41,12 @@
       "relation": "oneToMany",
       "target": "api::number-of-case.number-of-case",
       "mappedBy": "infectious_disease"
+    },
+    "area_diseases": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::area-disease.area-disease",
+      "mappedBy": "infectious_disease"
     }
   }
 }

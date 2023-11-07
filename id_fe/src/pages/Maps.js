@@ -187,7 +187,7 @@ export default () => {
   return (
     <AnimationRevealPage>
       <div className="flex flex-col justify-center items-center">
-        <Typography.Title>Bản đồ theo dõi nguồn giống</Typography.Title>
+        <Typography.Title>Bản đồ theo dõi nguồn bệnh</Typography.Title>
       </div>
       <div className="flex justify-evenly items-center pb-4 w-full flex-col sm:flex-row">
         <div className="flex justify-center flex-col items-center">

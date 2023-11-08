@@ -100,7 +100,7 @@ export const BlogCard = (blogProps) => {
           height={210}
           src={props?.titleImg ? BASE_URL + "/assets/" + props?.titleImg : ""}
           preview={false}
-          fallback="https://pqm.vn/wp-content/uploads/2021/02/phuong-phap-trong-va-cham-soc-cay-san-cay-san-cay-khoai-mi-neo-nam-viet-1-768x432.jpg"
+          fallback="https://vkist.gov.vn/vkist-media/logo/logo-vi/logo_vkist_tieng-viet_png.png"
           alt="example"
         />
       }

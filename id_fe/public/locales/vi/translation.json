@@ -56,7 +56,12 @@
         "new": "Tạo chẩn đoán mới"
     },
     "map": {
-        "title": "Bản đồ theo dõi tình hình dịch bệnh"
+        "title": "Bản đồ theo dõi tình hình dịch bệnh",
+        "disease": "Chọn loại bệnh",
+        "degree": "Chọn mức độ",
+        "city": "Chọn thành phố / tỉnh",
+        "district": "Chọn quận / huyện",
+        "degree_title": "Mức độ"
     },
     "statistic": {
         "covid": "Biểu đồ số ca bệnh COVID-19",

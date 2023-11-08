@@ -56,7 +56,12 @@
         "new": "Predict a new image"
     },
     "map": {
-        "title": "Diseases Situation"
+        "title": "Diseases Situation",
+        "disease": "Choose a disease",
+        "degree": "Choose a degree",
+        "city": "Choose a city",
+        "district": "Choose a district",
+        "degree_title": "Degree"
     },
     "statistic": {
         "covid": "COVID-19 Cases",

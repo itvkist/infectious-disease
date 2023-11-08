@@ -12,9 +12,9 @@ import { getMergedAreaDiseaseData } from "services/axios/map";
 import { useTranslation } from "react-i18next";
 
 var iconLibs = [
-  { icon: "marker_blue.png", meaning: "Mức độ bình thường" },
-  { icon: "marker_yellow.png", meaning: "Mức độ nghiêm trọng" },
-  { icon: "marker_red.png", meaning: "Mức độ rất nghiêm trọng" },
+  { icon: "marker_blue.png", meaning: "Minor Danger" },
+  { icon: "marker_yellow.png", meaning: "Danger" },
+  { icon: "marker_red.png", meaning: "High Danger" },
 ];
 
 var CustomIcon = (iconName = "marker_blue", degree = 0) => {
@@ -47,10 +47,10 @@ export const DEFAULT_AREA_DATA = {
 const convertDegree = (degree) => {
   degree = Number.parseInt(degree);
   return degree === 3
-    ? "Rất nghiêm trọng"
+    ? "High Danger"
     : degree === 2
-    ? "Nghiêm trọng"
-    : "Chưa nghiêm trọng";
+    ? "Danger"
+    : "Minor Danger";
 };
 
 export default () => {
@@ -216,7 +216,7 @@ export default () => {
                         <Select
                           className="w-[240px]"
                           showSearch
-                          placeholder="Chọn một loại bệnh"
+                          placeholder={t('map.disease')}
                           optionFilterProp="children"
                           value={
                             areaData.selectedData.disease?.vn_name ||
@@ -242,7 +242,7 @@ export default () => {
                         <Select
                           className="w-[240px]"
                           showSearch
-                          placeholder="Chọn một mức độ"
+                          placeholder={t('map.degree')}
                           optionFilterProp="children"
                           value={
                             areaData?.selectedData.degree
@@ -269,7 +269,7 @@ export default () => {
                         <Select
                           className="w-[240px]"
                           showSearch
-                          placeholder="Chọn một thành phố / quận"
+                          placeholder={t('map.city')}
                           optionFilterProp="children"
                           value={areaData.selectedData.district?.code}
                           onChange={(value) => {
@@ -292,7 +292,7 @@ export default () => {
                         <Select
                           className="w-[240px]"
                           showSearch
-                          placeholder="Chọn một huyện / phường"
+                          placeholder={t('map.district')}
                           optionFilterProp="children"
                           value={areaData.selectedData.ward?.code}
                           onChange={(value) => {
@@ -322,7 +322,7 @@ export default () => {
                     <Select
                       className="w-full"
                       showSearch
-                      placeholder="Chọn một loại bệnh"
+                      placeholder={t('map.disease')}
                       optionFilterProp="children"
                       value={
                         areaData.selectedData.disease?.vn_name ||
@@ -346,7 +346,7 @@ export default () => {
                     <Select
                       className="w-full"
                       showSearch
-                      placeholder="Chọn một mức độ"
+                      placeholder={t('map.degree')}
                       optionFilterProp="children"
                       value={
                         areaData?.selectedData.degree
@@ -369,7 +369,7 @@ export default () => {
                     <Select
                       className="w-full"
                       showSearch
-                      placeholder="Chọn một thành phố / quận"
+                      placeholder={t('map.city')}
                       optionFilterProp="children"
                       value={areaData.selectedData.district?.code}
                       onChange={(value) => {
@@ -390,7 +390,7 @@ export default () => {
                     <Select
                       className="w-full"
                       showSearch
-                      placeholder="Chọn một huyện / phường"
+                      placeholder={t('map.district')}
                       optionFilterProp="children"
                       value={areaData.selectedData.ward?.code}
                       onChange={(value) => {
@@ -440,7 +440,7 @@ export default () => {
                       </Link>
                     </div>
                     <Typography.Text>
-                      Mức độ:{" "}
+                      {t('map.degree_title')}:{" "}
                       {Number.parseInt(item.degree) === 1 ? (
                         <span className="text-green-600">
                           {convertDegree(item.degree)}

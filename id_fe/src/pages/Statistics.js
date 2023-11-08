@@ -251,21 +251,21 @@ export default () => {
         <div style={{ marginTop: "0px", display: "flex" }}>
             <div style={{ flex: 1, height: "260px", marginTop: "15px", marginLeft: "140px" }}>
                 <LineChart chartData={fluData} />
-                <h1 style={{ marginTop: "10px", marginBottom: "30px", marginLeft: "180px", fontWeight: "bold" }}>Number of Flu Cases Chart</h1>
+                <h1 style={{ marginTop: "10px", marginBottom: "30px", marginLeft: "180px", fontWeight: "bold" }}>{t('statistic.flu')}</h1>
                 <LineChart chartData={covid19Data} />
-                <h1 style={{ marginTop: "10px", marginBottom: "60px", marginLeft: "170px", fontWeight: "bold" }}>Number of Covid19 Cases Chart</h1>
+                <h1 style={{ marginTop: "10px", marginBottom: "60px", marginLeft: "170px", fontWeight: "bold" }}>{t('statistic.covid')}</h1>
                 <LineChart chartData={hepatitisData} />
-                <h1 style={{ marginTop: "10px", marginBottom: "30px", marginLeft: "160px", fontWeight: "bold" }}>Number of Hepatitis Cases Chart</h1>
+                <h1 style={{ marginTop: "10px", marginBottom: "30px", marginLeft: "160px", fontWeight: "bold" }}>{t('statistic.hepatitis')}</h1>
                 <LineChart chartData={chickenpoxData} />
-                <h1 style={{ marginTop: "10px", marginBottom: "30px", marginLeft: "155px", fontWeight: "bold" }}>Number of Chickenpox Cases Chart</h1>
+                <h1 style={{ marginTop: "10px", marginBottom: "30px", marginLeft: "155px", fontWeight: "bold" }}>{t('statistic.chickenpox')}</h1>
             </div>
             <div style={{ flex: 1, height: "260px", marginTop: "15px", marginLeft: "40px" }}>
                 <LineChart chartData={pneumoniaData} />
-                <h1 style={{ marginTop: "10px", marginBottom: "30px", marginLeft: "165px", fontWeight: "bold" }}>Number of Pneumonia Cases Chart</h1>
+                <h1 style={{ marginTop: "10px", marginBottom: "30px", marginLeft: "165px", fontWeight: "bold" }}>{t('statistic.pneumonia')}</h1>
                 <LineChart chartData={dengueData} />
-                <h1 style={{ marginTop: "10px", marginBottom: "60px", marginLeft: "170px", fontWeight: "bold" }}>Number of Dengue Cases Chart</h1>
+                <h1 style={{ marginTop: "10px", marginBottom: "60px", marginLeft: "170px", fontWeight: "bold" }}>{t('statistic.dengue')}</h1>
                 <LineChart chartData={tuberculosisData} />
-                <h1 style={{ marginTop: "10px", marginBottom: "30px", marginLeft: "158px", fontWeight: "bold" }}>Number of Tuberculosis Cases Chart</h1>
+                <h1 style={{ marginTop: "10px", marginBottom: "30px", marginLeft: "158px", fontWeight: "bold" }}>{t('statistic.tuberculosis')}</h1>
             </div>
         </div>
     );

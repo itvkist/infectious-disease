@@ -1,73 +1,24 @@
-﻿const DiseaseData = [
+﻿const PredictedDiseaseData1m = [
     {
         month: 1,
-        flu: 4,
-        covid19: 4,
-        pneumonia: 3,
-        hepatitis: 0,
-        chickenpox: 0,
-        dengue: 0,
-        tuberculosis: 2,
     },
     {
         month: 2,
-        flu: 0,
-        covid19: 0,
-        pneumonia: 3,
-        hepatitis: 0,
-        chickenpox: 1,
-        dengue: 0,
-        tuberculosis: 3,
     },
     {
         month: 3,
-        flu: 3,
-        covid19: 0,
-        pneumonia: 14,
-        hepatitis: 0,
-        chickenpox: 0,
-        dengue: 0,
-        tuberculosis: 3,
     },
     {
         month: 4,
-        flu: 0,
-        covid19: 0,
-        pneumonia: 18,
-        hepatitis: 0,
-        chickenpox: 0,
-        dengue: 0,
-        tuberculosis: 2,
     },
     {
         month: 5,
-        flu: 2,
-        covid19: 0,
-        pneumonia: 9,
-        hepatitis: 1,
-        chickenpox: 1,
-        dengue: 0,
-        tuberculosis: 1,
     },
     {
         month: 6,
-        flu: 0,
-        covid19: 0,
-        pneumonia: 2,
-        hepatitis: 1,
-        chickenpox: 1,
-        dengue: 0,
-        tuberculosis: 4,
     },
     {
         month: 7,
-        flu: 1,
-        covid19: 4,
-        pneumonia: 17,
-        hepatitis: 1,
-        chickenpox: 3,
-        dengue: 3,
-        tuberculosis: 2,
     },
     {
         month: 8,
@@ -81,6 +32,13 @@
     },
     {
         month: 9,
+        flu: 3,
+        covid19: 3,
+        pneumonia: 10,
+        hepatitis: 1,
+        chickenpox: 1,
+        dengue: 6,
+        tuberculosis: 2,
     },
     {
         month: 10,
@@ -91,9 +49,33 @@
     {
         month: 12,
     },
+    {
+        month: 13,
+    },
+    {
+        month: 14,
+    },
+    {
+        month: 15,
+    },
+    {
+        month: 16,
+    },
+    {
+        month: 17,
+    },
+    {
+        month: 18,
+    },
+    {
+        month: 19,
+    },
+    {
+        month: 20,
+    },
 ]
 const fs = require('fs');
-const filePath = 'diseaseData.json';
-const jsonData = JSON.stringify(DiseaseData);
+const filePath = 'diseaseDatapredict1m.json';
+const jsonData = JSON.stringify(PredictedDiseaseData1m);
 fs.writeFileSync(filePath, jsonData);
 console.log('Dữ liệu đã được lưu vào tệp:', filePath);

@@ -52,27 +52,27 @@ export default () => {
             {
                 label: "1 Month Prediction",
                 data: PredictedDiseaseData1m.map((data) => data.covid19),
-                hidden: false,
+                hidden: true,
             },
             {
                 label: "2 Months Prediction",
                 data: PredictedDiseaseData2m.map((data) => data.covid19),
-                hidden: false,
+                hidden: true,
             },
             {
                 label: "3 Months Prediction",
                 data: PredictedDiseaseData3m.map((data) => data.covid19),
-                hidden: false,
+                hidden: true,
             },
             {
                 label: "6 Months Prediction",
                 data: PredictedDiseaseData6m.map((data) => data.covid19),
-                hidden: false,
+                hidden: true,
             },
             {
                 label: "12 Months Prediction",
                 data: PredictedDiseaseData12m.map((data) => data.covid19),
-                hidden: false,
+                hidden: true,
             },],
         })
     const [pneumoniaData, setPneumoniaData] = useState(

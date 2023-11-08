@@ -86,27 +86,27 @@ export default () => {
             {
                 label: "1 Month Prediction",
                 data: PredictedDiseaseData1m.map((data) => data.pneumonia),
-                hidden: false,
+                hidden: true,
             },
             {
                 label: "2 Months Prediction",
                 data: PredictedDiseaseData2m.map((data) => data.pneumonia),
-                hidden: false,
+                hidden: true,
             },
             {
                 label: "3 Months Prediction",
                 data: PredictedDiseaseData3m.map((data) => data.pneumonia),
-                hidden: false,
+                hidden: true,
             },
             {
                 label: "6 Months Prediction",
                 data: PredictedDiseaseData6m.map((data) => data.pneumonia),
-                hidden: false,
+                hidden: true,
             },
             {
                 label: "12 Months Prediction",
                 data: PredictedDiseaseData12m.map((data) => data.pneumonia),
-                hidden: false,
+                hidden: true,
             },],
         })
     const [hepatitisData, setHepatitisData] = useState(
@@ -120,27 +120,27 @@ export default () => {
             {
                 label: "1 Month Prediction",
                 data: PredictedDiseaseData1m.map((data) => data.hepatitis),
-                hidden: false,
+                hidden: true,
             },
             {
                 label: "2 Months Prediction",
                 data: PredictedDiseaseData2m.map((data) => data.hepatitis),
-                hidden: false,
+                hidden: true,
             },
             {
                 label: "3 Months Prediction",
                 data: PredictedDiseaseData3m.map((data) => data.hepatitis),
-                hidden: false,
+                hidden: true,
             },
             {
                 label: "6 Months Prediction",
                 data: PredictedDiseaseData6m.map((data) => data.hepatitis),
-                hidden: false,
+                hidden: true,
             },
             {
                 label: "12 Months Prediction",
                 data: PredictedDiseaseData12m.map((data) => data.hepatitis),
-                hidden: false,
+                hidden: true,
             },],
         })
     const [chickenpoxData, setChickenpoxData] = useState(
@@ -154,27 +154,27 @@ export default () => {
             {
                 label: "1 Month Prediction",
                 data: PredictedDiseaseData1m.map((data) => data.chickenpox),
-                hidden: false,
+                hidden: true,
             },
             {
                 label: "2 Months Prediction",
                 data: PredictedDiseaseData2m.map((data) => data.chickenpox),
-                hidden: false,
+                hidden: true,
             },
             {
                 label: "3 Months Prediction",
                 data: PredictedDiseaseData3m.map((data) => data.chickenpox),
-                hidden: false,
+                hidden: true,
             },
             {
                 label: "6 Months Prediction",
                 data: PredictedDiseaseData6m.map((data) => data.chickenpox),
-                hidden: false,
+                hidden: true,
             },
             {
                 label: "12 Months Prediction",
                 data: PredictedDiseaseData12m.map((data) => data.chickenpox),
-                hidden: false,
+                hidden: true,
             },],
         })
     const [dengueData, setDengueData] = useState(
@@ -188,27 +188,27 @@ export default () => {
             {
                 label: "1 Month Prediction",
                 data: PredictedDiseaseData1m.map((data) => data.dengue),
-                hidden: false,
+                hidden: true,
             },
             {
                 label: "2 Months Prediction",
                 data: PredictedDiseaseData2m.map((data) => data.dengue),
-                hidden: false,
+                hidden: true,
             },
             {
                 label: "3 Months Prediction",
                 data: PredictedDiseaseData3m.map((data) => data.dengue),
-                hidden: false,
+                hidden: true,
             },
             {
                 label: "6 Months Prediction",
                 data: PredictedDiseaseData6m.map((data) => data.dengue),
-                hidden: false,
+                hidden: true,
             },
             {
                 label: "12 Months Prediction",
                 data: PredictedDiseaseData12m.map((data) => data.dengue),
-                hidden: false,
+                hidden: true,
             },
             ],
         })
@@ -223,29 +223,28 @@ export default () => {
             {
                label: "1 Month Prediction",
                 data: PredictedDiseaseData1m.map((data) => data.tuberculosis),
-                hidden: false,
+                hidden: true,
             },
             {
                label: "2 Months Prediction",
                 data: PredictedDiseaseData2m.map((data) => data.tuberculosis),
-                hidden: false,
+                hidden: true,
             },
             {
                label: "3 Months Prediction",
                 data: PredictedDiseaseData3m.map((data) => data.tuberculosis),
-                hidden: false,
+                hidden: true,
             },
             {
                label: "6 Months Prediction",
                 data: PredictedDiseaseData6m.map((data) => data.tuberculosis),
-                hidden: false,
+                hidden: true,
             },
             {
                label: "12 Months Prediction",
                 data: PredictedDiseaseData12m.map((data) => data.tuberculosis),
-                hidden: false,
+                hidden: true,
             },],
-
         })
 
     return (

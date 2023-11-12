@@ -260,7 +260,7 @@ const Diagnostics = () => {
   // Declare function call to server
   // ====================================================================================================
 
-  const baseURL = 'https://dohubapps.com/user/thomtt12/8000/predict';
+  const baseURL = 'https://dohubapps.com/user/thomtt12/5000/predict';
   const [pneumoniaResult, updateResult] = useState([]);
   const [imageFiles, setImageFiles] = useState('');
 

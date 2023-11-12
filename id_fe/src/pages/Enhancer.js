@@ -261,7 +261,7 @@ const Diagnostics = () => {
   // Declare function call to server
   // ====================================================================================================
 
-  const baseURL = 'https://dohubapps.com/user/thomtt12/8000/enhanced';
+  const baseURL = 'https://dohubapps.com/user/thomtt12/5000/enhanced';
   // const [covidResult, updateResult] = useState([]);
   const [imageFiles, setImageFiles] = useState([]);
   const [enhancedIimageFiles, setEnhancedImageFiles] = useState([]);

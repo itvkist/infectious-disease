@@ -5,6 +5,7 @@
 ```bash
 $ # Get the code
 $ git clone https://github.com/itvkist2/infectious-disease.git
+$ cd infectious-disease
 $
 $ #Run Backend Server
 $ cd id_be

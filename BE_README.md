@@ -2,6 +2,7 @@
 sequenceDiagram
 User ->> Client: "/disease/{id}"
 Client ->> Server: get disease
+Server ->> Server: query database
 Server-->>Client: return disease
 Client -->> User: show rendered HTML
 Note right of Client: Thông tin được gửi về <br/> từ Google Sheet dưới <br/> dạng trang web chia sẻ <br/> của trang tính.

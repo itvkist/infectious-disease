@@ -1,6 +1,6 @@
 ```mermaid
 sequenceDiagram
-User ->> Client: go to "https://.../disease/{id}"
+User ->> Client: "/disease/{id}"
 Client ->> Server: get disease
 Server-->>Client: return disease
 Client -->> User: show rendered HTML

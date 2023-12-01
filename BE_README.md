@@ -1,3 +1,4 @@
+```mermaid
 sequenceDiagram
 User ->> Github Page: go to "https://.../product/{id}"
 Github Page -->> Client: return website
@@ -6,8 +7,9 @@ Google Sheet-->>Client: return HTML
 Client ->> Client: crawl HTML
 Client -->> User: show rendered HTML
 Note right of Client: Thông tin được gửi về <br/> từ Google Sheet dưới <br/> dạng trang web chia sẻ <br/> của trang tính.
+```
 
-
+```mermaid
 sequenceDiagram
 User ->> Github Page: go to "https://.../product/{id}"
 Github Page -->> Client: return website
@@ -20,4 +22,5 @@ Note right of Client: Thông tin được gửi về <br/> từ Google Sheet dư
 User ->> Client: add to cart
 Client ->> Client: change Local Storage
 Client -->> User: show rendered HTML
+```
 

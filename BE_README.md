@@ -4,6 +4,15 @@ MedicalHistory "1..*" -- "1" Patient
 MedicalHistory "1..*" -- "1" Doctor
 MedicalHistory "1..*" -- "1..*" InfectiousDisease
 MedicalHistory "1..*" -- "1..*" Drug
+class MedicalHistory{
+    int id
+    List~string~ symptoms
+    List~string~ advice
+    Datetime date
+    setAdvice(List~string~ advice)
+    setSymptoms(List~string~ symptom)
+    getMedicalHistory() MedicalHistory
+}
 ```
 
 ```mermaid

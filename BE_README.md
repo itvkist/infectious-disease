@@ -64,6 +64,9 @@ class User {
     -List~string~ email
     -List~string~ address
     -Image avatar
+    -Datetime dob
+    -List~string~ gender
+    -List~string~ phone
     setPermission()
     verifyPassword()
     checkPermission()

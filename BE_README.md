@@ -2,8 +2,8 @@
 classDiagram
 MedicalHistory "1..*" -- "1" Patient
 MedicalHistory "1..*" -- "1" Doctor
-MedicalHistory "1" -- "1..*" InfectiousDisease
-MedicalHistory "1" -- "1..*" Drug
+MedicalHistory "1..*" -- "1..*" InfectiousDisease
+MedicalHistory "1..*" -- "1..*" Drug
 ```
 
 ```mermaid

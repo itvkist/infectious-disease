@@ -4,6 +4,10 @@ MedicalHistory "1..*" -- "1" Patient
 MedicalHistory "1..*" -- "1" Doctor
 MedicalHistory "1..*" -- "1..*" InfectiousDisease
 MedicalHistory "1..*" -- "1..*" Drug
+User <|-- Patient
+User <|-- Doctor
+User <|-- Admin
+User "1" o-- "1" UserPermission
 class MedicalHistory{
     -int id
     -List~string~ symptoms
@@ -51,10 +55,6 @@ class Drug {
     -List~string~ ingredents
     getDrug() Drug
 }
-User <|-- Patient
-User <|-- Doctor
-User <|-- Admin
-User "1" o-- "1" UserPermission
 class User {
     -int id
     -List~string~ username
@@ -78,7 +78,6 @@ class UserPermission {
     List~string~ role
     getPermission() List~string~
 }
-classDiagram
 AreaDisease "1" -- "1" InfectiousDisease
 AreaDisease "1" o-- "1" Area
 class AreaDisease {

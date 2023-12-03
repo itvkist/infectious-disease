@@ -179,6 +179,9 @@ class User {
     -List~string~ email
     -List~string~ address
     -Image avatar
+    -Datetime dob
+    -List~string~ gender
+    -List~string~ phone
     setPermission()
     verifyPassword()
     checkPermission()
@@ -306,6 +309,42 @@ erDiagram
         string product_id
         Image drug_image
         string ingredents
+    }
+```
+
+```mermaid
+erDiagram
+PATIENT ||--|| USER: is
+DOCTOR ||--|| USER: is
+ADMIN ||--|| USER: is
+USER ||--|| USER_PERMISSION: has
+    USER {
+        int id
+        string username
+        string password
+        string name
+        string email
+        string address
+        image avatar
+        datetime dob
+        string gender
+        string phone
+    }
+    ADMIN {
+        string name
+    }
+    USER_PERMISSION {
+        string name
+        string role
+    }
+    DOCTOR {
+        int id
+        string name
+        string affiliate
+    }
+    PATIENT {
+        int id
+        string name
     }
 ```
 

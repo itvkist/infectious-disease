@@ -7,6 +7,13 @@ MedicalHistory "1..*" -- "1..*" Drug
 ```
 
 ```mermaid
+classDiagram
+User --* Patient
+User --* Doctor
+User --* Admin
+```
+
+```mermaid
 sequenceDiagram
 User ->> Client: "/disease/{id}"
 Client ->> Server: get disease

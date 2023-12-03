@@ -51,6 +51,118 @@ class Drug {
     -List~string~ ingredents
     getDrug() Drug
 }
+User <|-- Patient
+User <|-- Doctor
+User <|-- Admin
+User "1" o-- "1" UserPermission
+class User {
+    -int id
+    -List~string~ username
+    -List~string~ password
+    -UserPermission permission
+    -List~string~ name
+    -List~string~ email
+    -List~string~ address
+    -Image avatar
+    setPermission()
+    verifyPassword()
+    checkPermission()
+    getUser() User
+}
+class Admin~User~ {
+    -List~string~ name
+    getAdmin() Admin
+}
+class UserPermission {
+    List~string~ name
+    List~string~ role
+    getPermission() List~string~
+}
+classDiagram
+AreaDisease "1" -- "1" InfectiousDisease
+AreaDisease "1" o-- "1" Area
+class AreaDisease {
+    -int id
+    -int degree
+    -int number_of_cases
+    -float longtitude
+    -float latitude
+    setArea(Area area)
+    setInfectiousDisease(InfectiousDisease ifd)
+    setNumberOfCase(int n)
+    getAreaDisease() List~string~
+}
+class Area {
+    -int id
+    -int code
+    -List~string~ type
+    -List~string~ map
+    getArea() Area
+}
+InfectiousDisease "1" *-- "1..*" NumberOfCase
+class NumberOfCase {
+    -int id
+    -int month
+    -int year
+    -int number_of_cases
+    setInfectiousDisease()
+    getNumberOfCase() NumberOfCase
+}
+```
+
+```mermaid
+classDiagram
+MedicalHistory "1..*" -- "1" Patient
+MedicalHistory "1..*" -- "1" Doctor
+MedicalHistory "1..*" -- "1..*" InfectiousDisease
+MedicalHistory "1..*" -- "1..*" Drug
+class MedicalHistory{
+    -int id
+    -List~string~ symptoms
+    -List~string~ advice
+    -Datetime date
+    setDoctor(Doctor~User~)
+    setPatient(Patient~User~)
+    setAdvice(List~string~ advice)
+    setSymptoms(List~string~ symptom)
+    getMedicalHistory() MedicalHistory
+}
+class Patient~User~{
+    -int id
+    -List~string~ name
+    createMedicalHistory()
+    setName(List~string~ name)
+    getName() List~string~ name
+}
+class Doctor~User~{
+    -int id
+    -List~string~ name
+    -List~string~ affiliate
+    answerMedicalHistory()
+    setName(List~string~ name)
+    getName() List~string~ name
+    setAffiliate(List~string~ affiliate)
+    getAffiliate() List~string~ affiliate
+}
+class InfectiousDisease {
+    -int id
+    -List~string~ label
+    -List~string~ name
+    -List~string~ symptom
+    -List~string~ effect
+    -List~string~ prevention
+    -List~string~ information
+    getInfectiousDisease() InfectiousDisease
+}
+class Drug {
+    -int id
+    -List~string~ name
+    -List~string~ vendor
+    -List~string~ product_id
+    -Image drug_image
+    -List~string~ ingredents
+    getDrug() Drug
+}
 ```
 
 ```mermaid

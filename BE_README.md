@@ -525,3 +525,14 @@ Client -->> Patient: show rendered HTML
 Note right of Client: Thông tin được gửi về <br/> từ Google Sheet dưới <br/> dạng trang web chia sẻ <br/> của trang tính.
 ```
 
+```mermaid
+sequenceDiagram
+Doctor ->> Client: "/answerCase/{id}"
+Client ->> Server: answer case
+Server ->> Server: verify doctor
+Server ->> Server: get case
+Server ->> Server: save case information to database
+Server-->>Client: return result
+Client -->> Doctor: show rendered HTML
+Note right of Client: Thông tin được gửi về <br/> từ Google Sheet dưới <br/> dạng trang web chia sẻ <br/> của trang tính.
+```

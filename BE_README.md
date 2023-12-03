@@ -1,7 +1,7 @@
 ```mermaid
 classDiagram
-MedicalHistory -- Patient : Cool
-MedicalHistory -- Doctor : Cool
+MedicalHistory "1..*" -- "1" Patient
+MedicalHistory "1..*" -- "1" Doctor
 
 ```
 

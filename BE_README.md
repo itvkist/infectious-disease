@@ -278,6 +278,91 @@ erDiagram
     PATIENT ||--o{ MEDICAL_HISTORY: has
     MEDICAL_HISTORY }|--|{ INFECTIOUS_DISEASE: contains
     MEDICAL_HISTORY }|--|{ DRUG: contains
+    PATIENT ||--|| USER: is
+    DOCTOR ||--|| USER: is
+    ADMIN ||--|| USER: is
+    USER ||--|| USER_PERMISSION: has
+    AREA_DISEASE ||--|| INFECTIOUS_DISEASE: has
+    AREA_DISEASE ||--|| AREA: has
+    INFECTIOUS_DISEASE ||--|{ NUMBER_OF_CASE: contains
+    NUMBER_OF_CASE {
+        int id
+        int month
+        int year
+        int number_of_cases
+    }
+    AREA_DISEASE {
+        int id
+        int degree
+        int number_of_cases
+        float longtitude
+        float latitude
+    }
+    AREA {
+        int id
+        int code
+        string type
+        string map
+    }
+    USER {
+        int id
+        string username
+        string password
+        string name
+        string email
+        string address
+        image avatar
+        datetime dob
+        string gender
+        string phone
+    }
+    ADMIN {
+        string name
+    }
+    USER_PERMISSION {
+        string name
+        string role
+    }
+    MEDICAL_HISTORY {
+        int id
+        string symptoms
+        string advice
+        datetime date
+    }
+    DOCTOR {
+        int id
+        string name
+        string affiliate
+    }
+    PATIENT {
+        int id
+        string name
+    }
+    INFECTIOUS_DISEASE {
+        int id
+        string label
+        string name
+        string symptom
+        string effect
+        string prevention
+        string information
+    }
+    DRUG {
+        int id
+        string name
+        string vendor
+        string product_id
+        Image drug_image
+        string ingredents
+    }
+```
+
+```mermaid
+erDiagram
+    DOCTOR ||--o{ MEDICAL_HISTORY: has
+    PATIENT ||--o{ MEDICAL_HISTORY: has
+    MEDICAL_HISTORY }|--|{ INFECTIOUS_DISEASE: contains
+    MEDICAL_HISTORY }|--|{ DRUG: contains
     MEDICAL_HISTORY {
         int id
         string symptoms

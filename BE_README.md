@@ -5,27 +5,27 @@ MedicalHistory "1..*" -- "1" Doctor
 MedicalHistory "1..*" -- "1..*" InfectiousDisease
 MedicalHistory "1..*" -- "1..*" Drug
 class MedicalHistory{
-    int id
-    List~string~ symptoms
-    List~string~ advice
-    Datetime date
-    -setDoctor(Doctor~User~)
-    -setPatient(Patient~User~)
+    -int id
+    -List~string~ symptoms
+    -List~string~ advice
+    -Datetime date
+    setDoctor(Doctor~User~)
+    setPatient(Patient~User~)
     setAdvice(List~string~ advice)
     setSymptoms(List~string~ symptom)
     getMedicalHistory() MedicalHistory
 }
 class Patient~User~{
-    int id
-    List~string~ name
+    -int id
+    -List~string~ name
     createMedicalHistory()
     setName(List~string~ name)
     getName() List~string~ name
 }
 class Doctor~User~{
-    int id
-    List~string~ name
-    List~string~ affiliate
+    -int id
+    -List~string~ name
+    -List~string~ affiliate
     answerMedicalHistory()
     setName(List~string~ name)
     getName() List~string~ name
@@ -33,22 +33,22 @@ class Doctor~User~{
     getAffiliate() List~string~ affiliate
 }
 class InfectiousDisease {
-    int id
-    List~string~ label
-    List~string~ name
-    List~string~ symptom
-    List~string~ effect
-    List~string~ prevention
-    List~string~ information
+    -int id
+    -List~string~ label
+    -List~string~ name
+    -List~string~ symptom
+    -List~string~ effect
+    -List~string~ prevention
+    -List~string~ information
     getInfectiousDisease() InfectiousDisease
 }
 class Drug {
-    int id
-    List~string~ name
-    List~string~ vendor
-    List~string~ product_id
-    Image drug_image
-    List~string~ ingredents
+    -int id
+    -List~string~ name
+    -List~string~ vendor
+    -List~string~ product_id
+    -Image drug_image
+    -List~string~ ingredents
     getDrug() Drug
 }
 ```
@@ -59,6 +59,20 @@ User <|-- Patient
 User <|-- Doctor
 User <|-- Admin
 User "1" o-- "1" UserPermission
+class User {
+    -int id
+    -username
+    -password
+    -permission
+    -name
+    -email
+    -address
+    -avatar
+    setPermission()
+    verifyPassword()
+    checkPermission()
+    getUser() User
+}
 ```
 
 ```mermaid

@@ -378,7 +378,7 @@ AREA_DISEASE ||--|| AREA: has
 
 ```mermaid
 erDiagram
-INFECTIOUS_DISEASE ||--|{ NUMBER_OF_CASE
+INFECTIOUS_DISEASE ||--|{ NUMBER_OF_CASE: contains
     INFECTIOUS_DISEASE {
         int id
         string label

@@ -270,6 +270,46 @@ class NumberOfCase {
 ```
 
 ```mermaid
+erDiagram
+    DOCTOR ||--o{ MEDICAL_HISTORY: has
+    PATIENT ||--o{ MEDICAL_HISTORY: has
+    MEDICAL_HISTORY }|--|{ INFECTIOUS_DISEASE: contains
+    MEDICAL_HISTORY }|--|{ DRUG: contains
+    MEDICAL_HISTORY {
+        int id
+        string symptoms
+        string advice
+        datetime date
+    }
+    DOCTOR {
+        int id
+        string name
+        string affiliate
+    }
+    PATIENT {
+        int id
+        string name
+    }
+    INFECTIOUS_DISEASE {
+        int id
+        string label
+        string name
+        string symptom
+        string effect
+        string prevention
+        string information
+    }
+    DRUG {
+        int id
+        string name
+        string vendor
+        string product_id
+        Image drug_image
+        string ingredents
+    }
+```
+
+```mermaid
 sequenceDiagram
 User ->> Client: "/disease/{id}"
 Client ->> Server: get disease

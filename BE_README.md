@@ -9,9 +9,47 @@ class MedicalHistory{
     List~string~ symptoms
     List~string~ advice
     Datetime date
+    -setDoctor(Doctor~User~)
+    -setPatient(Patient~User~)
     setAdvice(List~string~ advice)
     setSymptoms(List~string~ symptom)
     getMedicalHistory() MedicalHistory
+}
+class Patient~User~{
+    int id
+    List~string~ name
+    createMedicalHistory()
+    setName(List~string~ name)
+    getName() List~string~ name
+}
+class Doctor~User~{
+    int id
+    List~string~ name
+    List~string~ affiliate
+    answerMedicalHistory()
+    setName(List~string~ name)
+    getName() List~string~ name
+    setAffiliate(List~string~ affiliate)
+    getAffiliate() List~string~ affiliate
+}
+class InfectiousDisease {
+    int id
+    List~string~ label
+    List~string~ name
+    List~string~ symptom
+    List~string~ effect
+    List~string~ prevention
+    List~string~ information
+    getInfectiousDisease() InfectiousDisease
+}
+class Drug {
+    int id
+    List~string~ name
+    List~string~ vendor
+    List~string~ product_id
+    Image drug_image
+    List~string~ ingredents
+    getDrug() Drug
 }
 ```
 

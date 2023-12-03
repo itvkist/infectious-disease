@@ -483,7 +483,32 @@ INFECTIOUS_DISEASE ||--|{ NUMBER_OF_CASE: contains
 
 ```mermaid
 sequenceDiagram
-User ->> Client: "/disease/{id}"
+User ->> Client: "/signup"
+Client ->> Client: validateInformation
+Client ->> Server: createAccount
+Server ->> Server: normalizeInformation
+Server ->> Server: constructNewInstance
+Server ->> Server: save to database
+Server-->>Client: return result
+Client -->> User: show rendered HTML
+Note right of Client: Thông tin được gửi về <br/> từ Google Sheet dưới <br/> dạng trang web chia sẻ <br/> của trang tính.
+```
+
+```mermaid
+sequenceDiagram
+User ->> Client: "/signin"
+Client ->> Client: validateInformation
+Client ->> Server: signInAccount
+Server ->> Server: validateEmail
+Server ->> Server: validatePassword
+Server-->>Client: return token
+Client -->> User: show rendered HTML
+Note right of Client: Thông tin được gửi về <br/> từ Google Sheet dưới <br/> dạng trang web chia sẻ <br/> của trang tính.
+```
+
+```mermaid
+sequenceDiagram
+User ->> Client: "/disease/{disease_id}"
 Client ->> Server: get disease
 Server ->> Server: query database
 Server-->>Client: return disease
@@ -493,7 +518,7 @@ Note right of Client: Thông tin được gửi về <br/> từ Google Sheet dư
 
 ```mermaid
 sequenceDiagram
-Doctor ->> Client: "/patient/{id}"
+Doctor ->> Client: "/patient/{patient_id}"
 Client ->> Server: get patient
 Server ->> Server: verify doctor
 Server ->> Server: query database
@@ -504,12 +529,23 @@ Note right of Client: Thông tin được gửi về <br/> từ Google Sheet dư
 
 ```mermaid
 sequenceDiagram
-Patient ->> Client: "/doctor/{id}"
+Patient ->> Client: "/doctor/{doctor_id}"
 Client ->> Server: get doctor
 Server ->> Server: verify patient
 Server ->> Server: query database
 Server-->>Client: return doctor
 Client -->> Patient: show rendered HTML
+Note right of Client: Thông tin được gửi về <br/> từ Google Sheet dưới <br/> dạng trang web chia sẻ <br/> của trang tính.
+```
+
+```mermaid
+sequenceDiagram
+User ->> Client: "/case/{case_id}"
+Client ->> Server: get case
+Server ->> Server: verify user
+Server ->> Server: query database
+Server-->>Client: return doctor
+Client -->> User: show rendered HTML
 Note right of Client: Thông tin được gửi về <br/> từ Google Sheet dưới <br/> dạng trang web chia sẻ <br/> của trang tính.
 ```
 
@@ -527,12 +563,32 @@ Note right of Client: Thông tin được gửi về <br/> từ Google Sheet dư
 
 ```mermaid
 sequenceDiagram
-Doctor ->> Client: "/answerCase/{id}"
+Doctor ->> Client: "/answerCase/{case_id}"
 Client ->> Server: answer case
 Server ->> Server: verify doctor
 Server ->> Server: get case
 Server ->> Server: save case information to database
 Server-->>Client: return result
 Client -->> Doctor: show rendered HTML
+Note right of Client: Thông tin được gửi về <br/> từ Google Sheet dưới <br/> dạng trang web chia sẻ <br/> của trang tính.
+```
+
+```mermaid
+sequenceDiagram
+User ->> Client: "/number_of_case/{disease_id}"
+Client ->> Server: get number of case
+Server ->> Server: get disease by id
+Server-->>Client: return resule
+Client -->> User: show rendered HTML
+Note right of Client: Thông tin được gửi về <br/> từ Google Sheet dưới <br/> dạng trang web chia sẻ <br/> của trang tính.
+```
+
+```mermaid
+sequenceDiagram
+User ->> Client: "/area_disease/{area_id}"
+Client ->> Server: get disease by area
+Server ->> Server: query database
+Server-->>Client: return disease statistic
+Client -->> User: show rendered HTML
 Note right of Client: Thông tin được gửi về <br/> từ Google Sheet dưới <br/> dạng trang web chia sẻ <br/> của trang tính.
 ```

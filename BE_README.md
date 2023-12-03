@@ -349,6 +349,54 @@ USER ||--|| USER_PERMISSION: has
 ```
 
 ```mermaid
+erDiagram
+AREA_DISEASE ||--|| INFECTIOUS_DISEASE: has
+AREA_DISEASE ||--|| AREA: has
+    AREA_DISEASE {
+        int id
+        int degree
+        int number_of_cases
+        float longtitude
+        float latitude
+    }
+    AREA {
+        int id
+        int code
+        string type
+        string map
+    }
+    INFECTIOUS_DISEASE {
+        int id
+        string label
+        string name
+        string symptom
+        string effect
+        string prevention
+        string information
+    }
+```
+
+```mermaid
+erDiagram
+INFECTIOUS_DISEASE ||--|{ NUMBER_OF_CASE
+    INFECTIOUS_DISEASE {
+        int id
+        string label
+        string name
+        string symptom
+        string effect
+        string prevention
+        string information
+    }
+    NUMBER_OF_CASE {
+        int id
+        int month
+        int year
+        int number_of_cases
+    }
+```
+
+```mermaid
 sequenceDiagram
 User ->> Client: "/disease/{id}"
 Client ->> Server: get disease

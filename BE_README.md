@@ -8,9 +8,9 @@ MedicalHistory "1..*" -- "1..*" Drug
 
 ```mermaid
 classDiagram
-User --* Patient
-User --* Doctor
-User --* Admin
+User <|-- Patient
+User <|-- Doctor
+User <|-- Admin
 ```
 
 ```mermaid

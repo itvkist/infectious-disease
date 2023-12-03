@@ -1,4 +1,5 @@
 ```mermaid
+classDiagram
 MedicalHistory -- Patient : Cool
 MedicalHistory -- Doctor : Cool
 

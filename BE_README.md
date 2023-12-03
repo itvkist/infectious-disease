@@ -1,15 +1,7 @@
-----
+```mermaid
+MedicalHistory -- Patient : Cool
+MedicalHistory -- Doctor : Cool
 
-```
- |
- +-- UML
- |    |
- |    +-- Instance.puml
- |         ...    
- |
- +-- README.md
-      ...
-        
 ```
 
 ```mermaid

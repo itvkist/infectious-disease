@@ -1,3 +1,17 @@
+----
+
+```
+ |
+ +-- UML
+ |    |
+ |    +-- Instance.puml
+ |         ...    
+ |
+ +-- README.md
+      ...
+        
+```
+
 ```mermaid
 sequenceDiagram
 User ->> Client: "/disease/{id}"

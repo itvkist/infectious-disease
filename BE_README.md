@@ -11,6 +11,13 @@ classDiagram
 User <|-- Patient
 User <|-- Doctor
 User <|-- Admin
+User o-- UserPermission
+```
+
+```mermaid
+classDiagram
+AreaDisease "1" -- "1" InfectiousDisease
+AreaDisease "1" o-- "1" Area
 ```
 
 ```mermaid

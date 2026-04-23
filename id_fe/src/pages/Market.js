@@ -9,7 +9,6 @@ import {
   message,
   Modal,
   Radio,
-  Select,
   Table,
   Tabs,
   Typography,
@@ -21,7 +20,6 @@ import {
 import moment from "moment";
 import Context from "services/context";
 import { getDemands, postDemand } from "services/axios/market";
-import { Link } from "react-router-dom";
 import { ReloadOutlined, PlusOutlined } from "@ant-design/icons";
 import { compareStringPro } from "services/helper";
 import { ERR_CODE_API } from "services/axios";
@@ -35,10 +33,6 @@ export const detailColumns = [
   { name: "Họ và tên", api_name: "name" },
   { name: "Số điện thoại", api_name: "phone" },
   { name: "Miêu tả", api_name: "description" },
-  {
-    name: "Thông tin chi tiết (kg * VNĐ/kg = VNĐ)",
-    api_name: "details",
-  },
   {
     name: "Thời gian bắt đầu",
     api_name: "start_time",
@@ -75,104 +69,15 @@ export const renderDetail = (data) => {
   );
 };
 
-export const DEFAULT_ERROR = {
-  cassava_label: false,
-  weight: false,
-  price: false,
-};
-
-export const DEFAULT_SELECTED_CASSAVAS = {
-  cassava_label: null,
-  weight: null,
-  price: null,
-  error: { ...DEFAULT_ERROR },
-};
-
 const CreateForm = (props) => {
-  const context = useContext(Context);
   const [form] = Form.useForm();
-  const [selectedCassavas, setSelectedCassavas] = useState([
-    { ...DEFAULT_SELECTED_CASSAVAS, error: { ...DEFAULT_ERROR } },
-  ]);
-  const [cass_error, setCassError] = useState(false);
-
-  const onSelectCassava = (value, i, type) => {
-    var _selectedCassavas = [...selectedCassavas];
-    value = !value || value?.length < 1 ? null : value;
-    if (
-      !value &&
-      ((type === "cassava_label" &&
-        !selectedCassavas[i].weight &&
-        !selectedCassavas[i].price) ||
-        (type === "weight" &&
-          !selectedCassavas[i].cassava_label &&
-          !selectedCassavas[i].price) ||
-        (type === "price" &&
-          !selectedCassavas[i].cassava_label &&
-          !selectedCassavas[i].weight))
-    ) {
-      _selectedCassavas.splice(i, 1);
-    } else _selectedCassavas[i][type] = value;
-
-    const len = _selectedCassavas.length - 1;
-    if (
-      value &&
-      len === i &&
-      _selectedCassavas[len].cassava_label &&
-      _selectedCassavas[len].weight &&
-      _selectedCassavas[len].price
-    )
-      _selectedCassavas.push({
-        ...DEFAULT_SELECTED_CASSAVAS,
-        error: { ...DEFAULT_ERROR },
-      });
-
-    setSelectedCassavas(_selectedCassavas);
-  };
-
-  const validateSelectedCassavas = () => {
-    if (selectedCassavas.length <= 1) {
-      setCassError(true);
-      return false;
-    } else setCassError(false);
-    var check = true;
-    const _selectedCassavas = [...selectedCassavas];
-    _selectedCassavas.forEach((i, index) => {
-      if (index === _selectedCassavas.length - 1) return;
-      if (!i.cassava_label) {
-        i.error.cassava_label = true;
-        check = false;
-      } else i.error.cassava_label = false;
-      if (!i.weight) {
-        i.error.weight = true;
-        check = false;
-      } else i.error.weight = false;
-      if (!i.price) {
-        i.error.price = true;
-        check = false;
-      } else i.error.price = false;
-    });
-    setSelectedCassavas(_selectedCassavas);
-    return check;
-  };
 
   const onOk = () => {
-    const check = validateSelectedCassavas();
     form
       .validateFields()
       .then((values) => {
-        if (check) {
-          const convert = {};
-          selectedCassavas.forEach((i) => {
-            if (i.cassava_label)
-              convert[i.cassava_label] = {
-                weight: i.weight,
-                price: i.price,
-              };
-          });
-          form.resetFields();
-          props.onCreate({ ...values, details: JSON.stringify(convert) });
-        } else message.error("Vui lòng điền đủ thông tin!");
+        form.resetFields();
+        props.onCreate(values);
       })
       .catch(() => {});
   };
@@ -268,62 +173,6 @@ const CreateForm = (props) => {
           </Form.Item>
         </div>
 
-        <div className="w-full space-y-2 mb-8">
-          <label>
-            <span className="text-red-500">*</span> Loại sắn
-          </label>
-          {selectedCassavas.map((c, i) => (
-            <div key={i} className="flex justify-between space-x-1">
-              <div style={{ flex: 1 }}>
-                <Select
-                  status={c.error.cassava_label ? "error" : ""}
-                  allowClear
-                  placeholder="Loại sắn"
-                  className="w-full"
-                  value={c.cassava_label}
-                  onChange={(value) =>
-                    onSelectCassava(value, i, "cassava_label")
-                  }
-                  options={
-                    context?.cassava?.map((c) => ({
-                      label: c.label,
-                      value: c.label,
-                    })) || []
-                  }
-                />
-              </div>
-              <div style={{ flex: 2 }}>
-                <Input
-                  status={c.error.weight ? "error" : ""}
-                  allowClear
-                  value={c.weight}
-                  onChange={(e) => onSelectCassava(e.target.value, i, "weight")}
-                  type="number"
-                  min={1}
-                  suffix="kg"
-                  placeholder="Khối lượng"
-                />
-              </div>
-              <div style={{ flex: 3 }}>
-                <Input
-                  status={c.error.price ? "error" : ""}
-                  allowClear
-                  value={c.price}
-                  onChange={(e) => onSelectCassava(e.target.value, i, "price")}
-                  type="number"
-                  step={500}
-                  min={1000}
-                  suffix="VND/kg"
-                  placeholder="Giá/kg"
-                />
-              </div>
-            </div>
-          ))}
-          <div className={cass_error ? "text-red-500" : "hidden"}>
-            Vui lòng điền đủ thông tin!
-          </div>
-        </div>
-
         <Form.Item
           name="time"
           label="Thời gian diễn ra"
@@ -366,36 +215,7 @@ export default () => {
         : {
             title: i.name,
             dataIndex: i.api_name,
-            render: (text) => {
-              if (i.api_name !== detailColumns[4].api_name)
-                return text || "Chưa có thông tin";
-              const val = JSON.parse(text);
-              if (!val) return "Chưa có thông tin";
-              const cassava_labels = Object.keys(val);
-              return (
-                <div className="w-[400px]">
-                  {cassava_labels.map((i) => {
-                    return (
-                      <div key={i} className="flex">
-                        <div style={{ flex: 2 }}>
-                          {"- "}
-                          <Link
-                            to={
-                              "/cassavas/" +
-                              context?.cassava?.find((c) => c.label === i)?.id
-                            }
-                            className="text-blue-600"
-                          >
-                            {i}
-                          </Link>
-                        </div>
-                        {renderDetail(val[i]) || "Chưa có thông tin"}
-                      </div>
-                    );
-                  })}
-                </div>
-              );
-            },
+            render: (text) => text || "Chưa có thông tin",
           }
     ),
   ];

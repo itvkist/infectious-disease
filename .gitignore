@@ -1,5 +1,5 @@
 ############################
-# OS X
+# macOS
 ############################
 
 .DS_Store
@@ -33,7 +33,109 @@ $RECYCLE.BIN/
 
 
 ############################
-# Packages
+# Python
+############################
+
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+*.manifest
+*.spec
+pip-log.txt
+pip-delete-this-directory.txt
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+*.mo
+*.pot
+local_settings.py
+db.sqlite3
+instance/
+.webassets-cache
+.scrapy
+docs/_build/
+target/
+.ipynb_checkpoints
+profile_default/
+ipython_config.py
+.python-version
+celerybeat-schedule
+*.sage.py
+.spyderproject
+.spyproject
+.ropeproject
+/site
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+
+# Virtual environments
+pyvenv.cfg
+bin/
+include/
+Scripts/
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+
+############################
+# Node.js
+############################
+
+node_modules/
+.node_history
+/.pnp
+.pnp.js
+lib-cov
+lcov.info
+
+
+############################
+# Logs and databases
+############################
+
+*.log
+*.sqlite
+*.sqlite3
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+pids/
+
+
+############################
+# Archives / binaries
 ############################
 
 *.7z
@@ -51,7 +153,6 @@ $RECYCLE.BIN/
 *.exe
 *.o
 *.seed
-*.so
 *.swo
 *.swp
 *.swn
@@ -61,50 +162,13 @@ $RECYCLE.BIN/
 
 
 ############################
-# Logs and databases
+# Build and distribution
 ############################
 
-.tmp
-*.log
-*.sqlite
-*.sqlite3
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-
-############################
-# Misc.
-############################
-
-*#
-ssl
-.idea
-nbproject
-id_be/public/uploads/*
-!id_be/public/uploads/.gitkeep
-
-
-############################
-# Node.js
-############################
-
-lib-cov
-lcov.info
-pids
-logs
-results
-node_modules
-.node_history
-/.pnp
-.pnp.js
-
-
-############################
-# Tests
-############################
-
-coverage
+build/
+dist/
+*.cache
+coverage/
 
 
 ############################
@@ -119,18 +183,37 @@ coverage
 
 
 ############################
-# Build output
+# Editors and IDEs
 ############################
 
-build
-dist
-*.cache
+.vscode/
+.idea/
+nbproject/
+.tmp
 
 
 ############################
-# Backend (Strapi)
+# Strapi (id_be)
 ############################
 
 license.txt
-exports
+exports/
 .strapi-updater.json
+id_be/public/uploads/*
+!id_be/public/uploads/.gitkeep
+
+
+############################
+# ML models
+############################
+
+model/
+
+
+############################
+# Runtime output
+############################
+
+results/
+ssl/
+*#

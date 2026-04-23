@@ -1,6 +1,5 @@
 import "./style.css";
 import ForgotPassword from "./ForgotPassword";
-import Cassavas, { CassavaDetail } from "./Cassavas";
 import Diseases, { DiseaseDetail } from "./Diseases";
 import Homepage from "./Homepage";
 import Maps from "./Maps";
@@ -18,8 +17,6 @@ import Flu from "./Flu";
 
 export {
   ForgotPassword,
-  Cassavas,
-  CassavaDetail,
   Datawarehouse,
   Pneumonia,
   Diseases,

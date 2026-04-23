@@ -187,7 +187,6 @@ export default () => {
                 opening === 1 ? "flex " : "hidden "
               } flex flex-col space-y-2`}
             >
-              <NavLink to="/cassavas">Các giống sắn</NavLink>
               <NavLink to="/diseases">Các bệnh về sắn</NavLink>
               <NavLink to="/diagnostics">Chẩn đoán bệnh</NavLink>
               <NavLink to="/market">Thương mại sắn</NavLink>

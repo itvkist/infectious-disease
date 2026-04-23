@@ -11,8 +11,6 @@ import {
 import { getUser, updateUser } from "services/axios/user";
 import { validatePassword } from "services/helper";
 import { ERR_CODE_API } from "services/axios";
-const { Option } = Select;
-
 const formItemLayout = {
   labelCol: {
     xs: {
@@ -59,17 +57,13 @@ export default () => {
   const [profileForm] = Form.useForm();
   const [renewPassDisplay, setRenewPassDisplay] = useState(false);
   const [user, setUser] = useState(null);
-  const [cassavaData, setCassavaData] = useState([]);
-
   useEffect(() => {
-    if (context?.cassava) {
-      setCassavaData(context.cassava);
-      if (context.user)
-        if (context?.user?.id && context.user?.role) setUser(context?.user);
-        else message.error(ERR_CODE_API[403].message);
+    if (context?.user) {
+      if (context?.user?.id && context.user?.role) setUser(context?.user);
+      else message.error(ERR_CODE_API[403].message);
     }
     // eslint-disable-next-line
-  }, [context?.cassava, context?.user]);
+  }, [context?.user]);
 
   useEffect(() => {
     if (user) {
@@ -83,53 +77,11 @@ export default () => {
         const desc = JSON.parse(user.description);
         formDataConverted.desc_detail =
           desc.detail.length > 0 ? desc.detail.join("\n") : "";
-        if (desc.cassava) {
-          const active = [];
-          const inactive = [];
-          Object.keys(desc.cassava).forEach((key) => {
-            if (desc.cassava[key] === "active") active.push(key);
-            if (desc.cassava[key] === "inactive") inactive.push(key);
-          });
-          formDataConverted.desc_cassava_active = active;
-          formDataConverted.desc_cassava_inactive = inactive;
-        }
       }
       profileForm.setFieldsValue({ ...formDataConverted });
     }
     // eslint-disable-next-line
   }, [user]);
-
-  const CassavaOptions = () => {
-    return (
-      <>
-        {cassavaData.map((cassava) => (
-          <Option
-            value={cassava.label}
-            label={cassava.label}
-            key={cassava.label}
-          >
-            {cassava.label}
-          </Option>
-        ))}
-      </>
-    );
-  };
-
-  const handleSelect = (value, type) => {
-    const active = profileForm.getFieldValue("desc_cassava_active") || [];
-    const inactive = profileForm.getFieldValue("desc_cassava_inactive") || [];
-    if (type === "active" && inactive.includes(value))
-      profileForm.setFieldValue(
-        "desc_cassava_inactive",
-        inactive.filter((item) => item !== value)
-      );
-
-    if (type === "inactive" && active.includes(value))
-      profileForm.setFieldValue(
-        "desc_cassava_active",
-        active.filter((item) => item !== value)
-      );
-  };
 
   const submitUpdateProfile = async (formValues) => {
     const formatData = {};
@@ -138,18 +90,7 @@ export default () => {
       (formValues.desc_detail || "").trim() !== ""
         ? formValues.desc_detail.trim().split("\n")
         : [];
-    const desc_cassava = {
-      ...(formValues.desc_cassava_active || []).reduce((acc, cur) => {
-        acc[cur] = "active";
-        return acc;
-      }, {}),
-      ...(formValues.desc_cassava_inactive || []).reduce((acc, cur) => {
-        acc[cur] = "inactive";
-        return acc;
-      }, {}),
-    };
     if (desc_detail.length > 0) desc.detail = desc_detail;
-    if (Object.keys(desc_cassava).length > 0) desc.cassava = desc_cassava;
     if (Object.keys(desc).length > 0)
       formatData.description = JSON.stringify(desc);
 
@@ -212,29 +153,6 @@ export default () => {
                 <Input />
               </Form.Item>
             ))}
-            <Form.Item
-              label="Các giống sắn đang cung cấp"
-              name="desc_cassava_active"
-            >
-              <Select
-                mode="multiple"
-                onSelect={(val) => handleSelect(val, "active")}
-              >
-                {CassavaOptions()}
-              </Select>
-            </Form.Item>
-
-            <Form.Item
-              label="Các giống sắn ngừng cung cấp"
-              name="desc_cassava_inactive"
-            >
-              <Select
-                mode="multiple"
-                onSelect={(val) => handleSelect(val, "inactive")}
-              >
-                {CassavaOptions()}
-              </Select>
-            </Form.Item>
             <Form.Item label="Thông tin chi tiết" name="desc_detail">
               <Input.TextArea />
             </Form.Item>

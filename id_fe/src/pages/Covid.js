@@ -260,7 +260,7 @@ const Diagnostics = () => {
   // Declare function call to server
   // ====================================================================================================
 
-  const baseURL = 'https://dohubapps.com/user/vietbacnguyen96/7002/getData';
+  const baseURL = 'http://localhost:7002/getData';
   const [covidResult, updateResult] = useState([]);
   const [imageFiles, setImageFiles] = useState('');
 

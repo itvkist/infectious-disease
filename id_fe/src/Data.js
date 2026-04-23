@@ -639,7 +639,7 @@ export async function updatePredictedDiseaseData() {
     const latestMonthData = DiseaseData[DiseaseData.length - 1];
     const current_month = latestMonthData.month;
     const nextMonths = [1, 2, 3];
-    const apiUrl = "https://dohubapps.com/user/nhocatofb/5000/predict";
+    const apiUrl = "http://localhost:5000/predict";
 
     nextMonths.forEach((next_month) => {
         const requestBody = {

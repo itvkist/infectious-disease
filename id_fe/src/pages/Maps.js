@@ -40,7 +40,6 @@ export const DEFAULT_AREA_DATA = {
     ward: null,
     disease: null,
     degree: null,
-    cassava: null,
   },
 };
 
@@ -149,9 +148,6 @@ export default () => {
     return (
       areaDiseaseData?.filter((i) => {
         var bool = true;
-        if (bool && areaData.selectedData.cassava) {
-          bool = i.cassava_label === areaData.selectedData.cassava.label;
-        }
         if (bool && areaData.selectedData.disease) {
           bool = i.disease_label === areaData.selectedData.disease.label;
         }
@@ -427,16 +423,6 @@ export default () => {
                         className="text-indigo-500 underline hover:text-indigo-700 hover:underline"
                       >
                         {item.disease_name}
-                      </Link>
-                      {" - "}
-                      <Link
-                        to={
-                          "/cassavas/" +
-                          (item.cassava_id ? item.cassava_id : "")
-                        }
-                        className="text-indigo-500 underline hover:text-indigo-700 hover:underline"
-                      >
-                        {item.cassava_name}
                       </Link>
                     </div>
                     <Typography.Text>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="icon" href="https://ai-tools.one/icon.png"> -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link href="{{ url_for('static') }}" />
+    <link rel="stylesheet" href="https://dohubapps.com/user/thomtt12/8000/static/slider.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap');
+        @font-face {
+            font-family: 'Times New Roman';
+            /* font-family: MTO-astro-city;
+            src: url('MTO\ Astro\ City.ttf'); */
+        }
+        /* * {
+        box-sizing: border-box;
+        } */
+        /* body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            background: coral
+            
+            font-family: 'Times New Roman';
+            user-select: none;
+            text-align: center;
+            padding: 0.5rem 1rem 1rem;
+            width: 100%
+        } */
+
+        .title-menu {
+            /* font-family: 'Kanit', sans-serif; */
+            font-family: 'Times New Roman';
+            border: none;
+            font-size: 1.5em;
+            background-color: none;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .title-menu {
+            outline: none;
+        }
+
+        .header {
+            margin: 1rem auto;
+        }
+
+        .compress-text {
+            margin-top: 0.2rem;
+        }
+
+        .compress-text span {
+            color: indianred;
+        }
+
+        .btn {
+        display: inline-block;
+        margin: 0 0.5rem;
+        padding: 0.2rem;
+        width: 10rem;
+        border-radius: 5px;
+        border: 2px solid #333;
+        background-color: #f8f7f3;
+        box-shadow: 2px 2px 0 2px #333;
+        cursor: pointer;
+        }
+
+        input[type="file"] {
+        display: none;
+        }
+
+        .preview{
+            margin-top: 1rem;
+            min-width: 10rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 1rem;
+            border: 2px solid #000;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+        
+        .preview .img-box {
+            flex: 1;
+        }
+        .preview .title {
+            margin-bottom: 0.5rem;
+        }
+        .preview .wrap-img {
+            display: block;
+            position: relative;
+        }
+        .wrap-img .text-box{
+            z-index: 1000;
+            display: block;
+            position: absolute;
+            font-family: 'MTO-astro-city', Courier, monospace;
+        }
+        .preview img {
+            width: 100%;
+            min-width: 10vw;
+            background-color: #eee;
+            border-radius: 5px;
+            max-width: 30vw;
+        }
+        .hint {
+            margin-top: 0.5rem;
+            color: #999;
+            /* font-size: 0.9em; */
+        }
+
+        @media screen and (max-width: 992px) {
+            .btn {
+                margin-top: 1rem;
+            }
+            .preview {
+                flex-direction: column;
+            }
+            .preview .wrap-img {
+                width: 100%;
+                margin-right: 0;
+                max-width: none;
+            }
+        }
+    </style>
+    
+    <title>Enhanced Image</title>
+</head>
+<body>
+
+    
+    
+    <h1 style="margin: 0;"> 
+        <select class="title-menu" id="title-menu" onchange="onMenuChange()">
+            <option value="enhanced" selected="">Cải thiện chất lượng ảnh X-quang</option>
+            <option value="predict">Pneumonia Prediction</option>
+            <!-- <div value="enhanced" id="title-menu">Cải thiện chất lượng ảnh X-quang</div> -->
+            <!-- <option value="matting" selected="">People Matting Tool</option>
+            
+            <option value="crop_image">Face ID Image Cropping Tool</option>
+            <option value="white_balance">White Balance Tool</option>
+            <option value="rotate_by_eye">Align Face Image by Eye Tool</option>
+            <option value="superesolution">Superesolution Tool</option>
+            <option value="sub">Manga Subtitle Tool</option> -->
+        </select> 
+    </h1>
+
+    <div class="header">
+        <label for="upload" class="btn">Tải lên dạng .DICOM </label>
+        <label for="upload" class="btn">Tải lên </label>
+        
+        <input type="file" accept="image/jpg,image/jpeg,image/png,image/bmp,*/dicom,.dcm, image/dcm, */dcm, .dicom" id="upload" onchange="onImageUpload()">
+        <div class="btn" onclick="download(false)">Tải xuống </div>
+        <div class="btn" onclick="download(true)">Tải xuống dạng .DICOM</div>
+    </div>
+     <!-- thay class "preview" thành section như dưới này  -->
+    <div >
+        <section class="image-comparison" id="image-comparison-slider">
+            <div class="image-comparison__slider-wrapper">
+              <label for="image-comparison-range" class="image-comparison__label">Move image comparison slider</label>
+              <input type="range" min="0" max="100" value="50" class="image-comparison__range" id="image-compare-range" data-image-comparison-range="">
+          
+              <div class="image-comparison__image-wrapper  image-comparison__image-wrapper--overlay" data-image-comparison-overlay="">
+                <figure class="image-comparison__figure image-comparison__figure--overlay">
+                  <picture class="image-comparison__picture">
+                    <!-- <source media="(max-width: 40em)" srcset="https://images.unsplash.com/photo-1566702580807-95611c919b47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&h=400&q=80"> -->
+                    <!-- <source media="(min-width: 40.0625em) and (max-width: 48em)" srcset="https://images.unsplash.com/photo-1566702580807-95611c919b47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&h=600&q=80"> -->
+                    <img id="before" src="./static/thumbnail.png" alt="Mojave desert in the sun" class="image-comparison__image">
+                  </picture>
+          
+                  <figcaption class="image-comparison__caption image-comparison__caption--before">
+                    <span class="image-comparison__caption-body">Before </span>
+                  </figcaption>
+                </figure>
+              </div>
+          
+              <div class="image-comparison__slider" data-image-comparison-slider="">
+                <span class="image-comparison__thumb" data-image-comparison-thumb="">
+                  <svg class="image-comparison__thumb-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="10" viewBox="0 0 18 10" fill="currentColor">
+                    <path class="image-comparison__thumb-icon--left" d="M12.121 4.703V.488c0-.302.384-.454.609-.24l4.42 4.214a.33.33 0 0 1 0 .481l-4.42 4.214c-.225.215-.609.063-.609-.24V4.703z"></path>
+                    <path class="image-comparison__thumb-icon--right" d="M5.879 4.703V.488c0-.302-.384-.454-.609-.24L.85 4.462a.33.33 0 0 0 0 .481l4.42 4.214c.225.215.609.063.609-.24V4.703z"></path>
+                  </svg>
+                </span>
+              </div>
+          
+              <div class="image-comparison__image-wrapper">
+                <figure class="image-comparison__figure">
+                  <picture class="image-comparison__picture">
+                    <!-- <source media="(max-width: 40em)" srcset="https://images.unsplash.com/photo-1554110397-9bac083977c6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&height=400&q=80"> -->
+                    <!-- <source media="(min-width: 40.0625em) and (max-width: 48em)" srcset="https://images.unsplash.com/photo-1554110397-9bac083977c6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&height=600&q=80"> -->
+                    <img id="after" src="./static/thumbnail.png" alt="Mojave desert in the dark" class="image-comparison__image">
+                  </picture>
+          
+                  <figcaption class="image-comparison__caption image-comparison__caption--after">
+                    <span class="image-comparison__caption-body">After </span>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </section>
+    </div>
+    <a style="display: none" id="dicom_after"></a>
+    <div class="hint">Phần mềm được cung cấp bởi Viện KH&CN Việt Nam - Hàn Quốc, Bộ KH&CN</div>
+    <div class="hint">*Hỗ trợ các định dạng ảnh PNG, JPG and BMP</div>
+    
+
+    <script>
+        const endpoint = "https://dohubapps.com/user/thomtt12/8000/"//"http://localhost:8000/" //
+
+        function query() {
+            const file = document.getElementById("upload").files[0]
+            const uploadSrc = URL.createObjectURL(file)
+            document.getElementById("before").src = uploadSrc
+            document.getElementById("after").src = "./static/thumbnail.png"
+            var data = new FormData()
+            data.append('file', file)
+
+            // read dicom
+            if (file.name.includes(".dicom") || file.name.includes(".dcm")) {
+                fetch(endpoint + "dicom", {
+                    method: 'POST',
+                    body: data
+                })
+                .then(res => {
+                    document.getElementById('after').src = "./static/thumbnail.png"
+                    return res.json()
+                })
+                .then(res => {
+                    document.getElementById("after").src = "data:image/jpeg;base64," + res['input_dicom'][0]
+                })
+                .catch(res => {
+                    console.log(res)
+                    document.getElementById('after').src = "./static/thumbnail.png"
+                })
+            }
+
+            
+            document.getElementById('after').src = "./static/loading.gif"
+            fetch(endpoint + document.getElementById("title-menu").value, {
+                method: 'POST',
+                body: data
+            })
+            .then(res => {
+                document.getElementById('after').src = "./static/thumbnail.png"
+                return res.json()
+            })
+            .then(res => {
+                document.getElementById('after').src = "data:image/jpeg;base64," + res['images'][0]
+                document.getElementById('dicom_after').href = "./get_dicom/" + res['dicom_name']
+                if (document.getElementById("title-menu").value === "sub") {
+                    lines = res['sub_text'].split('\n')
+                    let text_boxes = ""
+                    let x1, y1, width, height
+                    let image_width = document.getElementById('before').clientWidth
+                    let real_width = document.getElementById('before').naturalWidth
+                    let ratio = image_width/real_width
+                    let area
+                    for (line in lines) {
+                        if (line %4 == 2) {
+                            let character_area = area/(lines[line].length)
+                            text_boxes += `<div class="text-box" style="top:${y1*ratio}px; left:${x1*ratio}px; width:${width*ratio}px; height:${height*ratio}px; font-size:${Math.sqrt(character_area*0.7)}px">${lines[line]}</div>`
+                            x1 = 0
+                            y1 = 0
+                            width = 0
+                            height = 0
+                        }
+                        if (line %4 == 0) {
+                            let values = lines[line].split(' ')
+                            x1 = parseFloat(values[0])
+                            y1 = parseFloat(values[1])
+                            let x2 = parseFloat(values[2])
+                            let y2 = parseFloat(values[3])
+                            width = x2 - x1
+                            height = y2 - y1
+                            area = width*ratio*height*ratio
+                        }
+                    }
+                    document.getElementById("wrap-result").innerHTML = document.getElementById("wrap-result").innerHTML + text_boxes
+                }
+            })
+            .catch(res => {
+                console.log(res)
+                document.getElementById('after').src = "thumbnail.png"
+            })
+        }
+
+        function onImageUpload(e) {
+            query()
+        }
+
+        function onMenuChange() {
+            window.localStorage.setItem("tool", document.getElementById("title-menu").value)
+            if (document.getElementById("before").src.slice(document.getElementById("before").src.length - 13, document.getElementById("before").src.length) !== "thumbnail.png") {
+                query()
+            }
+            // } else {
+            //     document.getElementById("before").src = document.getElementById("title-menu").value
+            //     document.getElementById("after").src = document.getElementById("title-menu").value + "_result"
+            // }
+        }
+
+        document.getElementById("title-menu").value = window.localStorage.getItem("tool") ? window.localStorage.getItem("tool"): 'enhanced'
+
+        function download(is_dicom) {
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            if (!is_dicom) {
+                a.href = document.getElementById("after").src; //path
+                a.download = "Đã tải";
+            } else {
+                a.href = document.getElementById('dicom_after').href
+                a.download = "Dicom.dcm";
+            }
+            document.body.appendChild(a);
+            a.click();
+            a.remove()
+        }
+    </script>
+    <script src="https://dohubapps.com/user/thomtt12/8000/static/slider.js"></script>
+
+
+</body></html>

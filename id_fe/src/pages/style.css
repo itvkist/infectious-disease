@@ -79,14 +79,6 @@ input[type="number"] {
   #root h1.ant-typography {
     font-size: 1.5rem;
   }
-  .cassava-table th:nth-child(3),
-  .cassava-table th:nth-child(4),
-  .cassava-table th:nth-child(5),
-  .cassava-table th:nth-child(6),
-  .cassava-table td:nth-child(3),
-  .cassava-table td:nth-child(4),
-  .cassava-table td:nth-child(5),
-  .cassava-table td:nth-child(6),
   .disease-table th:nth-child(3),
   .disease-table th:nth-child(4),
   .disease-table th:nth-child(5),

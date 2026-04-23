@@ -1,6 +1,4 @@
 import {
-  CassavaDetail,
-  Cassavas,
   Pneumonia,
   DiseaseDetail,
   Diseases,
@@ -34,17 +32,9 @@ export default () => {
         component: <Signin />,
         url: "/signin",
       },
-      cassavas: {
-        component: <Cassavas />,
-        url: "/cassavas",
-      },
       diseases: {
         component: <Diseases />,
         url: "/diseases",
-      },
-      cassavas_detail: {
-        component: <CassavaDetail id={id} />,
-        url: `/cassavas/${id}`,
       },
       diseases_detail: {
         component: <DiseaseDetail id={id} />,

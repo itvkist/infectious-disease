@@ -40,9 +40,9 @@ export default () => {
   const {t} = useTranslation();
 
   useEffect(() => {
-    if (context?.cassava && context?.user?.id) navigate("/");
+    if (context?.user?.id) navigate("/");
     // eslint-disable-next-line
-  }, [context?.cassava, context?.user]);
+  }, [context?.user]);
 
   const handleLogin = async () => {
     try {

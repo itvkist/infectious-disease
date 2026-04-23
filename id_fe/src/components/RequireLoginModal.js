@@ -10,9 +10,9 @@ function RequireLoginModal(props) {
   const [errModal, setErrModal] = useState(false);
 
   useEffect(() => {
-    if (context?.cassava && !context?.user) setErrModal(true);
+    if (context?.disease && !context?.user) setErrModal(true);
     // eslint-disable-next-line
-  }, [context?.cassava, context?.user]);
+  }, [context?.disease, context?.user]);
 
   return (
     <Modal

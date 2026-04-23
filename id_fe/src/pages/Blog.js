@@ -39,13 +39,13 @@ export const BlogDetail = (props) => {
   }, [props?.title]);
 
   useEffect(() => {
-    if (context?.cassava) {
+    if (context?.disease) {
       if (context.user)
         if (!context?.user?.id || !context.user?.role)
           message.error(ERR_CODE_API[403].message);
     }
     // eslint-disable-next-line
-  }, [context?.cassava, context?.user]);
+  }, [context?.disease, context?.user]);
 
   return (
     <AnimationRevealPage>

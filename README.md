@@ -6,7 +6,7 @@ A full-stack platform for infectious disease surveillance, AI-assisted diagnosis
 
 - **OS:** Windows 10+ or Ubuntu 20.04+
 - **Node.js:** v16 or higher
-- **PostgreSQL:** v14 or higher
+- **PostgreSQL:** v16 or higher
 - **Anaconda** or **Miniconda** (for Python AI services)
 
 ## Quick start
@@ -23,51 +23,43 @@ cd infectious-disease
 **Ubuntu:**
 
 ```bash
+# Add the official PostgreSQL 16 repository
+sudo sh -c 'echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+wget -qO- https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo tee /etc/apt/trusted.gpg.d/pgdg.asc
 sudo apt update
-sudo apt install -y postgresql postgresql-contrib
+sudo apt install -y postgresql-16
 sudo systemctl enable --now postgresql
 
-# Create database and user
-sudo -u postgres psql <<SQL
-CREATE USER strapi WITH PASSWORD 'strapi';
-CREATE DATABASE iddb OWNER strapi;
-GRANT ALL PRIVILEGES ON DATABASE iddb TO strapi;
-SQL
+# Set password for the default postgres user and create the database
+sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD '1';"
+sudo -u postgres createdb iddb
 
 # Restore the database dump
 sudo -u postgres pg_restore -d iddb id_be/database/iddb_20231101.sql
 ```
 
-**Windows:** Download and run the installer from [postgresql.org/download/windows](https://www.postgresql.org/download/windows/), then open **psql** or **pgAdmin** and run:
+**Windows:** Download and run the PostgreSQL 16 installer from [postgresql.org/download/windows](https://www.postgresql.org/download/windows/). During installation set the password for the `postgres` user to `1`. Then open **psql** or **pgAdmin** and run:
 
 ```sql
-CREATE USER strapi WITH PASSWORD 'strapi';
-CREATE DATABASE iddb OWNER strapi;
-GRANT ALL PRIVILEGES ON DATABASE iddb TO strapi;
+CREATE DATABASE iddb;
 ```
 
-Then restore the dump from a terminal:
+Restore the dump from a terminal:
 
 ```bash
-pg_restore -U strapi -d iddb id_be/database/iddb_20231101.sql
+pg_restore -U postgres -d iddb id_be/database/iddb_20231101.sql
 ```
 
-Update `id_be/.env` with your credentials:
+`id_be/.env.example` is pre-configured with these credentials — copy it as-is:
 
-```env
-DATABASE_CLIENT=postgres
-DATABASE_HOST=127.0.0.1
-DATABASE_PORT=5432
-DATABASE_NAME=iddb
-DATABASE_USERNAME=strapi
-DATABASE_PASSWORD=strapi
+```bash
+cp id_be/.env.example id_be/.env
 ```
 
 ### 3. Backend (id_be)
 
 ```bash
 cd id_be
-cp .env.example .env
 npm install
 npm run develop
 ```

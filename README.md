@@ -14,7 +14,7 @@ A full-stack platform for infectious disease surveillance, AI-assisted diagnosis
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/itvkist2/infectious-disease.git
+git clone https://github.com/itvkist/infectious-disease.git
 cd infectious-disease
 ```
 

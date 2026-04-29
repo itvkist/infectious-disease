@@ -33,9 +33,6 @@ sudo systemctl enable --now postgresql
 # Set password for the default postgres user and create the database
 sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD '1';"
 sudo -u postgres createdb iddb
-
-# Restore the database dump
-sudo -u postgres pg_restore -d iddb id_be/database/iddb_20231101.sql
 ```
 
 **Windows:** Download and run the PostgreSQL 16 installer from [postgresql.org/download/windows](https://www.postgresql.org/download/windows/). During installation set the password for the `postgres` user to `1`. Then open **psql** or **pgAdmin** and run:
@@ -44,22 +41,11 @@ sudo -u postgres pg_restore -d iddb id_be/database/iddb_20231101.sql
 CREATE DATABASE iddb;
 ```
 
-Restore the dump from a terminal:
-
-```bash
-pg_restore -U postgres -d iddb id_be/database/iddb_20231101.sql
-```
-
-`id_be/.env.example` is pre-configured with these credentials — copy it as-is:
-
-```bash
-cp id_be/.env.example id_be/.env
-```
-
 ### 3. Backend (id_be)
 
 ```bash
 cd id_be
+cp .env.example .env
 npm install
 npm run develop
 ```

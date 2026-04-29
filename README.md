@@ -50,6 +50,8 @@ npm install
 npm run develop
 ```
 
+> **First run:** Strapi will open a registration page at `http://localhost:1337/admin`. Create an admin account with any credentials you like — this is your local admin user.
+
 ### 4. Frontend (id_fe)
 
 ```bash

@@ -92,13 +92,10 @@ pip install -r requirements.txt
 
 ### 6. COVID-19 Detection API (id_covid)
 
+Download the model folder from [Google Drive](https://drive.google.com/drive/folders/16a1Onp2kk022uHNPhXKRQ_V3Zth_Tt01?usp=sharing) and place it inside `id_covid/` so the path is `id_covid/model/`.
+
 ```bash
 cd id_covid
-
-# Download model weights (one-time)
-mkdir model
-wget https://github.com/vietbacnguyen96/Covid19_detection_VKIST/releases/download/v1.0.0/CNN_Model_2c.h5
-mv CNN_Model_2c.h5 model/
 
 # Run
 python3 server.py
